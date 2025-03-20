@@ -1,10 +1,10 @@
-<!doctype html>
+<!Doctype html>
 <html lang="ru">
   <head>
     <!-- В теге <head>...</head> находятся метаинформационные данные страницы, которые помогают браузеру и поисковым системам понять, как ее обрабатывать и отображать. -->
     <meta charset="UTF-8" />
     <!-- Кодировка (лучше использовать UTF-8) -->
-    <meta name="viewport" content="width=divice - width, initial-scale = 1.0" />
+    <meta name="viewport" content="width=device - width, initial-scale = 1.0" />
     <!-- Адаптивность для мобильных -->
     <meta name="description" content="Для SEO" />
     <meta name="author" content="Bogdan Pikus" />
@@ -15,7 +15,12 @@
   <body>
     <script src="" defer></script>
       <header class="header">
-          <h1 class="personal_assistent">Personal Assistent</h1>
+          <div class="logo">
+              <img src="public\logo.png" class="iceberg_logo" alt="" />
+          </div>
+          <div class="search">
+              <input type="search" id="main_search" />
+          </div>
           <div class="theme-toggle">
               <span>Dark Theme</span>
               <input type="checkbox" id="theme-switch" class="toggle"/>
@@ -23,7 +28,7 @@
           </div>
           <div class="user_info">
               <span class="user_name">Bogdan</span>
-              <img class="avatar" src="user.png" alt="User Avatar"/>
+              <img class="avatar" src="user.png" alt=""/>
           </div>
       </header>
       <main>
