@@ -1,5 +1,86 @@
-header {
+body{
+    margin: 0px;
+    padding: 0px;
+    overflow-y:scroll;
+    overflow-x:hidden;
+}
+
+
+.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 56px;
+    width: 100%;
+    padding: 0 16px;
+    position: sticky;
+    margin: 0px;
+    border: 0px;
+    background: #9a9a9a;
+}
+
+#background.header {
+    z-index: -1;
+    position: absolute;
+    height: 56px;
+    width: 100%;
+}
+
+.logo{
+    display:flex;
+    height:80px;
+    width:150px;
+    margin-top:2px;
+    margin-right:10px;
+}
+
+.theme-toggle{
+    display:flex;
+    width:150px;
+    margin: auto;
+}
+
+.label-theme{
+
+}
+
+.search{
+    display:flex;
+    width:100%;
+    margin-left:100px;
+}
+
+#main_search {
+    display: flex;
+    width: 700px;
+    background-image: url(data:image/svg+xml,%3Csvg%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M10%202C5.58172%202%202%205.58172%202%2010C2%2014.4183%205.58172%2018%2010%2018C11.8487%2018%2013.551%2017.3729%2014.9056%2016.3199L20.2929%2021.7071C20.6834%2022.0976%2021.3166%2022.0976%2021.7071%2021.7071C22.0976%2021.3166%2022.0976%2020.6834%2021.7071%2020.2929L16.3199%2014.9056C17.3729%2013.551%2018%2011.8487%2018%2010C18%205.58172%2014.4183%202%2010%202ZM4%2010C4%206.68629%206.68629%204%2010%204C13.3137%204%2016%206.68629%2016%2010C16%2013.3137%2013.3137%2016%2010%2016C6.68629%2016%204%2013.3137%204%2010Z%22%20fill%3D%22%23797878%22/%3E%3C/svg%3E);
+    background-repeat:no-repeat;
+    background-position:2px center;
+}
+
+
+::placeholder:active{
+    visibility:hidden;
+}
+
+.search_button{
+    margin:2px;
+}
+
+.user_info{
+    display:flex;
+    flex-direction:row;
+    width:220px;
+    height:25px;
+    justify-content:end;
+}
+
+.user_name{
+    display:flex;
+
+}
+
+.avatar{
+    margin-right: 16px;
+
 }

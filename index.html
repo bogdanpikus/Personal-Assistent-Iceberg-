@@ -4,7 +4,7 @@
     <!-- В теге <head>...</head> находятся метаинформационные данные страницы, которые помогают браузеру и поисковым системам понять, как ее обрабатывать и отображать. -->
     <meta charset="UTF-8" />
     <!-- Кодировка (лучше использовать UTF-8) -->
-    <meta name="viewport" content="width=device - width, initial-scale = 1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0" />
     <!-- Адаптивность для мобильных -->
     <meta name="description" content="Для SEO" />
     <meta name="author" content="Bogdan Pikus" />
@@ -14,22 +14,24 @@
   </head>
   <body>
     <script src="" defer></script>
+      <div id="background" class="header" style="opacity: 0;"></div>
       <header class="header">
-          <div class="logo">
-              <img src="public\logo.png" class="iceberg_logo" alt="" />
-          </div>
-          <div class="search">
-              <input type="search" id="main_search" />
-          </div>
-          <div class="theme-toggle">
-              <span>Dark Theme</span>
-              <input type="checkbox" id="theme-switch" class="toggle"/>
-              <label for="theme-swith" class="toggle-label"></label>
-          </div>
-          <div class="user_info">
-              <span class="user_name">Bogdan</span>
-              <img class="avatar" src="user.png" alt=""/>
-          </div>
+              <div class="logo">
+                  <img src="public\logo.png" class="iceberg_logo" alt="" />
+              </div>
+              <div class="search">
+                  <input type="search" id="main_search" class="search-main" placeholder="Search..."/>
+                  <button class="search_button">Search</button>
+              </div>
+              <div class="theme-toggle">
+                  <span class="label-theme">Dark Theme</span>
+                  <input type="checkbox" id="theme-switch" class="toggle" />
+                  <label for="theme-swith" class="toggle-label"></label>
+              </div>
+              <div class="user_info">
+                  <span class="user_name">Bogdan</span>
+                  <img class="avatar" src="public/user.png" alt="" />
+              </div>
       </header>
       <main>
           <article class="notes">
