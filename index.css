@@ -1,6 +1,9 @@
-body{
+html,body {
+    height: 100%;
     margin: 0px;
     padding: 0px;
+}
+body{
     overflow-y:scroll;
     overflow-x:hidden;
 }
@@ -16,6 +19,7 @@ body{
     position: sticky;
     margin: 0px;
     border: 0px;
+    padding:0px;
     background: #9a9a9a;
 }
 
@@ -84,4 +88,67 @@ body{
 .avatar{
     margin-right: 16px;
 
+}
+
+
+main{
+    display:flex;
+    height:100%;
+}
+
+aside {
+    width: 100px;
+    // background-color: rgba(21, 21, 21, 1);
+    background-color: #9a9a9a;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+}
+
+ul{
+    padding:0px;
+    margin:15px;
+}
+
+li{
+
+    list-style-type:none;
+}
+
+.name_of_aside{
+    padding:0px;
+    margin:0px;
+    border:0px;
+}
+
+.name_of_aside {
+    color: white;
+}
+
+.add_note{
+    width:50px;
+    margin-top:12px;
+}
+
+.settings {
+    height: 50px;
+    width: 50px;
+    padding: 0px;
+    margin: 15px;
+    border: 0px;
+}
+
+.FileList{
+    height:600px;
+    overflow-x:hidden;
+    overflow-y:scroll;
+}
+
+footer {
+    display: flex;
+    width: 100%;
+    height: 56px;
+    background-color: rgba(21, 21, 21, 1);
 }
