@@ -100,16 +100,15 @@ aside {
     width: 100px;
     // background-color: rgba(21, 21, 21, 1);
     background-color: #9a9a9a;
-    overflow-x: hidden;
-    overflow-y: scroll;
+    overflow: hidden;
     padding: 0px;
     margin: 0px;
     border: 0px;
 }
 
-ul{
-    padding:0px;
-    margin:15px;
+ul {
+    padding-left: 5px;
+    margin: 15px;
 }
 
 li{
@@ -135,7 +134,7 @@ li{
 .settings {
     height: 50px;
     width: 50px;
-    padding: 0px;
+    padding-left: 5px;
     margin: 15px;
     border: 0px;
 }
@@ -144,6 +143,7 @@ li{
     height:600px;
     overflow-x:hidden;
     overflow-y:scroll;
+    background-color:aliceblue;
 }
 
 footer {
