@@ -10,10 +10,10 @@
     <meta name="author" content="Bogdan Pikus" />
     <title>Iceberg</title>
     <link rel="icon" href="public\favicon.ico" type="image/x-icon" />
-    <link href="index.css" rel="stylesheet" />
+    <link href="styles/index.css" rel="stylesheet" />
   </head>
   <body>
-    <script src="" defer></script>
+    <script src="index.js" defer></script>
       <div id="background" class="header" style="opacity: 0;"></div>
       <header class="header">
               <div class="logo">
@@ -21,7 +21,7 @@
               </div>
               <div class="search">
                   <input type="search" id="main_search" class="search-main" placeholder="Search..."/>
-                  <button class="search_button">Search</button>
+                  <button class="search_button"></button>
               </div>
               <div class="theme-toggle">
                   <span class="label-theme">Dark Theme</span>
@@ -47,9 +47,21 @@
               <div class="settings">
                   <button class="settings_button" style="padding=0px;">Settings</button>
               </div>
-
           </aside>
 
+          <article>
+              <h1 id="title_main_page">Let's start</h1>
+          </article>
+
+          <article class="weather_block">
+              <div class="weather_button_div">
+                  <button id="weather_id" class="weather_button">WEATHER</button>
+              </div>
+              <div class="weather_block_div" id="weather_block_div">
+                  <h2 class="weather_h2">23</h2>
+                  <p clss="weather_p">Dnipto</p>
+              </div>
+          </article>
       </main>
       <footer class="footer">
 

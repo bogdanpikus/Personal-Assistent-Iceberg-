@@ -19,7 +19,7 @@ body{
     position: sticky;
     margin: 0px;
     border: 0px;
-    padding:0px;
+    padding: 0px;
     background: #9a9a9a;
 }
 
@@ -56,21 +56,34 @@ body{
 }
 
 #main_search {
+    height: 25px;
     display: flex;
     width: 700px;
+    border:0px;
     background-image: url(data:image/svg+xml,%3Csvg%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M10%202C5.58172%202%202%205.58172%202%2010C2%2014.4183%205.58172%2018%2010%2018C11.8487%2018%2013.551%2017.3729%2014.9056%2016.3199L20.2929%2021.7071C20.6834%2022.0976%2021.3166%2022.0976%2021.7071%2021.7071C22.0976%2021.3166%2022.0976%2020.6834%2021.7071%2020.2929L16.3199%2014.9056C17.3729%2013.551%2018%2011.8487%2018%2010C18%205.58172%2014.4183%202%2010%202ZM4%2010C4%206.68629%206.68629%204%2010%204C13.3137%204%2016%206.68629%2016%2010C16%2013.3137%2013.3137%2016%2010%2016C6.68629%2016%204%2013.3137%204%2010Z%22%20fill%3D%22%23797878%22/%3E%3C/svg%3E);
-    background-repeat:no-repeat;
-    background-position:2px left;
-    padding-left:40px;
+    background-repeat: no-repeat;
+    background-position: 2px left;
+    padding-left: 40px;
+    background-color:aqua;
+
 }
 
 
 .search-main:focus, .search-main:hover{
     border-color:aqua;
-} 
+}
 
-.search_button{
-    margin:2px;
+.search_button {
+    height:inherit;
+    width:50px;
+    margin: 0px;
+    border:0px;
+    background-image: url(https://upload.wikimedia.org/wikipedia/commons/a/ac/Wikipe-tan_head.png);
+    background-position: center;
+    background-size:contain;
+    background-repeat:no-repeat;
+
+    
 }
 
 .user_info{
@@ -92,17 +105,21 @@ body{
 }
 
 
-main{
-    display:flex;
-    height:100%;
+main {
+    display: flex;
+    height: 100%;
+    background-image: url(https://upload.wikimedia.org/wikipedia/commons/a/ac/Wikipe-tan_head.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position:center;
 }
 
 aside {
-    height:auto;
+    height: auto;
     width: 100px;
     // background-color: rgba(21, 21, 21, 1);
     background-color: #9a9a9a;
-    overflow-y:scroll;
+    overflow-y: scroll;
     padding: 0px;
     margin: 0px;
     border: 0px;
@@ -148,10 +165,51 @@ li{
     background-color:aliceblue;
 }
 
-footer {
+article.weather_block{
     display:flex;
+    flex-direction:column;
+    height:150px;
+    width:150px;
+    border:0px;
+    margin-left:auto;
+    margin-right:10px;
+}
+
+.weather_button_div{
+    margin-left:80px;
+    padding:0px;
+    
+}
+
+.weather_block_div {
+    // display: none;
+    color: black;
+    background-image: url(https://www.admbal.ru/upload/iblock/1df/1df01e3c2020a359c964fc4803b30ba8.png);
+    background-size: contain;
+    background-position: center;
+}
+
+.weather_h2{
+    margin:0px;
+}
+
+.weather_p{
+    margin:0px;
+}
+
+footer {
+    position:sticky;
     width: 100%;
     height: 56px;
     background-color: rgba(21, 21, 21, 1);
-    margin-top: auto;
+    margin: auto;
+    bottom:0;
+}
+
+#title_main_page{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size:50px;
+    font-style:oblique;
+    font-weight:100;
+    margin-left: 50px;
 }
