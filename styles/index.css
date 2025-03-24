@@ -1,7 +1,8 @@
-html,body {
+html, body {
     height: 100%;
     margin: 0px;
     padding: 0px;
+    margin:auto;
 }
 body{
     overflow-y:scroll;
@@ -20,7 +21,7 @@ body{
     margin: 0px;
     border: 0px;
     padding: 0px;
-    background: #9a9a9a;
+    background: rgba(21, 21, 21, 1);
 }
 
 #background.header {
@@ -32,45 +33,56 @@ body{
 
 .logo{
     display:flex;
-    height:80px;
+    height:50px;
     width:150px;
-    margin-top:2px;
-    margin-right:10px;
-    padding-left:5px;
+    margin:auto;
 }
 
 .theme-toggle{
-    display:flex;
-    width:150px;
     margin: auto;
+    height:contain;
 }
 
-.label-theme{
-
+.toggle {
+    appearance:none;
+    width: 3rem;
+    height: 1.5rem;
+    border-radius:10px;
+    background-color:white;
+    cursor:pointer;
 }
+
+    .toggle:checked {
+        background-color: darkslateblue;
+    }
+    .toggle:hover{
+        background-color:dimgrey;
+    }
 
 .search{
-    display:flex;
+   display:flex;
     width:100%;
     margin-left:100px;
 }
 
 #main_search {
     height: 25px;
-    display: flex;
     width: 700px;
     border:0px;
+    border-top-left-radius:10px;
+    border-bottom-left-radius:10px;
     background-image: url(data:image/svg+xml,%3Csvg%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M10%202C5.58172%202%202%205.58172%202%2010C2%2014.4183%205.58172%2018%2010%2018C11.8487%2018%2013.551%2017.3729%2014.9056%2016.3199L20.2929%2021.7071C20.6834%2022.0976%2021.3166%2022.0976%2021.7071%2021.7071C22.0976%2021.3166%2022.0976%2020.6834%2021.7071%2020.2929L16.3199%2014.9056C17.3729%2013.551%2018%2011.8487%2018%2010C18%205.58172%2014.4183%202%2010%202ZM4%2010C4%206.68629%206.68629%204%2010%204C13.3137%204%2016%206.68629%2016%2010C16%2013.3137%2013.3137%2016%2010%2016C6.68629%2016%204%2013.3137%204%2010Z%22%20fill%3D%22%23797878%22/%3E%3C/svg%3E);
     background-repeat: no-repeat;
     background-position: 2px left;
     padding-left: 40px;
-    background-color:aqua;
-
+    background-color:#e7e7e7;
 }
 
 
-.search-main:focus, .search-main:hover{
-    border-color:aqua;
+#main_search:focus{
+
+    background-color:aliceblue;
+    outline:none;
 }
 
 .search_button {
@@ -78,6 +90,8 @@ body{
     width:50px;
     margin: 0px;
     border:0px;
+    border-top-right-radius:10px;
+    border-bottom-right-radius:10px;
     background-image: url(https://upload.wikimedia.org/wikipedia/commons/a/ac/Wikipe-tan_head.png);
     background-position: center;
     background-size:contain;
@@ -86,24 +100,25 @@ body{
     
 }
 
-.user_info{
-    display:flex;
-    flex-direction:row;
-    width:220px;
-    height:25px;
-    justify-content:end;
+.user_info {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    margin-right:10px;
+    width: 220px;
+    height: 37px;
+    gap: 10px;
 }
 
-.user_name{
-    display:flex;
-
+.avatar_user_name{
+   margin:auto;
+   color:aliceblue;
 }
 
-.avatar{
-    margin-right: 16px;
 
+.avatar_button{
+    margin:auto;
 }
-
 
 main {
     display: flex;
@@ -116,9 +131,9 @@ main {
 
 aside {
     height: auto;
-    width: 100px;
-    // background-color: rgba(21, 21, 21, 1);
-    background-color: #9a9a9a;
+    width: 165px;
+    background-color: rgba(21, 21, 21, 1);
+   / background-color: #9a9a9a;
     overflow-y: scroll;
     padding: 0px;
     margin: 0px;
