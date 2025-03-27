@@ -69,6 +69,10 @@ body{
         background-color:#9d9d9d;
     }
 
+    .toggle:hover {
+        opacity: 0.7;
+    }
+
     .toggle:checked::before {
         transform: translateX(1.7rem);
         transition: ease-in-out 0.2s;
@@ -78,12 +82,12 @@ body{
 .search{
    display:flex;
     width:100%;
-    margin-left:100px;
+    margin-left:5%;
 }
 
 #main_search {
     height: 25px;
-    width: 700px;
+    width: 60%;
     border:0px;
     border-top-left-radius:10px;
     border-bottom-left-radius:10px;
@@ -114,10 +118,14 @@ body{
     // background-size: contain;
     // background-repeat: no-repeat;
     cursor: pointer;
+    opacity:0.7;
 }
     .search_button:active {
         background-image: linear-gradient(120deg, #9a00ff 60%, #0089a2);
         box-shadow: 0px 0px 100px 50px rgba(207, 0, 255, 0.2);
+    }
+    .search_button:hover{
+        opacity:1;
     }
 
 .user_info {
@@ -136,22 +144,30 @@ body{
 }
 
 
-.avatar_button{
-    margin:auto;
+.avatar_button {
+    margin: auto;
 }
 
 main {
     display: flex;
     height: 100%;
     background-image: url(https://upload.wikimedia.org/wikipedia/commons/a/ac/Wikipe-tan_head.png);
+    //background-color:rgba(21, 21, 21, 1);
     background-size: contain;
     background-repeat: no-repeat;
     background-position:center;
+    border-top:5px;
+    border-left:0px;
+    border-right:0px;
+    border-bottom:0px;
+    border-style:solid;
+    border-color:aliceblue;
 }
 
 aside {
-    height: auto;
+    height: 100%;
     width: 165px;
+    //width:10%;
     background-color: rgba(21, 21, 21, 1);
    / background-color: #9a9a9a;
     overflow-y: scroll;
@@ -228,6 +244,7 @@ aside {
     white-space: nowrap;
     cursor: pointer;
     transition: ease-in 0.1s;
+    opacity:0.7;
 }
 
     .settings_button:active {
@@ -236,29 +253,65 @@ aside {
         background-image: linear-gradient(140deg, #000000, darkslateblue);
     }
 
+    .settings_button:hover {
+        opacity: 1;
+    }
+
 .settings_button_span{
     font-family: Montserrat;
     font-weight: 600;
 }
 
-article.weather_block{
+.weather_block{
     display:flex;
     flex-direction:column;
     height:150px;
-    width:150px;
+    width:auto;
     border:0px;
     margin-left:auto;
     margin-right:10px;
 }
 
 .weather_button_div{
-    margin-left:80px;
-    padding:0px;
-    
+    margin-left:auto;
+    padding:0px;   
 }
 
+.weather_button{
+    background-color:rgba(21, 21, 21, 1);
+    appearance:none;
+    border:0;
+    margin:0;
+    height:80px;
+    width:150px;
+    transition: all 0.1s;
+    cursor:pointer;
+}
+    .weather_button:active {
+        background-image: none;
+        background-color: #9d9d9d;
+        transform: scale(0.9);
+    }
+
+    .weather_button:hover {
+        background-color: rgba(21, 21, 21, 0.7);
+    }
+
+
+.weather_button span{
+    font-family: Montserrat;
+    font-size: 20px;
+    font-weight:600;
+    font-kerning: normal;
+    color: rgba(255, 255, 255, 0.4);
+
+}
+    .weather_button:hover span {
+        color: rgba(255, 255, 255, 1);
+    }
+
 .weather_block_div {
-    // display: none;
+    display: none;
     color: black;
     background-image: url(https://www.admbal.ru/upload/iblock/1df/1df01e3c2020a359c964fc4803b30ba8.png);
     background-size: contain;
@@ -273,10 +326,53 @@ article.weather_block{
     margin:0px;
 }
 
+.calendar_block {
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+    width: auto;
+}
+
+.calendar_button_div {
+    margin-left: auto;
+}
+
+.calendar_button {
+    height: 80px;
+    width: 150px;
+    border: 0;
+    cursor: pointer;
+    background-color: rgba(21, 21, 21, 1);
+    transition: all 0.1s;
+}
+    .calendar_button:hover {
+        background-color: rgba(21, 21, 21, 0.7);
+    }
+    .calendar_button:active {
+        background-image: none;
+        background-color: #9d9d9d;
+        transform: scale(0.9);
+    }
+
+.calendar_button span{
+    font-family:Montserrat;
+    font-weight:600;
+    font-kerning:normal;
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.4);
+}
+    .calendar_button:hover span {
+        color: rgba(255, 255, 255, 1);
+    }
+
+.calendar_block_div {
+    display: none;
+}
+
 footer {
     position:sticky;
     width: 100%;
-    height: 56px;
+    height: 5%;
     background-color: rgba(21, 21, 21, 1);
     margin: auto;
     bottom:0;
