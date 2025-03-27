@@ -54,15 +54,16 @@ body{
     transition: .4s;
 }
 
-    .toggle::before{
-        position:absolute;
-        content:"";
-        height:20px;
-        width:20px;
-        margin-top:2px;
-        border:0px;
-        border-radius:15px;
+    .toggle::before {
+        position: absolute;
+        content: "";
+        height: 20px;
+        width: 20px;
+        margin-top: 2px;
+        border: 0px;
+        border-radius: 15px;
         background-color: dimgrey;
+        transition: ease-in-out 0.2s;
     }
 
     .toggle:checked{
@@ -75,7 +76,6 @@ body{
 
     .toggle:checked::before {
         transform: translateX(1.7rem);
-        transition: ease-in-out 0.2s;
         background-color: darkslateblue;
     }
 
