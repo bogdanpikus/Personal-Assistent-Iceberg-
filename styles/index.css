@@ -1,16 +1,16 @@
 @media screen and (max-width: 1066px) {
-    aside {
-        display: none;
-    }
+        aside {
+            display: none;
+        }
 
-    main {
-        overflow-y: hidden;
-    }
+        main {
+            overflow-y: hidden;
+        }
 
-    .h1_lets_start{
-        display:none;
+        .h1_lets_start {
+            display: none;
+        }
     }
-}
 
 html {
     height: 100vh;
@@ -295,6 +295,18 @@ aside {
     font-weight: 600;
 }
 
+.button_contener{
+    display:flex;
+    flex-direction:row;
+    margin-left:auto;
+}
+
+@media screen and (max-width: 1066px) {
+    .button_contener {
+        display: flex;
+        flex-direction: column; /* Меняем направление на колонку */
+    }
+}
 .weather_block {
     display: flex;
     flex-direction: column;
@@ -344,10 +356,10 @@ aside {
 
 .weather_block_div {
     display: none;
+    width: 300px;
     color: black;
-    background-image: url(https://www.admbal.ru/upload/iblock/1df/1df01e3c2020a359c964fc4803b30ba8.png);
-    background-size: contain;
-    background-position: center;
+    background-color:snow;
+    margin:0px;
 }
 
 .weather_h2{
@@ -557,3 +569,14 @@ aside {
         font-size: 20px;
         color: rgba(255, 255, 255, 0.4);
     }
+
+@media screen and (max-width: 1066px) {
+
+    .statistics_block {
+        margin-top: 0;
+    }
+
+    .progress_block {
+        margin-top: 0;
+    }
+}
