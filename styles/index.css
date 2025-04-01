@@ -413,6 +413,11 @@ aside {
     display: none;
 }
 
+/*.header_calendar{
+    display:block ruby;
+    margin:20px;
+}*/
+
 .time_block {
     display: flex;
     flex-direction: column;
@@ -489,6 +494,7 @@ aside {
 
 .date_block_div{
     display:none;
+    width: contain;
 }
 
 .progress_block {
@@ -579,4 +585,59 @@ aside {
     .progress_block {
         margin-top: 0;
     }
+}
+
+table {
+    background-color: darkslateblue;
+    text-align: center;
+}
+
+#calendar_table, th, td {
+    table-layout: fixed;
+    border: 1px solid grey;
+    width: max-content;
+    height: max-content;
+}
+
+#thead_id_button_back button {
+    appearance: none;
+    height:15px;
+    width:25px;
+    border: 0;
+    margin: 0;
+    margin-bottom:5px;
+    background-color: firebrick;
+    border-bottom-left-radius: 45px;
+    border-top-left-radius: 45px;
+    cursor:pointer;
+    transition: all 0.1s;
+}
+    #thead_id_button_back button:active{
+        transform: scale(0.9);
+        opacity: 0.7;
+    }
+
+#thead_id_button_forward button{
+    appearance:none;
+    height:15px;
+    width:25px;
+    border:0;
+    margin:0;
+    margin-bottom:5px;
+    background-color:firebrick;
+    border-bottom-right-radius: 45px;
+    border-top-right-radius: 45px;
+    cursor:pointer;
+    transition: all 0.1s;
+}
+    #thead_id_button_forward button:active{
+        transform: scale(0.9);
+        opacity: 0.7;
+    }
+
+td{
+    color:snow;
+}
+th{
+    color:snow;
 }

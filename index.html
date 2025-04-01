@@ -16,6 +16,7 @@
       <script src="index.js" defer></script>
       <script src="components/Weather.js" defer></script>
       <script src="components/Time.js" defer></script>
+      <script src="components/Date.js" defer></script>
 
       <div id="background" class="header" style="opacity: 0;"></div>
       <header class="header">
@@ -69,9 +70,41 @@
                   <div class="calendar_button_div">
                       <button id="calendar_id_button" class="calendar_button"><span>Calendar</span></button>
                   </div>
-                  <div class="calendar_block_div" id="calendar_block_div" style="background-color:aqua;">
-                      <h2 class="calendar_h2">Calendar</h2>
-                  </div>
+                  <div class="calendar_block_div" id="calendar_block_div">
+                     <!--<div class="header_calendar">
+                          <button><</button><p class="calendar_h2">Calendar</p><button>></button>
+                      </div>
+                      <div class="days_of_week_calendar">
+                          <span>Mn</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>San</span>
+                      </div>--> 
+                      <table id="calendar_table">
+                          <thead id="calendar_thead">
+                              <tr id="calendar_thead_tr">
+                                  <th id="thead_id_button_back"><button></button><th id="thead_id_month" colspan="5">April</th><th id="thead_id_button_forward"><button></button></th>
+                              </tr>
+                              <tr>
+                                  <th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th><th>San</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                  <td></td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td>
+                              </tr>
+                              <tr>
+                                  <td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td>
+                              </tr>
+                              <tr>
+                                   <td>14</td><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td>
+                              </tr>
+                              <tr>
+                                   <td>21</td><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td><td>27</td>
+                              </tr>
+                              <tr>
+                                  <td>28</td><td>29</td><td>30</td><td></td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>    
               </article>
               <article class="time_block">
                   <div class="time_button_div">
@@ -94,8 +127,7 @@
                   <div class="date_button_div">
                       <button class="date_button" id="date_id_button"><span>Date</span></button>
                   </div>
-                  <div class="date_block_div" id="date_block_div" style="background-color:blueviolet;">
-                      <h2 class="date_h2">Date</h2>
+                  <div class="date_block_div" id="date_block_div" style="background-color: aqua;">
                   </div>
               </article>
 
