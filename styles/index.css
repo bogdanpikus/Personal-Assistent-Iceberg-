@@ -641,3 +641,11 @@ td{
 th{
     color:snow;
 }
+
+#thead_id_month {
+    text-align: center;
+}
+
+#current_year{
+    text-align:left;
+}

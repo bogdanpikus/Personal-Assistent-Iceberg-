@@ -29,7 +29,7 @@ function generateCalendar(month) { // функци€ по заполнению календар€ на каждый 
     calendar_body.innerHTML = "";  //очищаем основное тело таблицы
     let totalDays = daysInMonth[month]; //при переключении мес€ца считает сколько дней он имеет, работает исправно
     let tr = document.createElement("tr"); // создаем елемент tr в котором будет Їлемент td
-
+    let year = currentDate.getFullYear();
     let firstDay = new Date(currentDate.getFullYear(), month, 1).getUTCDay(); //пустые €чейки перед первым числом
     for (let i = 0; i < firstDay; i++) {
         let td_empty = document.createElement("td");
@@ -44,12 +44,14 @@ function generateCalendar(month) { // функци€ по заполнению календар€ на каждый 
                calendar_body.appendChild(tr);
                tr = document.createElement("tr");
            }
-       }
+    }
     document.getElementById("thead_id_month").innerHTML = `${nameOfMonth[month]}`;
+    document.getElementById("current_year").innerHTML = `${year}`;
     calendar_body.appendChild(tr);
     console.log(totalDays);
     console.log(tr);
     console.log(firstDay);
+    console.log(year);
 }// конец функции
 
 
@@ -84,14 +86,14 @@ document.getElementById("button_back_calendar").addEventListener('click', () => 
     console.log(numbersMouns);
 }); 
 
-setInterval(() => {//проверка поминутно правильности отображени€ мес€ца
+//setInterval(() => {//проверка поминутно правильности отображени€ мес€ца
     let newDate = new Date();
     let newMonth = newDate.getMonth();
     if (newMonth !== currentMonth) { // ≈сли сменилс€ мес€ц
         currentMonth = newMonth;
         generateCalendar(currentMonth);
     }
-}, 60000);
+//}, 60000);
 
 console.log(currentDay);
 calendar_head.appendChild(tr_head); //вывод шапки календар€
