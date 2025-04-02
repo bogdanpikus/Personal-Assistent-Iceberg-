@@ -5,11 +5,11 @@ let currentDate = new Date(endTime);
 let nameOfMonth = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 let daysInMonth = ['31', '28', '31', '30', '31', '30', '31', '31', '30', '31', '30', '31']; //колл дней в каждом мес€це
 let weekDays = ['Mon','Tue','Wed','Thu','Fri','Sat','San'];
-let currentMonth = `${Number(currentDate.getMonth())}`; // = `3`
+let currentMonth = `${Number(currentDate.getMonth())}`; // = ` number of month = 3`
 let localMonth = nameOfMonth[currentMonth];  // `3` = `April`
-console.log(weekDays[currentDate.getDay()]); //подв€зка чисел к определенному дню недели
 
-let currentDay = `${currentDate.getDay()}`; //today day number
+
+let currentDay = `${currentDate.getUTCDay()}`; //today day number
 document.getElementById("thead_id_month").innerHTML = `
         <p>${localMonth}</p>`; // показывает текущий мес€ц по канону выт€нутый из функции Date()
 
@@ -29,6 +29,13 @@ function generateCalendar(month) { // функци€ по заполнению календар€ на каждый 
     calendar_body.innerHTML = "";  //очищаем основное тело таблицы
     let totalDays = daysInMonth[month]; //при переключении мес€ца считает сколько дней он имеет, работает исправно
     let tr = document.createElement("tr"); // создаем елемент tr в котором будет Їлемент td
+
+    let firstDay = new Date(currentDate.getFullYear(), month, 1).getUTCDay(); //пустые €чейки перед первым числом
+    for (let i = 0; i < firstDay; i++) {
+        let td_empty = document.createElement("td");
+        tr.appendChild(td_empty);
+    }
+
     for (let day = 1; day <= totalDays; day++){ 
         let td = document.createElement("td");
            td.innerText = day;
@@ -42,6 +49,7 @@ function generateCalendar(month) { // функци€ по заполнению календар€ на каждый 
     calendar_body.appendChild(tr);
     console.log(totalDays);
     console.log(tr);
+    console.log(firstDay);
 }// конец функции
 
 
@@ -85,5 +93,6 @@ setInterval(() => {//проверка поминутно правильности отображени€ мес€ца
     }
 }, 60000);
 
+console.log(currentDay);
 calendar_head.appendChild(tr_head); //вывод шапки календар€
 generateCalendar(currentMonth); //вывод таблицы текущего мес€ца
