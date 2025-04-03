@@ -1,5 +1,4 @@
-﻿
-import '../styles/index.css';  // Импорт глобальных стилей
+﻿import '../styles/index.css';  // Импорт глобальных стилей
 
 function MyApp({ Component, pageProps }) {
     return <Component {...pageProps} />;
