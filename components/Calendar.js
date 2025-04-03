@@ -43,7 +43,10 @@ function generateCalendar(month) { // функци€ по заполнению календар€ на каждый 
            if (tr.children.length === 7) {
                calendar_body.appendChild(tr);
                tr = document.createElement("tr");
-           }
+        }
+        if (day == (currentDate.getUTCDay()) - 1 && year == currentDate.getFullYear() && month == currentDate.getMonth()) {
+            td.classList.add("today");
+        }
     }
     document.getElementById("thead_id_month").innerHTML = `${nameOfMonth[month]}`;
     document.getElementById("current_year").innerHTML = `${year}`;
@@ -94,7 +97,5 @@ document.getElementById("button_back_calendar").addEventListener('click', () => 
         generateCalendar(currentMonth);
     }
 //}, 60000);
-
-console.log(currentDay);
 calendar_head.appendChild(tr_head); //вывод шапки календар€
 generateCalendar(currentMonth); //вывод таблицы текущего мес€ца

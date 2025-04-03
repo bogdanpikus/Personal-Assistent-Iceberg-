@@ -191,7 +191,7 @@ main {
 }
 
 #title_main_page {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: Montserrat;
     font-size: 50px;
     font-style: oblique;
     font-weight: 100;
@@ -358,8 +358,9 @@ aside {
     display: none;
     width: 300px;
     color: black;
-    background-color:snow;
-    margin:0px;
+    background-color: snow;
+    margin: 0px;
+    position: relative;
 }
 
 .weather_h2{
@@ -411,6 +412,7 @@ aside {
 
 .calendar_block_div {
     display: none;
+    position: relative;
 }
 
 /*.header_calendar{
@@ -453,8 +455,9 @@ aside {
         color: rgba(255, 255, 255, 1);
     }
 
-.time_block_div{
-    display:none;
+.time_block_div {
+    display: none;
+    position: relative;
 }
 
 .date_block {
@@ -492,9 +495,10 @@ aside {
         color: rgba(255, 255, 255, 1);
     }
 
-.date_block_div{
-    display:none;
+.date_block_div {
+    display: none;
     width: contain;
+    position: relative;
 }
 
 .progress_block {
@@ -531,8 +535,23 @@ aside {
         color: rgba(255, 255, 255, 0.4);
     }
 
-.progress_block_div{
-    display:none;
+.progress_block_div {
+    display: none;
+    flex-direction:column;
+    position: relative;
+    width: auto;
+}
+
+.progress_adding_button {
+    float: right;
+    border: 0;
+    margin-left: 118px;
+    text-align: center;
+    height: 30px;
+    width: 30px;
+    background: none;
+    cursor: pointer;
+    font-size: 15px;
 }
 
 .h1_lets_start {
@@ -648,4 +667,17 @@ th{
 
 #current_year{
     text-align:left;
+}
+
+.today {
+    background-color: aquamarine;
+    color: black; /* Черный текст */
+    font-weight: bold;
+    opacity: 0.8;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+#task1{
+    
 }

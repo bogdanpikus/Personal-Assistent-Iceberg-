@@ -1,5 +1,14 @@
-import '../index.css';
+import React, { useState } from 'react';
+import Header from '../components/Header';
 
 export default function Home() {
-    return <h1>Привет, Next.js!</h1>;
+    return (
+        <div>
+            <Header />  {/* Отображаем компонент Header */}
+            <main>
+                <h1>Привет, Next.js!</h1>
+                {/* Добавьте остальной контент страницы */}
+            </main>
+        </div>
+    );
 }
