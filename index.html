@@ -1,5 +1,5 @@
 <!Doctype html>
-<html lang="ru">
+<html  class="html" lang="ru">
   <head>
     <!-- В теге <head>...</head> находятся метаинформационные данные страницы, которые помогают браузеру и поисковым системам понять, как ее обрабатывать и отображать. -->
     <meta charset="UTF-8" />
@@ -12,12 +12,13 @@
     <link rel="icon" href="public\favicon.ico" type="image/x-icon" />
     <link href="styles/index.css" rel="stylesheet" />
   </head>
-  <body>
+  <body class="body">
       <script src="index.js" defer></script>
       <script src="components/Weather.js" defer></script>
       <script src="components/Time.js" defer></script>
       <script src="components/Date.js" defer></script>
       <script src="components/Calendar.js" defer></script>
+      <script src="components/Progress.js" defer></script>
 
       <div id="background" class="header" style="opacity: 0;"></div>
       <header class="header">
@@ -52,7 +53,7 @@
           </div>
 
       </aside>
-      <main>
+      <main class="main">
           <!--здесь был  <aside class="aside_panel">-->
           <article class="h1_lets_start" id="title_main_page">
               <h1 id="title_main_page" style="color:aliceblue;">Let's start</h1>
@@ -78,7 +79,7 @@
                       <div class="days_of_week_calendar">
                           <span>Mn</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>San</span>
                       </div>--> 
-                      <table id="calendar_table">
+                      <table class="table" id="calendar_table">
                           <thead id="calendar_thead">
                               <tr id="calendar_thead_tr">
                                   <th id="thead_id_button_back"><button id="button_back_calendar"></button><th id="thead_id_month" colspan="3"></th><th id="current_year" colspan="2"></th><th id="thead_id_button_forward"><button id="button_forward_calendar"></button></th>
@@ -136,14 +137,31 @@
                   <div class="progress_button_div">
                       <button class="progress_button" id="progress_id_button"><span>Progress</span></button>
                   </div>
-                  <div class="progress_block_div" id="progress_block_div" style="background-color:aquamarine;">
-                      <button class="progress_adding_button">+</button>
-                      <div id="task1"><p>Task 1</p><input type="checkbox" /><button>Delete</button></div>
-                      <div><p>Task 2</p><input type="checkbox" /><button>Delete</button></div>
-                      <div><p>Task 3</p><input type="checkbox" /><button>Delete</button></div>
-                      <p></p>
-                      <p></p>
-                      <button>Done</button>
+
+                  <div id="modal_overlay" class="modal_overlay">
+                      <div class="modal_window">
+                          <h2>Новая заметка</h2>
+                          <input type="text" id="note_input" placeholder="Введите задачу..." />
+                          <div class="modal_buttons">
+                              <button id="save_note_button">Сохранить</button>
+                              <button id="cancel_note_button">Отмена</button>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div>
+                      <button class="progress_adding_button" id="progress_adding_button">Add</button>
+                      <div class="progress_block_div" id="progress_block_div" style="background-color:aquamarine;">
+                          <div class="input_progress_storage" id="input_progress_storage">
+                              <!--
+                <div id="task1"><p>Task 1</p><input type="checkbox" id="checkbox_progress" /><button id="delete_task">Delete</button></div>
+                <div id="task2"><p>Task 2</p><input type="checkbox" id="checkbox_progress" /><button id="delete_task">Delete</button></div>
+                <div id="task3"><p>Task 3</p><input type="checkbox" id="checkbox_progress" /><button id="delete_task">Delete</button></div>
+                <p></p>
+                <p></p>-->
+                          </div>
+                          <button id="done_progress_button">Done</button>
+                      </div>
                   </div>
               </article>
           </div>

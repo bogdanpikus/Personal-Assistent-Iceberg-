@@ -1,9 +1,9 @@
 @media screen and (max-width: 1066px) {
-        aside {
+        .aside_panel {
             display: none;
         }
 
-        main {
+        .main {
             overflow-y: hidden;
         }
 
@@ -12,14 +12,14 @@
         }
     }
 
-html {
+.html {
     height: 100vh;
     margin: 0px;
     padding: 0px;
     margin: auto;
     overflow-y: hidden;
 }
-body {
+.body {
     height: 100vh;
     overflow-y: hidden;
     margin: 0px;
@@ -135,11 +135,7 @@ body {
     border: 0px;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
-    // background-image:url();
     background-color: #9d9d9d;
-    // background-position: center;
-    // background-size: contain;
-    // background-repeat: no-repeat;
     cursor: pointer;
     opacity:0.7;
 }
@@ -171,12 +167,11 @@ body {
     margin: auto;
 }
 
-main {
+.main {
     display: flex;
     height: 100%;
     width: 100%;
     background-image: url(https://rare-gallery.com/uploads/posts/571002-technology.jpg);
-    //background-color:rgba(21, 21, 21, 1);
     background-repeat: no-repeat;
     background-position: center;
     border-top: 5px;
@@ -198,12 +193,11 @@ main {
     margin-left: 50px;
 }
 
-aside {
+.aside_panel {
     position: fixed;
     max-width: 165px;
     height: inherit;
     background-color: rgba(21, 21, 21, 1);
-    / background-color: #9a9a9a;
     overflow-y: scroll;
     padding: 0px;
     margin: 0px;
@@ -338,7 +332,8 @@ aside {
     }
 
     .weather_button:hover {
-        background-color: rgba(21, 21, 21, 0.7);
+        background: linear-gradient(135deg, #00b3ff 0%, #005be3 100%);
+        transform: scale(1.05);
     }
 
 
@@ -356,19 +351,64 @@ aside {
 
 .weather_block_div {
     display: none;
-    width: 300px;
-    color: black;
-    background-color: snow;
-    margin: 0px;
-    position: relative;
+    background: linear-gradient(145deg, #38cdd2, #87b9f6);
+    border-radius: 20px;
+    padding: 1.5rem;
+    padding-top: 0.5rem;
+    max-width: 320px;
+    margin: 2rem auto;
+    color: #fff;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    font-family: Montserrat;
 }
 
-.weather_h2{
-    margin:0px;
+    .weather_block_div h1{
+        font-family:Montserrat;
+        font-size:70px;
+        margin-top:0;
+        padding-bottom:0;
+        margin-bottom:0;
+    }
+
+    .weather_block_div h2 {
+        font-family: Montserrat;
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin: 0;
+        margin-bottom: 0.5rem;
+        gap: 20px;
+        color: #ffffff;
+        text-shadow: 0px 1px 100px black;
+    }
+
+    .weather_block_div p {
+        font-family:Montserrat;
+        width:fit-content;
+        margin: 0.2rem;
+        margin-left:0;
+        margin-bottom:0;
+        padding-left:0;
+        font-size: 1rem;
+        color: #dfefff;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        backdrop-filter: blur(5px);
+        box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.02);
+        text-shadow: 0px 1px 10px black;
+    }
+
+.button_ChangeWeatherTown {
+    margin-left:90%;
+    border: 0;
+    text-align: center;
+    font-size: 10px;
+    background: none;
+    cursor:pointer;
 }
 
-.weather_p{
-    margin:0px;
+.span_WeatherTownChange{
+    font-size:20px;
+    color: #0b033c;
 }
 
 .calendar_block {
@@ -543,20 +583,64 @@ aside {
 }
 
 .progress_adding_button {
-    float: right;
+    display:none;
     border: 0;
-    margin-left: 118px;
+    margin-left: auto;
+    margin-right:0;
+    margin-bottom: auto;
     text-align: center;
     height: 30px;
-    width: 30px;
-    background: none;
+    width: 50px;
     cursor: pointer;
     font-size: 15px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+/*начало растановки создаваемых задач в progress*/
+
+#task1{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:100%;
 }
 
+#task2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+#task3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+#delete_task{
+    margin:auto;
+    margin-right:0;
+    height:20px;
+}
+
+#checkbox_progress {
+    margin:auto;
+    height: 20px;
+}
+
+#done_progress_button{
+    width:40%;
+    margin-top:auto;
+    margin-left:auto;
+    margin-right:5px;
+    margin-bottom:5px;
+}
+/*конец растановки создаваемых задач в progress*/
 .h1_lets_start {
     position: relative;
-    height:fit-content;
+    height: fit-content;
     left: 150px;
 }
 
@@ -606,12 +690,12 @@ aside {
     }
 }
 
-table {
+.table {
     background-color: darkslateblue;
     text-align: center;
 }
 
-#calendar_table, th, td {
+#calendar_table{
     table-layout: fixed;
     border: 1px solid grey;
     width: max-content;
@@ -654,11 +738,11 @@ table {
         opacity: 0.7;
     }
 
-td{
-    color:snow;
+#calendar_thead {
+    color: snow;
 }
-th{
-    color:snow;
+#calendar-body {
+    color: snow;
 }
 
 #thead_id_month {
@@ -678,6 +762,29 @@ th{
     cursor: pointer;
 }
 
-#task1{
-    
+.modal_overlay {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+}
+
+.modal_window {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    width: 300px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+.modal_buttons {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
 }

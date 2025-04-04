@@ -44,17 +44,19 @@ function generateCalendar(month) { // функци€ по заполнению календар€ на каждый 
                calendar_body.appendChild(tr);
                tr = document.createElement("tr");
         }
-        if (day == (currentDate.getUTCDay()) - 1 && year == currentDate.getFullYear() && month == currentDate.getMonth()) {
-            td.classList.add("today");
-        }
+        setInterval(() => {
+            if (day == (currentDate.getUTCDay()) - 1 && year == currentDate.getFullYear() && month == currentDate.getMonth()) {
+                td.classList.add("today");
+            }
+        }, 1000);
     }
     document.getElementById("thead_id_month").innerHTML = `${nameOfMonth[month]}`;
     document.getElementById("current_year").innerHTML = `${year}`;
     calendar_body.appendChild(tr);
-    console.log(totalDays);
-    console.log(tr);
-    console.log(firstDay);
-    console.log(year);
+    //console.log(totalDays);
+    //console.log(tr);
+    //console.log(firstDay);
+    //console.log(year);
 }// конец функции
 
 
@@ -71,7 +73,7 @@ document.getElementById("button_forward_calendar").addEventListener('click', () 
    // let nextMonthNumber = localMonth = nameOfMonth[numbersMouns];
     //  document.getElementById("thead_id_month").innerHTML = `<p>${nextMonthNumber}</p>`;
   
-    console.log(numbersMouns);
+   // console.log(numbersMouns);
 });
 
 document.getElementById("button_back_calendar").addEventListener('click', () => {
@@ -86,7 +88,7 @@ document.getElementById("button_back_calendar").addEventListener('click', () => 
    // let previousMonthNumber = localMonth = nameOfMonth[numbersMouns];
    // document.getElementById("thead_id_month").innerHTML = `<p>${previousMonthNumber}</p>`;
 
-    console.log(numbersMouns);
+   // console.log(numbersMouns);
 }); 
 
 //setInterval(() => {//проверка поминутно правильности отображени€ мес€ца
