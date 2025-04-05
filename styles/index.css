@@ -1,5 +1,5 @@
 @media screen and (max-width: 1066px) {
-        .aside_panel {
+    .aside_panel {
             display: none;
         }
 
@@ -325,6 +325,8 @@
     width: 150px;
     transition: all 0.1s;
     cursor: pointer;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
 }
     .weather_button:active {
         background-color: #9d9d9d;
@@ -332,7 +334,7 @@
     }
 
     .weather_button:hover {
-        background: linear-gradient(135deg, #00b3ff 0%, #005be3 100%);
+        background: linear-gradient(135deg, #00b3ff 0%, #d800ff);
         transform: scale(1.05);
     }
 
@@ -430,9 +432,12 @@
     cursor: pointer;
     background-color: rgba(21, 21, 21, 1);
     transition: all 0.1s;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
 }
     .calendar_button:hover {
-        background-color: rgba(21, 21, 21, 0.7);
+        transform:scale(1.05);
+        background-image:linear-gradient(135deg, #f100ff 0%, #8700ff);
     }
     .calendar_button:active {
         background-color: #9d9d9d;
@@ -475,9 +480,12 @@
     cursor: pointer;
     background-color: rgba(21, 21, 21, 1);
     transition: all 0.1s;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
 }
     .time_button:hover {
-        background-color: rgba(21, 21, 21, 0.7);
+        transform:scale(1.05);
+        background-image:linear-gradient(135deg, #d800ff 0%, #ff0077);
     }
     .time_button:active {
         background-color: #9d9d9d;
@@ -515,14 +523,22 @@
     cursor: pointer;
     background-color: rgba(21, 21, 21, 1);
     transition: all 0.1s;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
 }
     .date_button:hover {
-        background-color: rgba(21, 21, 21, 0.7);
+        transform: scale(1.05);
+        background-image: linear-gradient(135deg, #ff0000ff 0%, #3b88d6);
+      
     }
     .date_button:active {
         background-color: #9d9d9d;
         transform: scale(0.9);
     }
+
+.date_button_div {
+    margin-left: auto;
+}
 
 .date_button span{
     font-family:Montserrat;
@@ -535,11 +551,35 @@
         color: rgba(255, 255, 255, 1);
     }
 
-.date_block_div {
+.Img_SeasonChange { /*—≈…◊¿— –¿¡Œ“¿ﬁ “”“*/
     display: none;
-    width: contain;
-    position: relative;
+    max-height:90px;
+    max-width: 400px;
+    margin: 2rem auto;
+    margin-top: 1.5rem;
+    padding: 0.5rem;
+    border-radius: 10px;
+    //background-image: linear-gradient(45deg, #001772 0%,#c960d5 );
+    //background:url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdSuuALVCSki-gumVbS9O84XQ-b3C-kEuE-w&s) center;
+    //background: url(${background1Vesna.png});
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
+
+.dateBlock {
+    position: relative;
+    bottom: 35px;
+    padding: 0;
+    backdrop-filter: blur(5px);
+   // background: black;
+   border-radius: 10px;
+}
+    .dateBlock p {
+        font-family: Montserrat;
+        font-size: 50px;
+        font-weight: 600;
+        color: aliceblue;
+        text-shadow: 0px 5px 2px black;
+    }
 
 .progress_block {
     display: flex;
@@ -553,14 +593,17 @@
 
 .progress_button {
     height: 80px;
-     width: 150px;
+    width: 150px;
     border: 0;
     cursor: pointer;
     background-color: rgba(21, 21, 21, 1);
     transition: all 0.1s;
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
 }
     .progress_button:hover {
-        background-color: rgba(21, 21, 21, 0.7);
+        transform: scale(1.05);
+        background-image: linear-gradient(135deg, #d800ff 0%, #ff0000);
     }
     .progress_button:active {
         background-color: #9d9d9d;
@@ -573,6 +616,9 @@
         font-kerning: normal;
         font-size: 20px;
         color: rgba(255, 255, 255, 0.4);
+    }
+    .progress_button:hover span {
+        color: rgba(255, 255, 255, 1);
     }
 
 .progress_block_div {
@@ -590,7 +636,7 @@
     margin-bottom: auto;
     text-align: center;
     height: 30px;
-    width: 50px;
+    width: fit-content;
     cursor: pointer;
     font-size: 15px;
     border-top-left-radius: 10px;
@@ -631,6 +677,7 @@
 }
 
 #done_progress_button{
+    display:none;
     width:40%;
     margin-top:auto;
     margin-left:auto;
@@ -660,10 +707,13 @@
     cursor: pointer;
     background-color: rgba(21, 21, 21, 1);
     transition: all 0.1s;
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
 }
 
     #statistics_button:hover {
-        background-color: rgba(21, 21, 21, 0.7);
+        transform: scale(1.05);
+        background-image: linear-gradient(135deg, #6e00ffd0 0%, #ffcece);
     }
 
     #statistics_button:active {
@@ -677,6 +727,9 @@
         font-kerning: normal;
         font-size: 20px;
         color: rgba(255, 255, 255, 0.4);
+    }
+    #statistics_button:hover span{
+        color: rgba(255, 255, 255, 1);
     }
 
 @media screen and (max-width: 1066px) {
