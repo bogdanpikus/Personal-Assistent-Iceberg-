@@ -24,7 +24,3 @@ document.getElementById('progress_id_button').addEventListener('click', function
     progress_block.style.display = (progress_block.style.display === 'none' || progress_block.style.display === '') ? 'flex' : 'none';
     progress_adding.style.display = (progress_adding.style.display === 'none' || progress_adding.style.display === '') ? 'inline-block' : 'none';
 });
-
-document.getElementById("settings_id").addEventListener("click", function () { ///// я не уверен в этом , удали если что-то не работает
-    document.querySelector(".aside_panel").classList.toggle("active");
-});

@@ -9,7 +9,7 @@ let currentMonth = `${Number(currentDate.getMonth())}`; // = ` number of month =
 let localMonth = nameOfMonth[currentMonth];  // `3` = `April`
 
 
-let currentDay = `${currentDate.getUTCDay()}`; //today day number
+let currentDay = `${currentDate.getDate()}`; //today day number
 document.getElementById("thead_id_month").innerHTML = `
         <p>${localMonth}</p>`; // показывает текущий мес€ц по канону выт€нутый из функции Date()
 
@@ -19,6 +19,7 @@ let tr_head = document.createElement("tr");
 for (let weekDay = 0; weekDay <= 7; weekDay++) {
     let th_head = document.createElement("th");
     th_head.innerHTML = weekDays[weekDay];
+    th_head.className = 'weekDays';
     tr_head.appendChild(th_head);
     if (tr_head.children.length === 7) {
         break;
@@ -44,11 +45,15 @@ function generateCalendar(month) { // функци€ по заполнению календар€ на каждый 
                calendar_body.appendChild(tr);
                tr = document.createElement("tr");
         }
-        setInterval(() => {
-            if (day == (currentDate.getUTCDay()) - 1 && year == currentDate.getFullYear() && month == currentDate.getMonth()) {
-                td.classList.add("today");
-            }
-        }, 1000);
+
+        if (
+            day === currentDate.getDate() &&
+            year === currentDate.getFullYear() &&
+            month === currentDate.getMonth()
+        ) {
+            td.classList.add("today");
+        }
+
     }
     document.getElementById("thead_id_month").innerHTML = `${nameOfMonth[month]}`;
     document.getElementById("current_year").innerHTML = `${year}`;

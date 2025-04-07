@@ -1,8 +1,18 @@
-const lat = 48.45;
-const long = 34.9833;
+const cities = [
+    {name: "Dnipro", lat: 48.45, long: 34.9833}, 
+    { name: 'Kyiv', lat: 50.4333, long: 30.5167 },
+    { name: 'Kharkiv', lat: 50, long: 36.25 },
+    { name: 'Nikopol', lat: 47.5712, long: 34.3964 },
+    { name: 'Odessa', lat: 46.4775, long: 30.7326 },
+    { name: 'Poltava', lat: 49.5937, long: 34.5407 },
+    { name: 'Kaniv', lat: 49.7518, long: 31.46 }];
+
+//const lat = 48.45;
+//const long = 34.9833;
 const apiKey = '25de84a881d9a19a308d080d5ef5ccfb';
 
-fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${apiKey}`)
+function feachWeather(lat, long) {
+fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${apiKey}`) //`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${apiKey}`
     .then(response => {
         if (!response.ok) {
             throw new Error(`HTTP ERROR: ${response.status}`);
@@ -22,7 +32,7 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&ap
 
         let weatherBlock = document.getElementById("weather_block_div");
         weatherBlock.innerHTML = `
-        <button class="button_ChangeWeatherTown"><span class="span_WeatherTownChange">...</span></button>
+        <button class="button_ChangeWeatherTown" id='button_ChangeWeatherTown'><span class="span_WeatherTownChange">...</span></button>
         <p>${Towm}</p>
         <h1>${tempCelsius} <h2>${fells_like}<h2/></h1>
         <img src="${iconURL}"; />
@@ -31,9 +41,31 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&ap
         <h2>Wind: ${windSpeed}</h2>
     `;
 
-        console.log(Towm);
-        console.log(tempCelsius);
-        console.log(weathericonCode);
-        console.log(iconURL);
-        console.log(mainWeather);
+        const changeWeatherButton = document.getElementById('button_ChangeWeatherTown');
+        const cityBlock = document.getElementById('weather_block');
+        changeWeatherButton.addEventListener('click', () => {
+
+
+            const ul = document.createElement('ul');
+            ul.className = 'cityList'; // для стилей и проверки
+
+            cities.forEach(city => {
+                const li = document.createElement('li');
+                const cityBtn = document.createElement('button');
+                cityBtn.textContent = city.name;
+                cityBtn.addEventListener('click', () => {
+                    feachWeather(city.lat, city.long);
+                    ul.style.display = 'none';
+                });
+                li.appendChild(cityBtn);
+                ul.appendChild(li);
+            });
+
+            cityBlock.appendChild(ul);
+            ul.style.display = 'flex';
+        });
     });
+
+}
+
+feachWeather(cities[0].lat, cities[0].long);

@@ -36,7 +36,8 @@ function ChangeImageDate(season) {
  //       Img_SeasonChange.style.background = 'url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMXEhaKhTBArzNOeNrRHuVM0GBgpQrHhcsla0pOPX9fE3VLcKz6KsTQJGrynRmGhWzTsI&usqp=CAU) center';
  //   } else if (season > 7 && season <= 10) {
  //       Img_SeasonChange.style.background = 'url(https://i0.wp.com/dotsandbrackets.com/wp-content/uploads/2023/09/autumn.jpg?resize=1400%2C800&ssl=1) center';
- //  }
+    //  }
+
     Img_SeasonChange.style.background = `url(${urlImage[season]}) center`;
 };
 ChangeImageDate(season);

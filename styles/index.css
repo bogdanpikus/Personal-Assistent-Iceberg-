@@ -171,7 +171,8 @@
     display: flex;
     height: 100%;
     width: 100%;
-    background-image: url(https://rare-gallery.com/uploads/posts/571002-technology.jpg);
+  //  background-image: url(https://rare-gallery.com/uploads/posts/571002-technology.jpg);
+    background: #cbcbcb;
     background-repeat: no-repeat;
     background-position: center;
     border-top: 5px;
@@ -301,6 +302,7 @@
         flex-direction: column; /* Меняем направление на колонку */
     }
 }
+/* ----------------------------------WEATHER----------------------------------- */
 .weather_block {
     display: flex;
     flex-direction: column;
@@ -358,7 +360,7 @@
     padding: 1.5rem;
     padding-top: 0.5rem;
     max-width: 320px;
-    margin: 2rem auto;
+    margin: 20px auto;
     color: #fff;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
     font-family: Montserrat;
@@ -413,6 +415,29 @@
     color: #0b033c;
 }
 
+.cityList {
+    display: none;
+    flex-wrap: wrap;
+    position: relative;
+    width: 50%;
+    place-items: center;
+    list-style-type: none;
+    left: 75%;
+    bottom: 440.2%;
+}
+.cityList li{
+    width: 60px;
+}
+
+
+    .cityList li button {
+        width: 60px;
+        height: 40px;
+        border: 0;
+        padding: 0;
+        margin:0;
+    }
+/* ----------------------------------CALENDAR----------------------------------- */
 .calendar_block {
     display: flex;
     flex-direction: column;
@@ -459,18 +484,126 @@
     display: none;
     position: relative;
 }
+.table {
+    table-layout: fixed;
+    margin-top:20px;
+    border-radius: 20px;
+    background: #313131;
+    text-align: center;
+    width: 100%;
+}
+
+#calendar_table {
+    table-layout: fixed;
+    width: max-content;
+    height: max-content;
+}
+
+#thead_id_button_back button {
+    appearance: none;
+    height: 5px;
+    width: 10px;
+    border: 0;
+    margin: 0;
+    margin-bottom: 5px;
+    background: #313131;
+    cursor: pointer;
+    transition: all 0.1s;
+}
+
+    #thead_id_button_back button:active {
+        transform: scale(0.9);
+        opacity: 0.7;
+    }
+    #thead_id_button_back button::after {
+        content: '<';
+        color: snow;
+        opacity: 0.6;
+    }
+
+#thead_id_button_forward button {
+    appearance: none;
+    height: 5px;
+    width: 10px;
+    border: 0;
+    margin: 0;
+    margin-bottom: 5px;
+    background-color: #313131;
+    cursor: pointer;
+    transition: all 0.1s;
+}
+
+    #thead_id_button_forward button:active {
+        transform: scale(0.9);
+        opacity: 0.7;
+    }
+    #thead_id_button_forward button::before{
+        content: '>';
+        color: snow;
+        opacity: 0.6;
+    }
+
+#calendar_thead {
+    color: snow;
+}
+
+#calendar-body {
+    color: snow;
+    padding: 0.75rem 0;
+}
+    #calendar-body td {
+        border-radius: 15px;
+        cursor:pointer;
+    }
+    #calendar-body td:hover{
+        opacity: 0.7;
+        background-color:#9d9d9d;
+    }
+
+#thead_id_month {
+    text-align: center;
+}
+
+#current_year {
+    width: 48.8px;
+    text-align: left;
+}
+
+.weekDays {
+    font-family: Montserrat;
+    font-size: 11px;
+    color: snow;
+    gap:1px;
+}
+
+.today {
+    color: black; /* Черный текст */
+    font-weight: bold;
+  //  opacity: 0.7;
+    background-color: #9d9d9d;
+    border-radius: 50px;
+    cursor: pointer;
+}
+   .today:hover{
+       opacity: 0.7;
+   }
 
 /*.header_calendar{
     display:block ruby;
     margin:20px;
 }*/
-
+/* ----------------------------------TIME----------------------------------- */
 .time_block {
     display: flex;
     flex-direction: column;
     margin-right: -151px;
     width: auto;
     height: 100px;
+}
+
+.time_button_div {
+    margin-left: auto;
+    padding: 0px;
 }
 
 .time_button {
@@ -505,15 +638,41 @@
 
 .time_block_div {
     display: none;
-    position: relative;
+    margin-top: 20px;
+    margin: 2rem auto;
+    background: radial-gradient(#d800ff, #0089a2);
+    max-width: 280px;
+    border-radius: 20px;
+    padding: 2rem;
 }
 
+  .time_block_div p{
+      text-align:center;
+      color:aliceblue;
+  }
+/* 
+.ContryName {
+    font-size: 2rem;
+    margin: 0;
+    font-weight: 600;
+}*/
+
+.nowDate {
+    position:relative;
+    font-family:Montserrat;
+    font-size: 3rem;
+    font-weight: 600;
+    margin-top: auto;
+    margin-bottom:0;
+    letter-spacing: 0.5px;
+}
+/* ----------------------------------DATE----------------------------------- */
 .date_block {
     display: flex;
     flex-direction: column;
     margin-right: -155px;
     width: auto;
-    height:100px;
+    height: 100px;
 }
 
 .date_button {
@@ -551,7 +710,7 @@
         color: rgba(255, 255, 255, 1);
     }
 
-.Img_SeasonChange { /*СЕЙЧАС РАБОТАЮ ТУТ*/
+.Img_SeasonChange {
     display: none;
     max-height:90px;
     max-width: 400px;
@@ -581,6 +740,7 @@
         text-shadow: 0px 5px 2px black;
     }
 
+/* ----------------------------------PROGRESS----------------------------------- */
 .progress_block {
     display: flex;
     flex-direction: column-reverse;
@@ -691,6 +851,33 @@
     left: 150px;
 }
 
+.modal_overlay {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+}
+
+.modal_window {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    width: 300px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+.modal_buttons {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+/* ----------------------------------STATISTICS----------------------------------- */
 .statistics_block {
     display: flex;
     flex-direction: column-reverse;
@@ -741,103 +928,4 @@
     .progress_block {
         margin-top: 0;
     }
-}
-
-.table {
-    background-color: darkslateblue;
-    text-align: center;
-}
-
-#calendar_table{
-    table-layout: fixed;
-    border: 1px solid grey;
-    width: max-content;
-    height: max-content;
-}
-
-#thead_id_button_back button {
-    appearance: none;
-    height:15px;
-    width:25px;
-    border: 0;
-    margin: 0;
-    margin-bottom:5px;
-    background-color: firebrick;
-    border-bottom-left-radius: 45px;
-    border-top-left-radius: 45px;
-    cursor:pointer;
-    transition: all 0.1s;
-}
-    #thead_id_button_back button:active{
-        transform: scale(0.9);
-        opacity: 0.7;
-    }
-
-#thead_id_button_forward button{
-    appearance:none;
-    height:15px;
-    width:25px;
-    border:0;
-    margin:0;
-    margin-bottom:5px;
-    background-color:firebrick;
-    border-bottom-right-radius: 45px;
-    border-top-right-radius: 45px;
-    cursor:pointer;
-    transition: all 0.1s;
-}
-    #thead_id_button_forward button:active{
-        transform: scale(0.9);
-        opacity: 0.7;
-    }
-
-#calendar_thead {
-    color: snow;
-}
-#calendar-body {
-    color: snow;
-}
-
-#thead_id_month {
-    text-align: center;
-}
-
-#current_year{
-    text-align:left;
-}
-
-.today {
-    background-color: aquamarine;
-    color: black; /* Черный текст */
-    font-weight: bold;
-    opacity: 0.8;
-    border-radius: 50px;
-    cursor: pointer;
-}
-
-.modal_overlay {
-    display: none;
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-    z-index: 1000;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.6);
-}
-
-.modal_window {
-    background: white;
-    padding: 20px;
-    border-radius: 12px;
-    width: 300px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.3);
-}
-
-.modal_buttons {
-    margin-top: 15px;
-    display: flex;
-    justify-content: space-between;
 }
