@@ -795,12 +795,15 @@
     margin-right:0;
     margin-bottom: auto;
     text-align: center;
-    height: 30px;
-    width: fit-content;
+    height: 50px;
+    width: 100px;
     cursor: pointer;
     font-size: 15px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    position:relative;
+    left:25px;
+    bottom:10px;
 }
 /*начало растановки создаваемых задач в progress*/
 
