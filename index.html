@@ -18,7 +18,7 @@
       <script src="components/Time.js" defer></script>
       <script src="components/Date.js" defer></script>
       <script src="components/Calendar.js" defer></script>
-      <script src="components/Progress.js" defer></script>
+      <!-- <script src="components/Progress.js" defer></script>-->
 
       <div id="background" class="header" style="opacity: 0;"></div>
       <header class="header">
@@ -55,9 +55,23 @@
       </aside>
       <main class="main">
           <!--здесь был  <aside class="aside_panel">-->
-          <article class="h1_lets_start" id="title_main_page">
-              <h1 id="title_main_page" style="color:black; font-weight: 600;">Let's start</h1>
-          </article>
+          <div class="contener_h1_statistics">
+              <article class="h1_lets_start" id="title_main_page">
+                  <h1 id="title_main_page" style="color:black; font-weight: 600;">Let's start</h1>
+              </article>
+              <article class="statistics_block">
+                  <div class="statistics_block_div">
+                      <table class="table_statictics" id="statictics_table">
+                          <thead id="statictics_thead">
+
+                          </thead>
+                          <tbody>
+
+                          </tbody>
+                          </table>
+                  </div>
+              </article>
+          </div>
 
           <div class="button_contener">
               <article class="weather_block" id="weather_block">
@@ -65,7 +79,7 @@
                       <button id="weather_id_button" class="weather_button"><span>Weather</span></button>
                   </div>
                   <div class="weather_block_div" id="weather_block_div">
-                     
+
                   </div>
               </article>
 
@@ -74,44 +88,47 @@
                       <button id="calendar_id_button" class="calendar_button"><span>Calendar</span></button>
                   </div>
                   <div class="calendar_block_div" id="calendar_block_div">
-                     <!--<div class="header_calendar">
-                          <button><</button><p class="calendar_h2">Calendar</p><button>></button>
-                      </div>
-                      <div class="days_of_week_calendar">
-                          <span>Mn</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>San</span>
-                      </div>--> 
+                      <!--<div class="header_calendar">
+                    <button><</button><p class="calendar_h2">Calendar</p><button>></button>
+                </div>
+                <div class="days_of_week_calendar">
+                    <span>Mn</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>San</span>
+                </div>-->
 
 
                       <table class="table" id="calendar_table">
                           <thead id="calendar_thead">
                               <tr id="calendar_thead_tr">
-                                  <th id="thead_id_button_back"><button id="button_back_calendar"></button><th id="thead_id_month" colspan="3"></th><th id="current_year" colspan="2"></th><th id="thead_id_button_forward"><button id="button_forward_calendar"></button></th>
+                                  <th id="thead_id_button_back"><button id="button_back_calendar"></button>
+                                  <th id="thead_id_month" colspan="3"></th>
+                                  <th id="current_year" colspan="2"></th>
+                                  <th id="thead_id_button_forward"><button id="button_forward_calendar"></button></th>
                               </tr>
 
 
-                             <!-- <tr>
-                                  <th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th><th>San</th>
-                              </tr>
-                          </thead>-->
+                              <!-- <tr>
+                                <th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th><th>San</th>
+                            </tr>
+                        </thead>-->
                           <tbody id="calendar-body">
-                             <!-- <tr>
-                                   <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td>
-                              </tr>
-                              <tr>
-                                  <td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td>
-                              </tr>
-                              <tr>
-                                   <td>15</td><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td>
-                              </tr>
-                              <tr>
-                                   <td>22</td><td>23</td><td>24</td><td>25</td><td>26</td><td>27</td><td>28</td>
-                              </tr>
-                              <tr>
-                                  <td>29</td><td>30</td>
-                              </tr>-->
+                              <!-- <tr>
+                             <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td>
+                        </tr>
+                        <tr>
+                            <td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td>
+                        </tr>
+                        <tr>
+                             <td>15</td><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td>
+                        </tr>
+                        <tr>
+                             <td>22</td><td>23</td><td>24</td><td>25</td><td>26</td><td>27</td><td>28</td>
+                        </tr>
+                        <tr>
+                            <td>29</td><td>30</td>
+                        </tr>-->
                           </tbody>
                       </table>
-                  </div>    
+                  </div>
               </article>
               <article class="time_block">
                   <div class="time_button_div">
@@ -121,30 +138,19 @@
                   </div>
               </article>
 
-              <article class="statistics_block">
-                  <div class="statistics_id_button">
-                      <button id="statistics_button"><span>Statistics</span></button>
-                  </div>
-                  <div class="statistics_block">
-
-                  </div>
-              </article>
-
               <article class="date_block">
                   <div class="date_button_div">
                       <button class="date_button" id="date_id_button"><span>Date</span></button>
                   </div>
                   <div class="Img_SeasonChange" id="date_block_div">
                       <div class="dateBlock" id="dateBlock">
-                          
+
                       </div>
                   </div>
               </article>
 
               <article class="progress_block">
-                  <div class="progress_button_div">
-                      <button class="progress_button" id="progress_id_button"><span>Progress</span></button>
-                  </div>
+
 
                   <div id="modal_overlay" class="modal_overlay">
                       <div class="modal_window">
@@ -156,23 +162,16 @@
                           </div>
                       </div>
                   </div>
-
-                  <div>
-                      <button class="progress_adding_button" id="progress_adding_button">Add Task</button>
-                      <div class="progress_block_div" id="progress_block_div" style="background-color:aquamarine;">
-                          <div class="input_progress_storage" id="input_progress_storage">
-                              <!--
+                  <div class="input_progress_storage" id="input_progress_storage">
+                      <!--
                 <div id="task1"><p>Task 1</p><input type="checkbox" id="checkbox_progress" /><button id="delete_task">Delete</button></div>
                 <div id="task2"><p>Task 2</p><input type="checkbox" id="checkbox_progress" /><button id="delete_task">Delete</button></div>
                 <div id="task3"><p>Task 3</p><input type="checkbox" id="checkbox_progress" /><button id="delete_task">Delete</button></div>
                 <p></p>
                 <p></p>-->
-                          </div>
-                          <button id="done_progress_button">Done</button>
-                      </div>
                   </div>
               </article>
           </div>
       </main>
-  </body>
+  </body>   
 </html>

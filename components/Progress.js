@@ -1,14 +1,60 @@
 
-let div_storage = document.getElementById("input_progress_storage");
+let div_storage  = document.getElementById("input_progress_storage");
 let number = 0;
 let indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
 let IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction;
 /////////////////////////////////////////////—оздаетс€ база данных
 let openRequest = indexedDB.open("Tasks"); //ўоб почати працювати з IndexedDB, нам спочатку потр≥бно в≥дкрити (п≥дключитис€ до) бази даних.
 let db;    
+function renderTasks() {
+    /////////выт€гивание/отображени€ данных из IndexedDB
+    let Store = db.transaction('TaskDB', 'readwrite').objectStore('TaskDB');
+    let request = Store.getAll(); //массив ключей - значений 
+
+    request.onsuccess = function () {
+        let Store = db.transaction('TaskDB', 'readonly').objectStore('TaskDB');
+        let request = Store.getAll();
+
+        request.onsuccess = function () {
+            div_storage.innerHTML = ""; // очистить список перед выводом
+
+            request.result.forEach(task => {
+                let taskDiv = document.createElement('div');
+                taskDiv.classList.add('task-item');
+
+                let checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.checked = task.checked || false;
+
+                let text = document.createElement('span');
+                text.textContent = task.text;
+
+                let deleteButton = document.createElement("button");
+                deleteButton.classList.add('deleteButton');
+
+                // при смене чекбокса Ч обновить в базе
+                checkbox.addEventListener('change', () => {
+                    let updateTransaction = db.transaction('TaskDB', 'readwrite').objectStore('TaskDB');
+                    task.checked = checkbox.checked;
+                    updateTransaction.put(task); // обновл€ем весь объект
+                });
+
+                taskDiv.appendChild(checkbox);
+                taskDiv.appendChild(text);
+                taskDiv.appendChild(deleteButton);
+                div_storage.appendChild(taskDiv);
+            });
+        };
+
+        request.onerror = function () {
+            console.error("ќшибка чтени€ задач:", request.error);
+        };
+    }
+};
 
 openRequest.onsuccess = function () {
     db = openRequest.result;
+    renderTasks();
 }
 
 // створити/оновити базу даних без перев≥рки верс≥й
@@ -16,10 +62,7 @@ openRequest.onupgradeneeded = function () {
     // спрацьовуЇ, €кщо на кл≥Їнт≥ немаЇ бази даних
     // ...виконати ≥н≥ц≥ал≥зац≥ю...
     db = openRequest.result;
-
     db.createObjectStore("TaskDB", { keyPath: "id" });
-
-   
 };
 
 openRequest.onerror = function () { //ловим ошибки
@@ -53,6 +96,7 @@ document.getElementById('save_note_button').addEventListener('click', () => {
 
         let task = {
             id: day_month_year, // простой способ создать уникальный id
+            checked: false,
             text: value
         };  
 
@@ -60,6 +104,7 @@ document.getElementById('save_note_button').addEventListener('click', () => {
 
         request.onsuccess = function () { // (4)
             console.log("Task add to storage", request.result);
+            renderTasks();
         };
 
         request.onerror = function () {
@@ -68,7 +113,6 @@ document.getElementById('save_note_button').addEventListener('click', () => {
             ///////////////////////////////////////////////
 
 
-        document.getElementById("done_progress_button").style.display = 'inline-block';
         closeModal();
     } else {
         alert("Please write some text");

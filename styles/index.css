@@ -10,7 +10,11 @@
         .h1_lets_start {
             display: none;
         }
-    }
+        .contener_h1_statistics{
+            position:relative;
+             top:90%;
+        }
+}
 
 .html {
     height: 100vh;
@@ -22,6 +26,7 @@
 .body {
     height: 100vh;
     overflow-y: hidden;
+    overflow-x: hidden;
     margin: 0px;
     padding: 0px;
 }
@@ -111,14 +116,15 @@
 #main_search {
     height: 25px;
     width: 60%;
-    border:0px;
-    border-top-left-radius:10px;
-    border-bottom-left-radius:10px;
+    overflow-x: hidden;
+    border: 0px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
     background-image: url(data:image/svg+xml,%3Csvg%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M10%202C5.58172%202%202%205.58172%202%2010C2%2014.4183%205.58172%2018%2010%2018C11.8487%2018%2013.551%2017.3729%2014.9056%2016.3199L20.2929%2021.7071C20.6834%2022.0976%2021.3166%2022.0976%2021.7071%2021.7071C22.0976%2021.3166%2022.0976%2020.6834%2021.7071%2020.2929L16.3199%2014.9056C17.3729%2013.551%2018%2011.8487%2018%2010C18%205.58172%2014.4183%202%2010%202ZM4%2010C4%206.68629%206.68629%204%2010%204C13.3137%204%2016%206.68629%2016%2010C16%2013.3137%2013.3137%2016%2010%2016C6.68629%2016%204%2013.3137%204%2010Z%22%20fill%3D%22%23797878%22/%3E%3C/svg%3E);
     background-repeat: no-repeat;
     background-position: 2px left;
     padding-left: 40px;
-    background-color:#e7e7e7;
+    background-color: #e7e7e7;
 }
 
 
@@ -184,14 +190,6 @@
     flex-wrap: wrap;
     margin-left: auto;
     margin-right: auto;
-}
-
-#title_main_page {
-    font-family: Montserrat;
-    font-size: 50px;
-    font-style: oblique;
-    font-weight: 100;
-    margin-left: 50px;
 }
 
 .aside_panel {
@@ -290,10 +288,11 @@
     font-weight: 600;
 }
 
-.button_contener{
-    display:flex;
-    flex-direction:row;
-    margin-left:auto;
+.button_contener {
+    display: flex;
+    flex-direction: row;
+    position:relative ;
+    left: 1274px;
 }
 
 @media screen and (max-width: 1066px) {
@@ -588,15 +587,11 @@
        opacity: 0.7;
    }
 
-/*.header_calendar{
-    display:block ruby;
-    margin:20px;
-}*/
 /* ----------------------------------TIME----------------------------------- */
 .time_block {
     display: flex;
     flex-direction: column;
-    margin-right: -151px;
+    margin-right: 17px;
     width: auto;
     height: 100px;
 }
@@ -670,7 +665,7 @@
 .date_block {
     display: flex;
     flex-direction: column;
-    margin-right: -155px;
+    margin-right: 17px;
     width: auto;
     height: 100px;
 }
@@ -741,97 +736,30 @@
     }
 
 /* ----------------------------------PROGRESS----------------------------------- */
-.progress_block {
-    display: flex;
-    flex-direction: column-reverse;
-    height: 100px;
-    align-content: baseline;
-    margin-right: 15px;
-    margin-top: auto;
-    margin-bottom: 61.9px;
-}
 
-.progress_button {
-    height: 80px;
-    width: 150px;
-    border: 0;
-    cursor: pointer;
-    background-color: rgba(21, 21, 21, 1);
-    transition: all 0.1s;
-    border-top-right-radius: 30px;
-    border-top-left-radius: 30px;
-}
-    .progress_button:hover {
-        transform: scale(1.05);
-        background-image: linear-gradient(135deg, #d800ff 0%, #ff0000);
-    }
-    .progress_button:active {
-        background-color: #9d9d9d;
-        transform: scale(0.9);
-    }
-
-    .progress_button span {
-        font-family: Montserrat;
-        font-weight: 600;
-        font-kerning: normal;
-        font-size: 20px;
-        color: rgba(255, 255, 255, 0.4);
-    }
-    .progress_button:hover span {
-        color: rgba(255, 255, 255, 1);
-    }
-
-.progress_block_div {
-    display: none;
-    flex-direction:column;
-    position: relative;
-    width: auto;
-}
-
-.progress_adding_button {
-    display:none;
-    border: 0;
-    margin-left: auto;
-    margin-right:0;
-    margin-bottom: auto;
-    text-align: center;
-    height: 50px;
-    width: 100px;
-    cursor: pointer;
-    font-size: 15px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    position:relative;
-    left:25px;
-    bottom:10px;
-}
 /*начало растановки создаваемых задач в progress*/
 
-#task1{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    width:100%;
+.div_progress_main {
+    position: relative;
+    right: 150px;
+    bottom: 15px;
+    width: 289px;
+   // transform: translateX(-100%);
 }
 
-#task2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+.input_progress_storage {
+    max-height: 200px;
+    width: fit-content;
 }
 
-#task3 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+.task-item{
+    width: fit-content;
 }
 
-#delete_task{
-    margin:auto;
-    margin-right:0;
-    height:20px;
+#delete_task {
+    margin: auto;
+    margin-right: 0;
+    height: 20px;
 }
 
 #checkbox_progress {
@@ -848,11 +776,6 @@
     margin-bottom:5px;
 }
 /*конец растановки создаваемых задач в progress*/
-.h1_lets_start {
-    position: relative;
-    height: fit-content;
-    left: 150px;
-}
 
 .modal_overlay {
     display: none;
@@ -880,47 +803,42 @@
     display: flex;
     justify-content: space-between;
 }
-/* ----------------------------------STATISTICS----------------------------------- */
-.statistics_block {
+/* ----------------------------------STATISTICS - H1----------------------------------- */
+/* .statictics {
+    width: 60%;
+    position:relative;
+}*/
+.h1_lets_start {
+    position: relative;
+    height: 800px;
+}
+
+#title_main_page {
+    font-family: Montserrat;
+    font-size: 50px;
+    font-style: oblique;
+    font-weight: 100;
+    margin-left: 10px;
+}
+
+.contener_h1_statistics {
     display: flex;
-    flex-direction: column-reverse;
-    height: 100px;
-    align-content: baseline;
-    margin-right: 15px;
-    margin-top: auto;
-    margin-bottom: 61.9px;
-}
-#statistics_button {
-    height: 80px;
-    width: 150px;
-    border: 0;
-    cursor: pointer;
-    background-color: rgba(21, 21, 21, 1);
-    transition: all 0.1s;
-    border-top-right-radius: 30px;
-    border-top-left-radius: 30px;
+    flex-direction: column;
+    height: auto;
+    width: 60%;
+    position: fixed;
+    left: 8%;
 }
 
-    #statistics_button:hover {
-        transform: scale(1.05);
-        background-image: linear-gradient(135deg, #6e00ffd0 0%, #ffcece);
-    }
 
-    #statistics_button:active {
-        background-color: #9d9d9d;
-        transform: scale(0.9);
-    }
-
-    #statistics_button span {
-        font-family: Montserrat;
-        font-weight: 600;
-        font-kerning: normal;
-        font-size: 20px;
-        color: rgba(255, 255, 255, 0.4);
-    }
-    #statistics_button:hover span{
-        color: rgba(255, 255, 255, 1);
-    }
+.statistics_block {
+    position: relative;
+    margin-left: 0;
+    width: 100%;
+    height: 210px;
+    background: #0089a2;
+    bottom:5px;
+}
 
 @media screen and (max-width: 1066px) {
 
