@@ -18,13 +18,10 @@
       <script src="components/Time.js" defer></script>
       <script src="components/Date.js" defer></script>
       <script src="components/Calendar.js" defer></script>
-      <!-- <script src="components/Progress.js" defer></script>-->
+      <script src="components/Progress.js" defer></script>
 
       <div id="background" class="header" style="opacity: 0;"></div>
       <header class="header">
-          <div class="logo">
-              <img src="public/logo.png" class="iceberg_logo" alt="" />
-          </div>
           <div class="search">
               <input type="search" id="main_search" class="search-main" placeholder="Search..." />
               <button class="search_button"></button>
@@ -37,39 +34,29 @@
               <button style="position:absolute;" class="avatar_button" aria-label="Clear recent searches"><img class="avatar" src="public/user.png" alt="" /></button>
           </div>
       </header>
-      <aside class="aside_panel">
-          <div class="add_note_div">
-              <ul class="ul_add_note">
-                  <li class="add_note_li"><span class="add_note_span">Add Note<button class="add_note_button">+</button></span></li>
-              </ul>
-
-              <ul class="FileList">
-                  <!--Здесь будут отображатся файлы-->
-              </ul>
-
-              <div class="settings">
-                  <button class="settings_button" id="settings_id" style="padding:0px;"><span class="settings_button_span">Settings</span></button>
-              </div>
-          </div>
-
-      </aside>
       <main class="main">
+          <aside class="aside_panel">
+              <div class="logo">
+                  <img src="public/logoColumn.png" class="iceberg_logo" alt="" />
+              </div>
+              <div class="add_note_div">
+                  <ul class="ul_add_note">
+                      <li class="add_note_li"><span class="add_note_span">Add Note<button class="add_note_button">+</button></span></li>
+                  </ul>
+
+                  <ul class="FileList">
+                      <!--Здесь будут отображатся файлы-->
+                  </ul>
+
+                  <div class="settings">
+                      <button class="settings_button" id="settings_id" style="padding:0px;"><span class="settings_button_span">Settings</span></button>
+                  </div>
+              </div>
+          </aside>
           <!--здесь был  <aside class="aside_panel">-->
           <div class="contener_h1_statistics">
               <article class="h1_lets_start" id="title_main_page">
                   <h1 id="title_main_page" style="color:black; font-weight: 600;">Let's start</h1>
-              </article>
-              <article class="statistics_block">
-                  <div class="statistics_block_div">
-                      <table class="table_statictics" id="statictics_table">
-                          <thead id="statictics_thead">
-
-                          </thead>
-                          <tbody>
-
-                          </tbody>
-                          </table>
-                  </div>
               </article>
           </div>
 
@@ -148,10 +135,48 @@
                       </div>
                   </div>
               </article>
+          </div>
+          <div class="statistics-progress">
+              <article class="statistics_block">
+                  <div class="statistics_block_div">
+                      <table class="table_statictics" id="statistics_table">
+                          <thead id="statistics_thead">
+                              <tr>
+                                  <th></th><th>Jan</th><th>Feb</th><th>Mar</th><th>Apr</th><th>May</th><th>Jun</th><th>Jul</th><th>Avg</th><th>Sep</th><th>Oct</th><th>Nov</th><th>Dec</th>
+                              </tr>
+                          </thead>
+                          <tbody id="statistics_tbody">
+                              <tr>
+                                  <td>Mon</td>
+                              </tr>
+                              <tr>
+                                  <td>Tue</td>
+                              </tr>
+                              <tr>
+                                  <td>Wed</td>
+                              </tr>
+                              <tr>
+                                  <td>Thu</td>
+                              </tr>
+                              <tr>
+                                  <td>Fri</td>
+                              </tr>
+                              <tr>
+                                  <td>Sat</td>
+                              </tr>
+                              <tr>
+                                  <td>Sun</td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+              </article>
 
               <article class="progress_block">
-
-
+                  <div class="span_progress"></div>
+                  <div class="your_progress_span_div">
+                      <span class="your_progress_span">Your Progress</span>
+                  </div>
                   <div id="modal_overlay" class="modal_overlay">
                       <div class="modal_window">
                           <h2>Новая заметка</h2>
@@ -164,11 +189,14 @@
                   </div>
                   <div class="input_progress_storage" id="input_progress_storage">
                       <!--
-                <div id="task1"><p>Task 1</p><input type="checkbox" id="checkbox_progress" /><button id="delete_task">Delete</button></div>
-                <div id="task2"><p>Task 2</p><input type="checkbox" id="checkbox_progress" /><button id="delete_task">Delete</button></div>
-                <div id="task3"><p>Task 3</p><input type="checkbox" id="checkbox_progress" /><button id="delete_task">Delete</button></div>
-                <p></p>
-                <p></p>-->
+            <div id="task1"><p>Task 1</p><input type="checkbox" id="checkbox_progress" /><button id="delete_task">Delete</button></div>
+            <div id="task2"><p>Task 2</p><input type="checkbox" id="checkbox_progress" /><button id="delete_task">Delete</button></div>
+            <div id="task3"><p>Task 3</p><input type="checkbox" id="checkbox_progress" /><button id="delete_task">Delete</button></div>
+            <p></p>
+            <p></p>-->
+                  </div>
+                  <div class="button_add_task">
+                      <button id = "progress_adding_button"><span>Add Task</span></button>
                   </div>
               </article>
           </div>

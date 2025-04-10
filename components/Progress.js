@@ -17,20 +17,27 @@ function renderTasks() {
 
         request.onsuccess = function () {
             div_storage.innerHTML = ""; // очистить список перед выводом
-
+            let number = 1;
+            let buttonNumber = 1;
+            let inputNumber = 1;
             request.result.forEach(task => {
                 let taskDiv = document.createElement('div');
                 taskDiv.classList.add('task-item');
 
+                let text = document.createElement('span');
+                text.textContent = `${number++}. ${task.text}`;
+
                 let checkbox = document.createElement('input');
+                checkbox.classList.add(`input${inputNumber++}`)
                 checkbox.type = 'checkbox';
                 checkbox.checked = task.checked || false;
 
-                let text = document.createElement('span');
-                text.textContent = task.text;
-
                 let deleteButton = document.createElement("button");
-                deleteButton.classList.add('deleteButton');
+                deleteButton.classList.add(`deleteButton${buttonNumber++}`);
+                deleteButton.addEventListener('click', () => {
+                    let deleteTask = db.transaction('TaskDB', 'readwrite').objectStore('TaskDB');
+                    deleteTask.delete(taskDiv); //вот это не работает
+                });
 
                 // при смене чекбокса Ч обновить в базе
                 checkbox.addEventListener('change', () => {
@@ -39,8 +46,8 @@ function renderTasks() {
                     updateTransaction.put(task); // обновл€ем весь объект
                 });
 
-                taskDiv.appendChild(checkbox);
                 taskDiv.appendChild(text);
+                taskDiv.appendChild(checkbox);
                 taskDiv.appendChild(deleteButton);
                 div_storage.appendChild(taskDiv);
             });
