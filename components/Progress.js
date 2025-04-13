@@ -1,5 +1,6 @@
 
-let div_storage  = document.getElementById("input_progress_storage");
+let div_storage = document.getElementById("input_progress_storage");
+let note_input = document.getElementById('note_input');
 let number = 0;
 let indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
 let IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction;
@@ -17,7 +18,6 @@ function renderTasks() {
 
         request.onsuccess = function () {
             div_storage.innerHTML = ""; // очистить список перед выводом
-            let number = 1;
             let buttonNumber = 1;
             let inputNumber = 1;
             request.result.forEach(task => {
@@ -25,7 +25,7 @@ function renderTasks() {
                 taskDiv.classList.add('task-item');
 
                 let text = document.createElement('span');
-                text.textContent = `${number++}. ${task.text}`;
+                text.textContent = `${task.text}`;
 
                 let checkbox = document.createElement('input');
                 checkbox.classList.add(`input${inputNumber++}`)
@@ -36,7 +36,14 @@ function renderTasks() {
                 deleteButton.classList.add(`deleteButton${buttonNumber++}`);
                 deleteButton.addEventListener('click', () => {
                     let deleteTask = db.transaction('TaskDB', 'readwrite').objectStore('TaskDB');
-                    deleteTask.delete(taskDiv); //вот это не работает
+                    let deleteRequest = deleteTask.delete(task.id); //удаление
+                    deleteRequest.onsuccess = () => {
+                        console.log(`Task ${task.id} delete`);
+                        taskDiv.remove();
+                    };
+                    deleteRequest.error = () => {
+                        console.error("deleteRequest ERROR:", deleteRequest.error);
+                    };
                 });
 
                 // при смене чекбокса Ч обновить в базе
@@ -80,6 +87,7 @@ openRequest.onerror = function () { //ловим ошибки
 
 function openModal() {
     document.getElementById('modal_overlay').style.display = 'flex';
+ //   note_input.innerHTML = '';
 };
 
 function closeModal() {

@@ -19,6 +19,7 @@
       <script src="components/Date.js" defer></script>
       <script src="components/Calendar.js" defer></script>
       <script src="components/Progress.js" defer></script>
+      <script src="components/Statistics.js" defer></script>
 
       <div id="background" class="header" style="opacity: 0;"></div>
       <header class="header">
@@ -141,32 +142,8 @@
                   <div class="statistics_block_div">
                       <table class="table_statictics" id="statistics_table">
                           <thead id="statistics_thead">
-                              <tr>
-                                  <th></th><th>Jan</th><th>Feb</th><th>Mar</th><th>Apr</th><th>May</th><th>Jun</th><th>Jul</th><th>Avg</th><th>Sep</th><th>Oct</th><th>Nov</th><th>Dec</th>
-                              </tr>
                           </thead>
                           <tbody id="statistics_tbody">
-                              <tr>
-                                  <td>Mon</td>
-                              </tr>
-                              <tr>
-                                  <td>Tue</td>
-                              </tr>
-                              <tr>
-                                  <td>Wed</td>
-                              </tr>
-                              <tr>
-                                  <td>Thu</td>
-                              </tr>
-                              <tr>
-                                  <td>Fri</td>
-                              </tr>
-                              <tr>
-                                  <td>Sat</td>
-                              </tr>
-                              <tr>
-                                  <td>Sun</td>
-                              </tr>
                           </tbody>
                       </table>
                   </div>
@@ -179,11 +156,11 @@
                   </div>
                   <div id="modal_overlay" class="modal_overlay">
                       <div class="modal_window">
-                          <h2>Новая заметка</h2>
+                          <h2>Новая задача</h2>
                           <input type="text" id="note_input" placeholder="Введите задачу..." />
                           <div class="modal_buttons">
-                              <button id="save_note_button">Сохранить</button>
-                              <button id="cancel_note_button">Отмена</button>
+                              <button id="save_note_button">Save</button>
+                              <button id="cancel_note_button">Cancel</button>
                           </div>
                       </div>
                   </div>
