@@ -926,9 +926,6 @@
     .modal_window input:focus {
         border-bottom: 3px solid #00ffe3;
     }
-        .modal_window input:focus::placeholder{
-            color:#00ffe3;
-        }
     .modal_window h2 {
         font-family:Montserrat;
         font-size:50px;
@@ -998,16 +995,3 @@
         margin-top: 0;
     }
 }
-
-.day-cell {
-    width: 16px;
-    height: 16px;
-    margin: 1px;
-    background-color: #444;
-    display: inline-block;
-    border-radius: 2px;
-}
-
-    .day-cell.today {
-        background-color: green;
-    }

@@ -1,36 +1,64 @@
 
 let nowDateZip = Date.now();
 let nowDateUnzip = new Date(nowDateZip);
-const currentYear = nowDateUnzip.getFullYear();
+let currentYear = nowDateUnzip.getFullYear(); //2025
+let CurrentMonth = nowDateUnzip.getMonth();
 
-let Month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-let amountOfDays = ['31', '28', '31', '30', '31', '30', '31', '31', '30', '31', '30', '31'];
-let daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'San'];
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////// DONE!
+const _1_2025 = new Date(currentYear, 0, 1); //Начало отчета от года 2025 1 января 
+const lastNumberOfMonth = new Date(currentYear, 0 + 1, 0); // ВЫВОДИТ ПОСЛЕДНЕЕ ЧИСЛО МЕСЯЦА (тут 31)
+console.log(lastNumberOfMonth);
+console.log(lastNumberOfMonth.getDate());
 
-
-////////////////thead
-let thead = document.getElementById('statistics_thead');
-let monthNumbers = nowDateUnzip.getMonth(); // 3
-let tr = document.createElement('tr');
-tr.appendChild(document.createElement('th'));
-for (let amountOfMonth = 0; amountOfMonth < 12; amountOfMonth++) {
-    let th = document.createElement('th');
-    th.innerHTML = Month[amountOfMonth];
-    tr.appendChild(th);
+let amountOfDays = [];    //[31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+for (let numberOfMonth = 0; numberOfMonth < 12; numberOfMonth++) {
+    let lastDayInMonth = new Date(currentYear, numberOfMonth + 1, 0);
+        amountOfDays.push(lastDayInMonth.getDate());
+};
+console.log(amountOfDays);
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////// DONE!
+let Month = []; ///['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+for (let amountMonth = 0; amountMonth < 12; amountMonth++) {
+    let monthName = new Date(currentYear, amountMonth + 1, 0).toLocaleString('en-GB', { month: 'short' });
+    Month.push(monthName);
 }
-thead.appendChild(tr);
+console.log(Month);
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//////////////////tbody
-/*let statistics_body = document.getElementById('statistics_tbody');
-for (let week = 0; week < 7; week++) {
-    let tr = document.createElement('tr');
-    let td = document.createElement('td');
-    td.innerHTML = daysOfWeek[week];
-    tr.appendChild(td);
-    statistics_body.appendChild(tr);
-};*/
-// Генерация пустой сетки по дням недели
+let daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'San'];
 let statistics_body = document.getElementById('statistics_tbody');
+
+function addHeatAndBody() {
+    ////////////////thead
+    let thead = document.getElementById('statistics_thead');
+    let tr = document.createElement('tr');
+    tr.classList.add('FullYear');
+    tr.appendChild(document.createElement('th'));
+    for (let amountOfMonth = 0; amountOfMonth < 12; amountOfMonth++) {
+        let th = document.createElement('th');
+        th.classList.add(`th_${Month[amountOfMonth]}`);
+        th.innerHTML = Month[amountOfMonth];
+        tr.appendChild(th);
+    }
+    thead.appendChild(tr);
+
+    //////////////////tbody
+    for (let week = 0; week < 7; week++) {
+        let tr = document.createElement('tr');
+        tr.classList.add(`${daysOfWeek[week]}`);
+        let td = document.createElement('td');
+        td.classList.add(`td_${daysOfWeek[week]}`);
+        td.innerHTML = daysOfWeek[week];
+        tr.appendChild(td);
+        statistics_body.appendChild(tr);
+    };
+
+};
+addHeatAndBody();
+
+
+// Генерация пустой сетки по дням недели
+/*let statistics_body = document.getElementById('statistics_tbody');
 const dayMap = {};
 daysOfWeek.forEach(weekday => {
     const row = document.createElement('tr');
@@ -67,10 +95,9 @@ const addDaysToTable = (year) => {
         ) {
             cell.classList.add('today');
 
-            //let label = document.createElement('label');
-            //label.innerHTML = `${nowDateUnzip.getDate().toLocaleString("ua-UA")}`;
-            //cell.appendChild(label);
-
+            let label = document.createElement('label');
+            label.innerHTML = `${nowDateUnzip.getDate().toLocaleString("ua-UA")}`;
+            cell.appendChild(label);
         }
 
         // Вставка в соответствующую ячейку таблицы
@@ -83,4 +110,4 @@ const addDaysToTable = (year) => {
     }
 };
 
-addDaysToTable(currentYear);
+addDaysToTable(currentYear);*/

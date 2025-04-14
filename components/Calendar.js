@@ -1,9 +1,16 @@
 
 let endTime = Date.now();
 let currentDate = new Date(endTime);
-
+////////////////////////////////////////////////////////////////////////////////////////// Если не работает код, то из-за этого
+let CurrentYear = currentDate.getFullYear();
+let daysInMonth = []; /////[31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+for (let Mon = 0; Mon < 12; Mon++) {
+    let LastDayIn_Month = new Date(CurrentYear, Mon + 1, 0);
+    daysInMonth.push(LastDayIn_Month.getDate());
+};
+/////////////////////////////////////////////////////////////////////////////////////////
 let nameOfMonth = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-let daysInMonth = ['31', '28', '31', '30', '31', '30', '31', '31', '30', '31', '30', '31']; //колл дней в каждом месяце
+//let daysInMonth = ['31', '28', '31', '30', '31', '30', '31', '31', '30', '31', '30', '31']; //колл дней в каждом месяце
 let weekDays = ['Mon','Tue','Wed','Thu','Fri','Sat','San'];
 let currentMonth = `${Number(currentDate.getMonth())}`; // = ` number of month = 3`
 let localMonth = nameOfMonth[currentMonth];  // `3` = `April`
