@@ -1,4 +1,5 @@
 
+
 let nowDateZip = Date.now();
 let nowDateUnzip = new Date(nowDateZip);
 let currentYear = nowDateUnzip.getFullYear(); //2025
@@ -16,6 +17,10 @@ for (let numberOfMonth = 0; numberOfMonth < 12; numberOfMonth++) {
         amountOfDays.push(lastDayInMonth.getDate());
 };
 console.log(amountOfDays);
+
+let amountOfDaysInCurrentYear = 0;
+amountOfDays.map((item) => amountOfDaysInCurrentYear += item);
+console.log(amountOfDaysInCurrentYear);
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////// DONE!
 let Month = []; ///['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 for (let amountMonth = 0; amountMonth < 12; amountMonth++) {
@@ -27,23 +32,35 @@ console.log(Month);
 
 let daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'San'];
 let statistics_body = document.getElementById('statistics_tbody');
-
 function addHeatAndBody() {
     ////////////////thead
     let thead = document.getElementById('statistics_thead');
     let tr = document.createElement('tr');
     tr.classList.add('FullYear');
-    tr.appendChild(document.createElement('th'));
     for (let amountOfMonth = 0; amountOfMonth < 12; amountOfMonth++) {
         let th = document.createElement('th');
         th.classList.add(`th_${Month[amountOfMonth]}`);
+        switch (amountOfMonth) {
+            case 0: th.colSpan = 4; break;
+            case 1: th.colSpan = 4; break;
+            case 2: th.colSpan = 5; break;
+            case 3: th.colSpan = 4; break;
+            case 4: th.colSpan = 4; break;
+            case 5: th.colSpan = 4; break;
+            case 6: th.colSpan = 4; break;
+            case 7: th.colSpan = 4; break;
+            case 8: th.colSpan = 5; break;
+            case 9: th.colSpan = 5; break;
+            case 10: th.colSpan = 4; break;
+            case 11: th.colSpan = 5; break;
+        }
         th.innerHTML = Month[amountOfMonth];
         tr.appendChild(th);
     }
     thead.appendChild(tr);
 
     //////////////////tbody
-    for (let week = 0; week < 7; week++) {
+    /*for (let week = 0; week < 7; week++) {
         let tr = document.createElement('tr');
         tr.classList.add(`${daysOfWeek[week]}`);
         let td = document.createElement('td');
@@ -51,63 +68,68 @@ function addHeatAndBody() {
         td.innerHTML = daysOfWeek[week];
         tr.appendChild(td);
         statistics_body.appendChild(tr);
-    };
+    };*/
+}; 
+function fillHeatmap() {
+    let openRequest = indexedDB.open('Tasks');
 
-};
-addHeatAndBody();
-
-
-// Генерация пустой сетки по дням недели
-/*let statistics_body = document.getElementById('statistics_tbody');
-const dayMap = {};
-daysOfWeek.forEach(weekday => {
-    const row = document.createElement('tr');
-    const th = document.createElement('th');
-    th.textContent = weekday;
-    row.appendChild(th);
-
-    Month.forEach(MonthIndex => {
-        const td = document.createElement('td');
-        td.classList.add(`month-${MonthIndex}`);
-        row.appendChild(td);
-    });
-
-    statistics_body.appendChild(row);
-    dayMap[weekday] = row;
-});
-
-const addDaysToTable = (year) => {
-    let d = new Date(year, 0, 1);
-
-    while (d.getFullYear() === year) {
-        const dayOfWeekIndex = (d.getDay() + 6) % 7; // Приведение к Mon–Sun (0–6)
-        const weekday = daysOfWeek[dayOfWeekIndex]; // Например 'Mon'
-        const monthShort = Month[d.getMonth()]; // Например 'Jan'
-
-        const cell = document.createElement('div');
-        cell.className = 'day-cell';
-
-        // Подсветка текущего дня
-        if (
-            d.getFullYear() === nowDateUnzip.getFullYear() &&
-            d.getMonth() === nowDateUnzip.getMonth() &&
-            d.getDate() === nowDateUnzip.getDate()
-        ) {
-            cell.classList.add('today');
-
-            let label = document.createElement('label');
-            label.innerHTML = `${nowDateUnzip.getDate().toLocaleString("ua-UA")}`;
-            cell.appendChild(label);
+    let startDate = new Date(currentYear, 0, 0);
+    let dateCellMap = new Map();
+    daysOfWeek.forEach((dayName, dayIndex) => {
+        let day = 0;
+        let tr = document.createElement('tr');
+        tr.classList.add(dayName);
+        for (let i = 0; i < 52; i++) {
+            if (day < amountOfDaysInCurrentYear) {
+                let td = document.createElement('td');
+                let currentDate = new Date(
+                    startDate.getFullYear(),
+                    startDate.getMonth(),
+                    startDate.getDate() + (i + 1) * 7 + dayIndex);
+                td.setAttribute('data-date', currentDate.toISOString().split("T")[0]);
+                td.classList.add(`day-cell:${day}`);
+                dateCellMap.set(currentDate.toISOString().split("T")[0], td);
+                // можно добавить атрибут или класс, если нужно
+                tr.appendChild(td);
+                day++;
+            }
         }
+        statistics_body.appendChild(tr);
+    });
+    openRequest.onsuccess = function () {
 
-        // Вставка в соответствующую ячейку таблицы
-        const targetRow = dayMap[weekday];
-        const targetCell = targetRow.querySelector(`.month-${monthShort}`);
-        targetCell.appendChild(cell);
+            let db = openRequest.result;
+            let Store = db.transaction('TaskDB', 'readwrite').objectStore('TaskDB');
+            let request = Store.getAll();
+            request.onsuccess = function () {
+                let tasks = request.result;
+                tasks.forEach(task => {
+                    if (task.checked > 1) {
 
-        // Переход к следующему дню
-        d = new Date(d.getFullYear(), d.getMonth(), d.getDate() + 1);
+                        //  alert(`Task checked ${task.id}`);
+                        //let parts = task.id.split(",");
+                        let parts = nowDateUnzip.toLocaleString("ua-UA").split(",");
+                        let t = parts[0];
+                        let p = t.split(".");
+                        let isoDate = `${p[2]}-${p[1]}-${p[0]}`;
+                        let td = dateCellMap.get(`${isoDate}`);
+                        if (td) {
+                            td.style.background = task.checked ? 'lightgreen' : '';
+                            td.className = '';
+                            td.classList.add('td_checked');
+                        } 
+                        console.log(t);
+                        console.log(p);
+                        console.log(isoDate);
+                        console.log(`${nowDateUnzip.toLocaleString("ua-UA")}`);
+                    }
+                });
+            }
+        console.log(request);
     }
-};
+    console.log(startDate);
+    console.log(dateCellMap);
+}
 
-addDaysToTable(currentYear);*/
+addHeatAndBody();
+fillHeatmap();

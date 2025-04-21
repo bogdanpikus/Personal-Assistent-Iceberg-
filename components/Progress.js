@@ -51,6 +51,22 @@ function renderTasks() {
                     let updateTransaction = db.transaction('TaskDB', 'readwrite').objectStore('TaskDB');
                     task.checked = checkbox.checked;
                     updateTransaction.put(task); // обновляем весь объект
+
+                    // UI обновление
+                    if (task.checked) {
+                        //  alert(`Task checked ${task.id}`);
+                        // let parts = task.id.split(",");
+                        let parts = nowDateUnzip.toLocaleString("ua-UA").split(",");
+                        let t = parts[0];
+                        let p = t.split(".");
+                        let isoDate = `${p[2]}-${p[1]}-${p[0]}`;
+                        let td = document.querySelector(`td[data-date="${isoDate}"]`);
+                        if (td) {
+                            td.style.background = task.checked ? 'green' : '';
+                            td.classList.add('123');
+
+                        }
+                    }
                 });
 
                 taskDiv.appendChild(text);

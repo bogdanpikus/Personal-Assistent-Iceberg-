@@ -995,3 +995,7 @@
         margin-top: 0;
     }
 }
+
+.td_checked:hover{
+    cursor:pointer;
+}
