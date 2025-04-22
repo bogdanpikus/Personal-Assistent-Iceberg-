@@ -1,5 +1,4 @@
 
-
 let nowDateZip = Date.now();
 let nowDateUnzip = new Date(nowDateZip);
 let currentYear = nowDateUnzip.getFullYear(); //2025
@@ -70,6 +69,34 @@ function addHeatAndBody() {
         statistics_body.appendChild(tr);
     };*/
 }; 
+
+let bd;
+function markCompletedDays(dateCellMap) {
+    let openRequest = indexedDB.open('Tasks');
+
+    openRequest.onsuccess = function () {
+        let db = openRequest.result;
+        let store = db.transaction('TaskDB', 'readonly').objectStore('TaskDB');
+        let request = store.getAll();
+
+        request.onsuccess = function () {
+            let tasks = request.result;
+
+            tasks.forEach(task => {
+                if (task.doneAt) {
+                    const td = dateCellMap.get(task.doneAt);
+                    if (td) {
+                        td.style.background = 'green';
+                        td.classList.remove(...td.classList);
+                        td.classList.add('td_checked');
+                    }
+                }
+            });
+        };
+    };
+}
+
+
 function fillHeatmap() {
     let openRequest = indexedDB.open('Tasks');
 
@@ -95,6 +122,7 @@ function fillHeatmap() {
             }
         }
         statistics_body.appendChild(tr);
+        markCompletedDays(dateCellMap);
     });
     openRequest.onsuccess = function () {
 
@@ -114,7 +142,7 @@ function fillHeatmap() {
                         let isoDate = `${p[2]}-${p[1]}-${p[0]}`;
                         let td = dateCellMap.get(`${isoDate}`);
                         if (td) {
-                            td.style.background = task.checked ? 'lightgreen' : '';
+                            td.style.background = task.checked ? 'green' : '';
                             td.className = '';
                             td.classList.add('td_checked');
                         } 
@@ -133,3 +161,4 @@ function fillHeatmap() {
 
 addHeatAndBody();
 fillHeatmap();
+

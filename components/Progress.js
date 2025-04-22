@@ -63,7 +63,6 @@ function renderTasks() {
                         let td = document.querySelector(`td[data-date="${isoDate}"]`);
                         if (td) {
                             td.style.background = task.checked ? 'green' : '';
-                            td.classList.add('123');
 
                         }
                     }
