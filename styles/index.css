@@ -834,7 +834,8 @@
 .progress_block {
     width: 30%;
     height: 100%;
-    background: #313131;
+    // background: #313131;
+    background: linear-gradient(140deg, #ff5100 50%, black 50%);
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
@@ -842,6 +843,7 @@
 .your_progress_span_div {
     width: 100%;
     text-align: center;
+    margin-top:10px;
 }
 
 .your_progress_span {
@@ -896,10 +898,10 @@
 
 .task-item {
     font-family: Montserrat;
-    font-size: 30px;
+    font-size: 25px;
     width: 100%;
     color: whitesmoke;
-    margin: 44px;
+    margin: 25px;
 }
     .task-item input {
         width: 20px;
@@ -919,7 +921,7 @@
     }
     .task-item button::after{
         content: '+';
-        color:red   ;
+        color:black   ;
         font-size:35px;
     }
 
