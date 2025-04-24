@@ -53,7 +53,7 @@ function renderTasks() {
                     updateTransaction.put(task); // обновляем весь объект
 
                     // UI обновление
-                    if (task.checked) {
+                    if (task.checked <= 2) {
                         //  alert(`Task checked ${task.id}`);
                         // let parts = task.id.split(",");
                         let parts = nowDateUnzip.toLocaleString("ua-UA").split(",");
@@ -62,7 +62,7 @@ function renderTasks() {
                         let isoDate = `${p[2]}-${p[1]}-${p[0]}`;
                         let td = document.querySelector(`td[data-date="${isoDate}"]`);
                         if (td) {
-                            td.style.background = task.checked ? 'green' : '';
+                            td.style.background = `green`;
 
                         }
                     }

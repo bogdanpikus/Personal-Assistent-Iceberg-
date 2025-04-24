@@ -132,7 +132,7 @@ function fillHeatmap() {
             request.onsuccess = function () {
                 let tasks = request.result;
                 tasks.forEach(task => {
-                    if (task.checked > 1) {
+                    if (task.checked <= 2) {
 
                         //  alert(`Task checked ${task.id}`);
                         //let parts = task.id.split(",");
@@ -142,7 +142,7 @@ function fillHeatmap() {
                         let isoDate = `${p[2]}-${p[1]}-${p[0]}`;
                         let td = dateCellMap.get(`${isoDate}`);
                         if (td) {
-                            td.style.background = task.checked ? 'green' : '';
+                            td.style.background = 'green';
                             td.className = '';
                             td.classList.add('td_checked');
                         } 

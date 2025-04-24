@@ -12,7 +12,7 @@
     <link rel="icon" href="public\favicon.ico" type="image/x-icon" />
     <link href="styles/index.css" rel="stylesheet" />
   </head>
-  <body class="body">
+  <body id="body">
       <script src="index.js" defer></script>
       <script src="components/Weather.js" defer></script>
       <script src="components/Time.js" defer></script>
@@ -20,6 +20,7 @@
       <script src="components/Calendar.js" defer></script>
       <script src="components/Progress.js" defer></script>
       <script src="components/Statistics.js" defer></script>
+      <script src="components/SwitchTheme.js" defer></script>
 
       <div id="background" class="header" style="opacity: 0;"></div>
       <header class="header">
@@ -35,7 +36,7 @@
               <button style="position:absolute;" class="avatar_button" aria-label="Clear recent searches"><img class="avatar" src="public/user.png" alt="" /></button>
           </div>
       </header>
-      <main class="main">
+      <main id="main">
           <aside class="aside_panel">
               <div class="logo">
                   <img src="public/logoColumn.png" class="iceberg_logo" alt="" />
@@ -55,9 +56,16 @@
               </div>
           </aside>
           <!--здесь был  <aside class="aside_panel">-->
-          <div class="contener_h1_statistics">
+          <div class="contener_h1_statistics" id="contener_h1_statistics">
               <article class="h1_lets_start" id="title_main_page">
-                  <h1 id="title_main_page" style="color:seashell; font-weight: 600;">Let's start</h1>
+                  <h1 id="title_main_page">Let's start<button id="close_conteiner_h1"></button></h1>
+                  <p class="welcome_p">Welcome to Iceberg!</p>
+                  <p class="basics_p">Here are the basics:</p>
+                  <p class="note_p"> <input type="checkbox" class="checkbox_p" />Click <b>+</b> to create a Note page</p>
+                  <p class="note_p"> <input type="checkbox" class="checkbox_p" />Click to buttons in right conner to open <b>Weather, Caledat, Time or Date</b></p>
+                  <p class="note_p"> <input type="checkbox" class="checkbox_p" />Scroll to bottom you can see your Statistics and Progress block; Click <b>Add Task</b> to add daily tasks</p>
+                  <p class="note_p"> <input type="checkbox" class="checkbox_p" />In search input you can find your Notes by the name</p>
+                  <p class="note_p"><ins>Other useful functions you would find during your sesions:) Good luck!</ins></p>
               </article>
           </div>
 

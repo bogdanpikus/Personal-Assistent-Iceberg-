@@ -17,3 +17,8 @@ const date_block = document.getElementById('date_block_div');
 document.getElementById('date_id_button').addEventListener('click', function () {
     date_block.style.display = (date_block.style.display === 'none' || date_block.style.display === '') ? 'inline-block' : 'none';
 });
+
+const h1_block = document.getElementById('contener_h1_statistics');
+document.getElementById('close_conteiner_h1').addEventListener('click', () => {
+    h1_block.style.display = 'none';
+});
