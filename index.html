@@ -21,6 +21,7 @@
       <script src="components/Progress.js" defer></script>
       <script src="components/Statistics.js" defer></script>
       <script src="components/SwitchTheme.js" defer></script>
+      <script src="components/Notes.js" defer></script>
 
       <div id="background" class="header" style="opacity: 0;"></div>
       <header class="header">
@@ -43,18 +44,25 @@
               </div>
               <div class="add_note_div">
                   <ul class="ul_add_note">
-                      <li class="add_note_li"><span class="add_note_span">Add Note<button class="add_note_button">+</button></span></li>
+                      <li class="add_note_li"><span class="add_note_span">Add Note<button class="add_note_button" id="add_note_button">+</button></span></li>
                   </ul>
 
-                  <ul class="FileList">
+                  <ul class="FileList" id="FileList">
                       <!--Здесь будут отображатся файлы-->
                   </ul>
-
+                  
                   <div class="settings">
                       <button class="settings_button" id="settings_id" style="padding:0px;"><span class="settings_button_span">Settings</span></button>
                   </div>
               </div>
           </aside>
+          <div id="asideModalWindow"> 
+              <div id="ModalWindow">
+                  <h1 class="h1_modalwindow">New Note Page</h1>
+                      <input type="text" class="modalWindowInput" id="modalWindowInput" placeholder=" Enter new note page name..."/>
+                      <button id="modalWindowButton">Submit</button>
+              </div>
+          </div>
           <!--здесь был  <aside class="aside_panel">-->
           <div class="contener_h1_statistics" id="contener_h1_statistics">
               <article class="h1_lets_start" id="title_main_page">

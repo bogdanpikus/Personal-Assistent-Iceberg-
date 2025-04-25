@@ -68,8 +68,8 @@ function renderTasks() {
                     }
                 });
 
-                taskDiv.appendChild(text);
                 taskDiv.appendChild(checkbox);
+                taskDiv.appendChild(text);
                 taskDiv.appendChild(deleteButton);
                 div_storage.appendChild(taskDiv);
             });
