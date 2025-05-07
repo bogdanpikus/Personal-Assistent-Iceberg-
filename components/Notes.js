@@ -4,6 +4,7 @@ const WindowConteiner = document.getElementById('asideModalWindow');
 const modalWindow = document.getElementsByTagName('ModalWindow');
 const SubmitButton = document.getElementById('modalWindowButton');
 const modalInput = document.getElementById('modalWindowInput');
+const DivH1 = document.getElementById('contener_h1_statistics');
 let num = 1
 
 AddNote.addEventListener('click', () => {
@@ -17,12 +18,30 @@ AddNote.addEventListener('click', () => {
 function closeModalWindow() {
     WindowConteiner.style.display = 'none';
 }
+function CreateNotePage() {
+    DivH1.style.display = 'none';
+};
 function createNoteLiElement() {
     let li = document.createElement('li');
     li.classList.add(`li${num++}`);
+    li.id = `liTasks`;
     let value = modalInput.value.trim();
     li.innerHTML = `${value}`;
-    FileStorage.appendChild(li);
+    let r = Math.floor(Math.random() * 256);
+    let g = Math.floor(Math.random() * 256);
+    let b = Math.floor(Math.random() * 256);
+    li.style.background = `rgb(${r},${g},${b},0.4)`;
+    //FileStorage.appendChild(li);
+
+    let M = new Map();
+    M.set(`li${num}`, li);
+    M.forEach((li) => {
+        FileStorage.appendChild(li);
+        li.addEventListener('click', () => {
+            CreateNotePage();
+        });
+    });
+    console.log(M);
 } 
 
 SubmitButton.addEventListener('click', () => {

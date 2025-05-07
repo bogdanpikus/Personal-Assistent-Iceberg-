@@ -5,8 +5,9 @@ let number = 0;
 let indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
 let IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction;
 /////////////////////////////////////////////Создается база данных
-let openRequest = indexedDB.open("Tasks"); //Щоб почати працювати з IndexedDB, нам спочатку потрібно відкрити (підключитися до) бази даних.
+let openRequest = indexedDB.open("Tasks", 2); //Щоб почати працювати з IndexedDB, нам спочатку потрібно відкрити (підключитися до) бази даних.
 let db;    
+let td;
 function renderTasks() {
     /////////вытягивание/отображения данных из IndexedDB
     let Store = db.transaction('TaskDB', 'readwrite').objectStore('TaskDB');
@@ -51,21 +52,6 @@ function renderTasks() {
                     let updateTransaction = db.transaction('TaskDB', 'readwrite').objectStore('TaskDB');
                     task.checked = checkbox.checked;
                     updateTransaction.put(task); // обновляем весь объект
-
-                    // UI обновление
-                    if (task.checked <= 2) {
-                        //  alert(`Task checked ${task.id}`);
-                        // let parts = task.id.split(",");
-                        let parts = nowDateUnzip.toLocaleString("ua-UA").split(",");
-                        let t = parts[0];
-                        let p = t.split(".");
-                        let isoDate = `${p[2]}-${p[1]}-${p[0]}`;
-                        let td = document.querySelector(`td[data-date="${isoDate}"]`);
-                        if (td) {
-                            td.style.background = `green`;
-
-                        }
-                    }
                 });
 
                 taskDiv.appendChild(checkbox);
@@ -91,7 +77,12 @@ openRequest.onupgradeneeded = function () {
     // спрацьовує, якщо на клієнті немає бази даних
     // ...виконати ініціалізацію...
     db = openRequest.result;
-    db.createObjectStore("TaskDB", { keyPath: "id" });
+    if (!db.objectStoreNames.contains('TaskDB')) {
+        db.createObjectStore("TaskDB", { keyPath: "id" });
+    };
+    if (!db.objectStoreNames.contains('StoreTD')) {
+        db.createObjectStore("StoreTD", { keyPath: "id" });
+    };
 };
 
 openRequest.onerror = function () { //ловим ошибки

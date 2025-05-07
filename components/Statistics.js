@@ -31,6 +31,7 @@ console.log(Month);
 
 let daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'San'];
 let statistics_body = document.getElementById('statistics_tbody');
+let bd;
 function addHeatAndBody() {
     ////////////////thead
     let thead = document.getElementById('statistics_thead');
@@ -57,46 +58,7 @@ function addHeatAndBody() {
         tr.appendChild(th);
     }
     thead.appendChild(tr);
-
-    //////////////////tbody
-    /*for (let week = 0; week < 7; week++) {
-        let tr = document.createElement('tr');
-        tr.classList.add(`${daysOfWeek[week]}`);
-        let td = document.createElement('td');
-        td.classList.add(`td_${daysOfWeek[week]}`);
-        td.innerHTML = daysOfWeek[week];
-        tr.appendChild(td);
-        statistics_body.appendChild(tr);
-    };*/
 }; 
-
-let bd;
-function markCompletedDays(dateCellMap) {
-    let openRequest = indexedDB.open('Tasks');
-
-    openRequest.onsuccess = function () {
-        let db = openRequest.result;
-        let store = db.transaction('TaskDB', 'readonly').objectStore('TaskDB');
-        let request = store.getAll();
-
-        request.onsuccess = function () {
-            let tasks = request.result;
-
-            tasks.forEach(task => {
-                if (task.doneAt) {
-                    const td = dateCellMap.get(task.doneAt);
-                    if (td) {
-                        td.style.background = 'green';
-                        td.classList.remove(...td.classList);
-                        td.classList.add('td_checked');
-                    }
-                }
-            });
-        };
-    };
-}
-
-
 function fillHeatmap() {
     let openRequest = indexedDB.open('Tasks');
 
@@ -122,41 +84,35 @@ function fillHeatmap() {
             }
         }
         statistics_body.appendChild(tr);
-        markCompletedDays(dateCellMap);
+        console.log(dateCellMap);
     });
     openRequest.onsuccess = function () {
-
             let db = openRequest.result;
-            let Store = db.transaction('TaskDB', 'readwrite').objectStore('TaskDB');
-            let request = Store.getAll();
+            let transaction = db.transaction(['TaskDB', 'StoreTD'], 'readwrite');
+            let StoreProgress = transaction.objectStore('TaskDB');
+            let StoreTasks = transaction.objectStore('StoreTD');
+            let request = StoreProgress.getAll();
             request.onsuccess = function () {
                 let tasks = request.result;
                 tasks.forEach(task => {
-                    if (task.checked <= 2) {
-
-                        //  alert(`Task checked ${task.id}`);
-                        //let parts = task.id.split(",");
+                    if (task.checked) {
                         let parts = nowDateUnzip.toLocaleString("ua-UA").split(",");
-                        let t = parts[0];
-                        let p = t.split(".");
-                        let isoDate = `${p[2]}-${p[1]}-${p[0]}`;
-                        let td = dateCellMap.get(`${isoDate}`);
-                        if (td) {
-                            td.style.background = 'green';
-                            td.className = '';
-                            td.classList.add('td_checked');
-                        } 
-                        console.log(t);
-                        console.log(p);
-                        console.log(isoDate);
-                        console.log(`${nowDateUnzip.toLocaleString("ua-UA")}`);
+                        let p = `${parts[0].trim()} - ${task.id}`;
+                        let tdInfo = {
+                            id: p
+                        };
+
+                        let request3 = StoreTasks.getAll();
+                        request3.onsuccess = function () {
+                            StoreTasks.add(tdInfo).onsuccess = function () {
+                                console.log(" Add:", tdInfo);
+                            }
+                        }
                     }
+
                 });
             }
-        console.log(request);
     }
-    console.log(startDate);
-    console.log(dateCellMap);
 }
 
 addHeatAndBody();

@@ -284,7 +284,6 @@
     height: 100vw;
     //background: #ff5100;
     background-color: rgba(21, 21, 21, 1);
-    overflow-y: scroll;
     padding: 0px;
     margin: 0px;
     border: 0px;
@@ -338,7 +337,7 @@
 
 .FileList li{
     cursor:pointer; 
-    margin-left:1px;
+  //  margin-left:1px;
 }
 
     .FileList li:hover {
@@ -1182,4 +1181,20 @@
 
 .td_checked:hover{
     cursor:pointer;
+}
+
+#divNotedivNote {
+    min-height: 900px;
+    min-width: 50%;
+    margin-left: 11%;
+    //background:white;
+    z-index: 1;
+}
+
+#NoteMainPage {
+    height: 100%;
+    width:100%;
+    background: white;
+    margin-top:10px;
+  //  z-index: 1;
 }
