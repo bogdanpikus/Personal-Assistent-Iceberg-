@@ -1,6 +1,7 @@
 
-let div_storage = document.getElementById("input_progress_storage");
-let note_input = document.getElementById('note_input');
+const div_storage = document.getElementById("input_progress_storage");
+const note_input = document.getElementById('note_input');
+const modal_window_Div = document.getElementById('modal_window_Div');
 let number = 0;
 let indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
 let IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction;
@@ -26,10 +27,12 @@ function renderTasks() {
                 taskDiv.classList.add('task-item');
 
                 let text = document.createElement('span');
+                text.id = 'progress_span_text';
                 text.textContent = `${task.text}`;
 
                 let checkbox = document.createElement('input');
                 checkbox.classList.add(`input${inputNumber++}`)
+                checkbox.id = 'input';
                 checkbox.type = 'checkbox';
                 checkbox.checked = task.checked || false;
 
@@ -66,12 +69,10 @@ function renderTasks() {
         };
     }
 };
-
 openRequest.onsuccess = function () {
     db = openRequest.result;
     renderTasks();
 }
-
 // створити/оновити базу даних без перевірки версій
 openRequest.onupgradeneeded = function () {
     // спрацьовує, якщо на клієнті немає бази даних
@@ -84,61 +85,52 @@ openRequest.onupgradeneeded = function () {
         db.createObjectStore("StoreTD", { keyPath: "id" });
     };
 };
-
 openRequest.onerror = function () { //ловим ошибки
     console.error("Error", openRequest.error);
 };
 
-////////////////////////////////////////////////////////
-
 function openModal() {
     document.getElementById('modal_overlay').style.display = 'flex';
- //   note_input.innerHTML = '';
 };
 
 function closeModal() {
     document.getElementById('modal_overlay').style.display = 'none';
 };
 
-document.getElementById('progress_adding_button').addEventListener('click', openModal);
-document.getElementById('cancel_note_button').addEventListener('click', closeModal);
-document.getElementById('save_note_button').addEventListener('click', () => {
+function RenderTasks() {
     const value = document.getElementById('note_input').value.trim();
     let nowDateZip = Date.now();
     let nowDateUnZip = new Date(nowDateZip);
-  //  let day_month_year = `${nowDateUnZip.getDay()}:${nowDateUnZip.getMonth()}:${nowDateUnZip.getFullYear()}:${nowDateUnZip.getSeconds()}:${nowDateUnZip.getMinutes()}`;
     let day_month_year = nowDateUnZip.toLocaleString("ua-UA");
     if (value) {
         ////////////////////////////////////////////// Добавить задачу в список и сохрани в indexedDB
         let Store = db.transaction('TaskDB', 'readwrite').objectStore('TaskDB'); // (1)
-
         // отримати сховище об’єктів для роботи з ним
-       // let Store = transaction.objectStore('TaskDB'); // (2)
-
+        // let Store = transaction.objectStore('TaskDB'); // (2)
         let task = {
             id: day_month_year, // простой способ создать уникальный id
             checked: false,
             text: value
-        };  
-
+        };
         let request = Store.add(task); // (3)
-
         request.onsuccess = function () { // (4)
             console.log("Task add to storage", request.result);
             renderTasks();
         };
-
         request.onerror = function () {
             console.log("Fatal Error", request.error);
         };
-            ///////////////////////////////////////////////
-
-
         closeModal();
     } else {
         alert("Please write some text");
     }
-});
+}
 
-console.log(db);
-console.log(openRequest.onupgradeneeded);
+document.getElementById('progress_adding_button').addEventListener('click', () => {
+    openModal();
+    note_input.focus();
+});
+document.getElementById('cancel_note_button').addEventListener('click', closeModal);
+document.getElementById('save_note_button').addEventListener('click', () => {
+    RenderTasks();
+});

@@ -84,7 +84,7 @@ function fillHeatmap() {
             }
         }
         statistics_body.appendChild(tr);
-        console.log(dateCellMap);
+        //console.log(dateCellMap);
     });
     openRequest.onsuccess = function () {
             let db = openRequest.result;
@@ -101,11 +101,11 @@ function fillHeatmap() {
                         let tdInfo = {
                             id: p
                         };
-
                         let request3 = StoreTasks.getAll();
                         request3.onsuccess = function () {
                             StoreTasks.add(tdInfo).onsuccess = function () {
                                 console.log(" Add:", tdInfo);
+                                console.log(StoreTasks);
                             }
                         }
                     }

@@ -230,8 +230,8 @@
     }
 
 .dark-theme {
-    background: radial-gradient(circle at 100%, aliceblue 50%, #feff00 50%, #ff5100 74%, aliceblue 100%);
-    background-repeat: no-repeat;
+    background: radial-gradient(circle at 100%, aliceblue 50%, #feff00 50%, #ff5100 74%, #f6f6f6 75%);
+    background-repeat: no-repeat;   
     background-position: center;
 }
 /* ----------------------------------AsideModalWindow----------------------------------- */
@@ -900,10 +900,10 @@
 }
 
 .progress_block {
-    width: 30%;
+    width: 35%;
     height: 100%;
     //background-image: repeating-radial-gradient(black 50%, rgba(207, 0, 255, 0.2) 60%, darkslateblue 70%, black 100%);
-    background: linear-gradient(145deg, #ff5100 50%, black 50%);
+    background: linear-gradient(145deg, #e4e4e4 50%, black 51%);
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     scrollbar-width: thin;
@@ -921,8 +921,8 @@
     font-size: 50px;
     font-weight: 600;
     position: relative;
-    color:aliceblue;
-    text-shadow:1px 2px 1px black;
+    color:black;
+    //text-shadow:1px 2px 1px black;
 }
 
 
@@ -951,21 +951,22 @@
     width: 100%;
     min-height:800px;
     overflow-y:scroll;
+    border:5px red;
 }
 
-#progress_adding_button{
-    padding:0;
-    width:100%;
-    height:104px;
+#progress_adding_button {
+    padding: 0;
+    width: 49%;
+    height: 104px;
     transition: all 0.1s;
-    margin:auto;
-    cursor:pointer;
+    margin-right: auto;
+    cursor: pointer;
     transition: all 0.1s;
     background: none;
-    border:solid;
-    border-color:#ff5100;
+    border: solid;
+    border-color: #ff5100;
     /border-top-left-radius:40px;
-   / border-top-right-radius:40px;
+    / border-top-right-radius:40px;
 }
     #progress_adding_button span {
         font-family: Montserrat;
@@ -977,20 +978,48 @@
         opacity:0.7;
     }
 
+#progress_done_button {
+    float:inline-end;
+    padding: 0;
+    width: 49%;
+    margin-left:auto;
+    height: 104px;
+    transition: all 0.1s;
+    margin: auto;
+    cursor: pointer;
+    transition: all 0.1s;
+    background: none;
+    border: solid;
+    border-color: #ff5100;
+}
+#progress_done_button span {
+    font-family: Montserrat;
+    font-size: 50px;
+    font-weight: 600;
+    color: white;
+}
+
+    #progress_done_button span:hover {
+     opacity: 0.7;
+    }
 .task-item {
     font-family: Montserrat;
-    font-size: 25px;
+    font-size: 35px;
     width: 100%;
-    color: whitesmoke;
+    color:black;
+    //color: whitesmoke;
     margin: 25px;
 }
     .task-item input {
-        width: 20px;
-        margin-right:10px;
-        height: 20px;
-        border:0;
-        cursor:pointer;
+        width: 25px;
+        margin-right: 10px;
+        height: 25px;
+        cursor: pointer;
+        border-radius:55px;
     }
+        .task-item input:checked + #progress_span_text {
+            text-decoration: line-through;
+        }
     .task-item button {
         position: relative;
         background: none;
@@ -1009,7 +1038,7 @@
     }
 
 #checkbox_progress {
-    margin:auto;
+    margin: auto;
     height: 20px;
 }
 
@@ -1102,13 +1131,13 @@
     height: 800px;
     color: seashell;
 }
-.welcome_p{
-    font-family:Montserrat;
-    font-size:16px;
-    font-weight:500;
+.welcome_p {
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: 500;
     margin-left: 4px;
-    margin-top:5px;
-    color:seashell
+    margin-top: 5px;
+    color: seashell
 }
     .welcome_p:before {
         content: '👋';
@@ -1118,7 +1147,7 @@
 }
 
 .basics_p {
-    font-family: Montserrat;
+    font-family: sans-serif;
     font-size: 16px;
     font-weight: 500;
     margin-left: 12px;
@@ -1127,8 +1156,8 @@
 }
 
 .note_p {
-    font-family: Montserrat;
-    font-size: 16px;
+    font-family: sans-serif;
+    font-size: 20px;
     font-weight: 500;
     margin-left: 12px;
     color: seashell
@@ -1184,6 +1213,7 @@
 }
 
 #divNotedivNote {
+    display:none;
     min-height: 900px;
     min-width: 50%;
     margin-left: 11%;

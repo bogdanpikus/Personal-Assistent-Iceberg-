@@ -5,6 +5,8 @@ const modalWindow = document.getElementsByTagName('ModalWindow');
 const SubmitButton = document.getElementById('modalWindowButton');
 const modalInput = document.getElementById('modalWindowInput');
 const DivH1 = document.getElementById('contener_h1_statistics');
+const Note = document.getElementById('divNotedivNote');
+const modalProgressWindow = document.getElementById('modal_overlay');
 let num = 1
 
 AddNote.addEventListener('click', () => {
@@ -38,6 +40,7 @@ function createNoteLiElement() {
     M.forEach((li) => {
         FileStorage.appendChild(li);
         li.addEventListener('click', () => {
+            Note.style.display = 'inline-block';
             CreateNotePage();
         });
     });
@@ -52,9 +55,9 @@ SubmitButton.addEventListener('click', () => {
 document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') {
         WindowConteiner.style.display = 'none';
+        modalProgressWindow.style.display = 'none';
     }
     if(event.key === 'Enter') {
-        createNoteLiElement();
         closeModalWindow();
     }
 });
