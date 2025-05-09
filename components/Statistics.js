@@ -1,3 +1,4 @@
+const progress_submit_button = document.getElementById('progress_done_button');
 
 let nowDateZip = Date.now();
 let nowDateUnzip = new Date(nowDateZip);
@@ -59,11 +60,9 @@ function addHeatAndBody() {
     }
     thead.appendChild(tr);
 }; 
+let dateCellMap = new Map();
 function fillHeatmap() {
-    let openRequest = indexedDB.open('Tasks');
-
     let startDate = new Date(currentYear, 0, 0);
-    let dateCellMap = new Map();
     daysOfWeek.forEach((dayName, dayIndex) => {
         let day = 0;
         let tr = document.createElement('tr');
@@ -84,37 +83,61 @@ function fillHeatmap() {
             }
         }
         statistics_body.appendChild(tr);
-        //console.log(dateCellMap);
     });
+}
+function addTasksInStorageDB() {
+    let openRequest = indexedDB.open('Tasks');
     openRequest.onsuccess = function () {
-            let db = openRequest.result;
-            let transaction = db.transaction(['TaskDB', 'StoreTD'], 'readwrite');
-            let StoreProgress = transaction.objectStore('TaskDB');
-            let StoreTasks = transaction.objectStore('StoreTD');
-            let request = StoreProgress.getAll();
-            request.onsuccess = function () {
-                let tasks = request.result;
-                tasks.forEach(task => {
-                    if (task.checked) {
-                        let parts = nowDateUnzip.toLocaleString("ua-UA").split(",");
-                        let p = `${parts[0].trim()} - ${task.id}`;
-                        let tdInfo = {
-                            id: p
-                        };
-                        let request3 = StoreTasks.getAll();
-                        request3.onsuccess = function () {
+        let db = openRequest.result;
+        let transaction = db.transaction(['TaskDB', 'StoreTD'], 'readwrite');
+        let StoreProgress = transaction.objectStore('TaskDB');
+        let StoreTasks = transaction.objectStore('StoreTD');
+        let request = StoreProgress.getAll();
+        request.onsuccess = function () {
+            let tasks = request.result;
+            tasks.forEach(task => {
+                if (task.checked) {
+                    let parts = nowDateUnzip.toLocaleString("ua-UA").split(",");
+                    let p = `${parts[0].trim()}-${task.id}`;
+                    let tdInfo = {
+                        id: p
+                    };
+                    let request3 = StoreTasks.getAll();
+                    request3.onsuccess = function () {
                             StoreTasks.add(tdInfo).onsuccess = function () {
                                 console.log(" Add:", tdInfo);
                                 console.log(StoreTasks);
                             }
-                        }
                     }
+                }
 
-                });
-            }
+            });
+        }
     }
 }
+function fillStatistics() {
+    let openRequest = indexedDB.open('Tasks');
+    openRequest.onsuccess = function () {
+        let result = openRequest.result;
+        let transaction = result.transaction('StoreTD', 'readwrite');
+        let StoreTD = transaction.objectStore('StoreTD').getAll();
+
+        StoreTD.onsuccess = function () {
+            let result = StoreTD.result;
+            result.forEach(task => {
+                let date = task.id.split('-')[0].split('.').join("-");
+                let splitdate = `${date.split("-")[2]}-${date.split("-")[1]}-${date.split("-")[0]}`;
+                console.log(splitdate);
+            });
+        }
+    }
+};
+
+progress_submit_button.addEventListener('click', () => {
+    addTasksInStorageDB();
+    fillStatistics();
+});
 
 addHeatAndBody();
 fillHeatmap();
-
+console.log(dateCellMap);

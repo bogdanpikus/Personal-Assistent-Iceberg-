@@ -112,6 +112,8 @@ function RenderTasks() {
             checked: false,
             text: value
         };
+
+
         let request = Store.add(task); // (3)
         request.onsuccess = function () { // (4)
             console.log("Task add to storage", request.result);
