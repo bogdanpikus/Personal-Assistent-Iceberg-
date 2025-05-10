@@ -88,11 +88,9 @@ openRequest.onupgradeneeded = function () {
 openRequest.onerror = function () { //ловим ошибки
     console.error("Error", openRequest.error);
 };
-
 function openModal() {
     document.getElementById('modal_overlay').style.display = 'flex';
 };
-
 function closeModal() {
     document.getElementById('modal_overlay').style.display = 'none';
 };

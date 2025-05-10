@@ -1,4 +1,5 @@
 const progress_submit_button = document.getElementById('progress_done_button');
+const input_progress_storage = document.getElementById('input_progress_storage');
 
 let nowDateZip = Date.now();
 let nowDateUnzip = new Date(nowDateZip);
@@ -128,6 +129,7 @@ function fillStatistics() {
                 let date = task.id.split('-')[0].split('.').join("-");
                 let splitdate = `${date.split("-")[2]}-${date.split("-")[1]}-${date.split("-")[0]}`;
                 console.log(splitdate);
+               ////тут надо находит td таблицы и красить его в зеленый
             });
         }
     }
@@ -136,6 +138,23 @@ function fillStatistics() {
 progress_submit_button.addEventListener('click', () => {
     addTasksInStorageDB();
     fillStatistics();
+    let canvas = document.createElement('canvas');
+    canvas.id = 'ProgressCanvas';
+    canvas.style.border = '2px solid red';
+    canvas.style.height = '400px';
+    canvas.style.width = '100%';
+    canvas.style.margin = 'auto';
+    canvas.style.display = 'flex';
+    canvas.style.justifyContent = 'center';
+    canvas.style.background = 'white';
+    input_progress_storage.appendChild(canvas);
+
+    let c = document.getElementById("ProgressCanvas");
+    let ctx = c.getContext("2d");
+    ctx.moveTo(0, 0);
+    ctx.lineTo(100, 100);
+    ctx.stroke();
+
 });
 
 addHeatAndBody();
