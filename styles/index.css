@@ -23,7 +23,7 @@
 }
 
 .html {
-  height: 100%;
+  //height: 100%;
   margin: 0px;
   padding: 0px;
   margin: auto;
@@ -31,7 +31,7 @@
   background: #ff5100;
 }
 #body {
-  height: 100%;
+  //height: 100%;
   overflow-x: hidden;
   margin: 0px;
   padding: 0px;
@@ -401,7 +401,7 @@
   flex-direction: row;
   position: relative;
   margin-left: auto;
-  margin-bottom: 200px;
+  margin-bottom: 122px;
 }
 
 @media screen and (max-width: 1066px) {
@@ -588,6 +588,7 @@
 .calendar_block_div {
   display: none;
   position: relative;
+  z-index:100;
 }
 .table {
   table-layout: fixed;
@@ -744,6 +745,7 @@
   max-width: 280px;
   border-radius: 20px;
   padding: 2rem;
+  z-index:100;
 }
 
 .time_block_div p {

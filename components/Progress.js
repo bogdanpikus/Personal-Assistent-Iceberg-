@@ -1,4 +1,3 @@
-
 const div_storage = document.getElementById("input_progress_storage");
 const note_input = document.getElementById('note_input');
 const modal_window_Div = document.getElementById('modal_window_Div');

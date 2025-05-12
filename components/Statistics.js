@@ -128,32 +128,66 @@ function fillStatistics() {
             result.forEach(task => {
                 let date = task.id.split('-')[0].split('.').join("-");
                 let splitdate = `${date.split("-")[2]}-${date.split("-")[1]}-${date.split("-")[0]}`;
-                console.log(splitdate);
-               ////тут надо находит td таблицы и красить его в зеленый
+                ////тут надо находит td таблицы и красить его в зеленый
+                const cell = dateCellMap.get(splitdate);
+                if (cell) {
+                    cell.style.backgroundColor = '#28C76F';
+                }
             });
         }
     }
 };
-
-progress_submit_button.addEventListener('click', () => {
-    addTasksInStorageDB();
-    fillStatistics();
+function CanvasAnimaion() {
     let canvas = document.createElement('canvas');
+    const rec = input_progress_storage.getBoundingClientRect();
+    canvas.width = rec.width;
+    canvas.height = rec.height;
     canvas.id = 'ProgressCanvas';
-    canvas.style.border = '2px solid red';
-    canvas.style.height = '400px';
-    canvas.style.width = '100%';
     canvas.style.margin = 'auto';
-    canvas.style.display = 'flex';
     canvas.style.justifyContent = 'center';
-    canvas.style.background = 'white';
+    //canvas.style.background = 'white';
+    canvas.style.zIndex = '100';
+    canvas.style.top = '0px';
+    canvas.style.position = 'absolute';
+    canvas.style.width = rec.width + 'px';
+    canvas.style.height = rec.height + 'px';
     input_progress_storage.appendChild(canvas);
 
     let c = document.getElementById("ProgressCanvas");
     let ctx = c.getContext("2d");
-    ctx.moveTo(0, 0);
-    ctx.lineTo(100, 100);
-    ctx.stroke();
+    let bubbles = [];
+    for (let i = 0; i < 30; i++) {
+        bubbles.push({
+            x: Math.random() * c.width,
+            y: Math.random() * c.height,
+            radius: Math.random() * 30,
+            speed: 8
+        });
+    }
+
+    function drewBubble() {
+        ctx.clearRect(0, 0, c.width, c.height);
+        for (let b of bubbles) {
+            ctx.beginPath();
+            ctx.arc(b.x, b.y, b.radius, 0, Math.PI * 2);
+            ctx.fillStyle = `#28C76F`;
+            ctx.fill();
+            ctx.strokeStyle = "#28C76F";
+            ctx.stroke();
+            ctx.closePath();
+            b.y -= b.speed;
+        }
+        if (bubbles.length > 0) {
+            requestAnimationFrame(drewBubble);
+        }
+    }
+    drewBubble();
+}
+
+progress_submit_button.addEventListener('click', () => {
+    addTasksInStorageDB();
+    fillStatistics();
+    CanvasAnimaion();
 
 });
 
