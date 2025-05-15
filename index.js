@@ -22,9 +22,3 @@ const h1_block = document.getElementById('contener_h1_statistics');
 document.getElementById('close_conteiner_h1').addEventListener('click', () => {
     h1_block.style.display = 'none';
 });
-
-const closeNodePage = document.getElementById('NoteButtonClose');
-const divNote = document.getElementById('divNotedivNote');
-closeNodePage.addEventListener('click', () => {
-    divNote.style.display = 'none';
-});

@@ -243,8 +243,11 @@
   background-repeat: no-repeat;
   background-position: center;
 }
-/* ----------------------------------AsideModalWindow----------------------------------- */
-#asideModalWindow {
+.dark-theme #NoteMainPage {
+    background:#9d9d9d;
+}
+    /* ----------------------------------AsideModalWindow----------------------------------- */
+    #asideModalWindow {
   display: none;
   align-items: center;
   justify-content: center;
@@ -289,7 +292,7 @@
 .aside_panel {
   position: fixed;
   max-width: 165px;
-  height: 100vw;
+  height: 100%;
   //background: #ff5100;
   background-color: rgba(21, 21, 21, 1);
   padding: 0px;
@@ -402,6 +405,7 @@
   position: relative;
   margin-left: auto;
   margin-bottom: 122px;
+  z-index:2;
 }
 
 @media screen and (max-width: 1066px) {
@@ -418,7 +422,7 @@
   width: auto;
   border: 0px;
   margin-left: auto;
-  margin-right: 10px;
+  margin-right: 5px;
 }
 
 .weather_button_div {
@@ -546,7 +550,7 @@
 .calendar_block {
   display: flex;
   flex-direction: column;
-  margin-right: 10px;
+  margin-right: 5px;
   width: auto;
   height: 100px;
 }
@@ -697,7 +701,7 @@
 .time_block {
   display: flex;
   flex-direction: column;
-  margin-right: 9px;
+  margin-right: 5px;
   width: auto;
   height: 100px;
 }
@@ -772,7 +776,7 @@
 .date_block {
   display: flex;
   flex-direction: column;
-  margin-right: 17px;
+  //margin-right: 17px;
   width: auto;
   height: 100px;
 }
@@ -1211,19 +1215,14 @@
   cursor: pointer;
 }
 
-#divNotedivNote {
-  display: none;
-  min-height: 900px;
-  min-width: 50%;
-  margin-left: 11%;
-  //background: white;
-  z-index: 1;
-}
+/*-----------------------------------------NOTES------------------------------------------------------*/
 
-#NoteMainPage {
-  height: 100%;
-  width: 100%;
-  background: white;
-  margin-top: 10px;
-  //z-index: 1;
+#divNotedivNote {
+    display: none;
+    position: absolute;
+    max-height: 900px;
+    min-width: 50%;
+    margin-left: 10%;
+    //background: white;
+    z-index: 1;
 }

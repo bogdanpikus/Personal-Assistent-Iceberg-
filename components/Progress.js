@@ -1,6 +1,8 @@
 const div_storage = document.getElementById("input_progress_storage");
 const note_input = document.getElementById('note_input');
 const modal_window_Div = document.getElementById('modal_window_Div');
+const modal_overlay = document.getElementById('modal_overlay');
+
 let number = 0;
 let indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
 let IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction;
@@ -127,9 +129,16 @@ function RenderTasks() {
 
 document.getElementById('progress_adding_button').addEventListener('click', () => {
     openModal();
+    note_input.value = '';
     note_input.focus();
 });
 document.getElementById('cancel_note_button').addEventListener('click', closeModal);
 document.getElementById('save_note_button').addEventListener('click', () => {
     RenderTasks();
+});
+
+modal_overlay.addEventListener('keydown', event => {
+    if (event.key === 'Enter') {
+        RenderTasks();
+    }
 });
