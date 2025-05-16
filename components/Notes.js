@@ -9,6 +9,7 @@ const Note = document.getElementById('divNotedivNote');
 const modalProgressWindow = document.getElementById('modal_overlay');
 const divNoteConteiner = document.getElementById('divNotedivNote');
 const h1Conteiner = document.getElementById('contener_h1_statistics');
+const liAside = document.getElementsByClassName('liTasks');
 //const liTask = document.getElementById('liTasks');
 let num = 1
 let numNotes = 0;
@@ -42,23 +43,28 @@ function CreateNotePage(id) {
         divneasted.style.width = '100%';
         divneasted.style.background = 'snow';
         divneasted.style.marginTop = '2%';
+        divneasted.style.borderTopRightRadius = '20px';
+        divneasted.style.borderTopLeftRadius = '20px'; 
+        divneasted.style.borderBottomLeftRadius = '20px';
+        divneasted.style.borderBottomRightRadius = '20px';
         let closeButton = document.createElement('button');
         closeButton.id = `NoteButtonClose${numNoteCloseB}`;
+        closeButton.classList.add('closebutton');
         closeButton.innerHTML = 'X';
         closeButton.style.fontSize = '13px';
         closeButton.style.fontWeight = '600';
         closeButton.style.float = 'right';
         closeButton.style.background = '#ff5100';
         closeButton.style.border = '0';
-        closeButton.style.borderTopLeftRadius = '10px';
-        closeButton.style.borderTopRightRadius = '10px';
-        closeButton.style.borderBottomLeftRadius = '10px';
-        closeButton.style.borderBottomRightRadius = '10px';
+        closeButton.style.borderTopLeftRadius = '20px';
+        closeButton.style.borderTopRightRadius = '20px';
+        closeButton.style.borderBottomLeftRadius = '20px';
+        closeButton.style.borderBottomRightRadius = '0px';
         closeButton.style.color = 'snow';
         closeButton.style.cursor = 'pointer';
         closeButton.style.marginTop = '2px';
         closeButton.style.marginRight = '2px';
-        closeButton.style.height = '20px';
+        closeButton.style.height = '40px';
         closeButton.style.width = '40px';
         let addButton = document.createElement('button');
         addButton.id = `NoteButonAdd${numNoteAddB}`;
@@ -76,8 +82,10 @@ function CreateNotePage(id) {
         divNoteConteiner.appendChild(divneasted);
         divneasted.appendChild(closeButton);
         divneasted.appendChild(addButton);
+        closeButton.addEventListener('click', () => {
+            divneasted.style.display = 'none';
+         });
     }
-
 };
 function createNoteLiElement() {
     let li = document.createElement('li');
@@ -87,10 +95,11 @@ function createNoteLiElement() {
     let noteId = num++;
 
     li.innerHTML = `${value}`;
-    let r = Math.floor(Math.random() * 256);
-    let g = Math.floor(Math.random() * 256);
-    let b = Math.floor(Math.random() * 256);
-    li.style.background = `rgb(${r},${g},${b},0.4)`;
+    //let r = Math.floor(Math.random() * 256);
+    //let g = Math.floor(Math.random() * 256);
+    //let b = Math.floor(Math.random() * 256);
+    //li.style.background = `rgb(${r},${g},${b},0.4)`;
+    li.style.opacity = '0.7';
 
     let M = new Map();
     M.set(`li${num}`, li);
@@ -99,11 +108,10 @@ function createNoteLiElement() {
         li.addEventListener('click', () => {
             Note.style.display = 'inline-block';
             h1Conteiner.style.display = 'none';
+            li.style.opacity = '1';
             CreateNotePage(noteId);
         });
     });
-    console.log(M);
-
 } 
 
 SubmitButton.addEventListener('click', () => {
@@ -123,4 +131,3 @@ WindowConteiner.addEventListener('keydown', event => {
         closeModalWindow();
     }
 });
-
