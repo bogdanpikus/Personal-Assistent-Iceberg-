@@ -13,15 +13,15 @@
     <link href="styles/index.css" rel="stylesheet" />
   </head>
   <body id="body">
-      <script src="index.js" defer></script>
-      <script src="components/Weather.js" defer></script>
-      <script src="components/Time.js" defer></script>
-      <script src="components/Date.js" defer></script>
-      <script src="components/Calendar.js" defer></script>
-      <script src="components/Progress.js" defer></script>
-      <script src="components/Statistics.js" defer></script>
-      <script src="components/SwitchTheme.js" defer></script>
-      <script src="components/Notes.js" defer></script>
+      <script type="module" src="index.js" ></script>
+      <script type="module" src="components/Weather.js"></script>
+      <script type="module" src="components/Time.js"></script>
+      <script type="module" src="components/Date.js"></script>
+      <script type="module" src="components/Calendar.js"></script>
+      <script type="module" src="components/Progress.js"></script>
+      <script type="module" src="components/Statistics.js"></script>
+      <script type="module" src="components/SwitchTheme.js"></script>
+      <script type="module" src="components/Notes.js"></script>
 
       <div id="background" class="header" style="opacity: 0;"></div>
       <header class="header">
@@ -64,10 +64,10 @@
           </div>
           <!--здесь был  <aside class="aside_panel">-->
           <div id="divNotedivNote">
-             <!-- <div id="NoteMainPage">
-                  <button id="NoteButtonClose"></button>
-                  <button id="NoteButonAdd"></button>
-              </div> -->
+              <div id="blurNoteModalPage"></div>
+              <div id="ModalAddNote">
+                  <input type="text" id="ModalAddNoteInput" placeholder="Enter a note name....." />
+              </div>
           </div>
           <div class="contener_h1_statistics" id="contener_h1_statistics">
               <article class="h1_lets_start" id="title_main_page">

@@ -1,16 +1,16 @@
+import { LocalTime } from './Time.js';
 const AddNote = document.getElementById('add_note_button');
 const FileStorage = document.getElementById('FileList');
 const WindowConteiner = document.getElementById('asideModalWindow');
-const modalWindow = document.getElementsByTagName('ModalWindow');
 const SubmitButton = document.getElementById('modalWindowButton');
 const modalInput = document.getElementById('modalWindowInput');
-const DivH1 = document.getElementById('contener_h1_statistics');
 const Note = document.getElementById('divNotedivNote');
 const modalProgressWindow = document.getElementById('modal_overlay');
-const divNoteConteiner = document.getElementById('divNotedivNote');
 const h1Conteiner = document.getElementById('contener_h1_statistics');
-const liAside = document.getElementsByClassName('liTasks');
-//const liTask = document.getElementById('liTasks');
+const blurNoteModalPage = document.getElementById('blurNoteModalPage');
+const ModalAddNote = document.getElementById('ModalAddNote');
+
+
 let num = 1
 let numNotes = 0;
 let numNoteCloseB = 0;
@@ -34,7 +34,7 @@ function CreateNotePage(id) {
     });
     let existDiv = document.getElementById(`NoteMainPage${id}`)
     if (existDiv) {
-        existDiv.style.display = 'inline-block';
+        existDiv.style.display = 'flex';
     } else {
         let divneasted = document.createElement(`div`);
         divneasted.id = `NoteMainPage${id}`;
@@ -79,12 +79,16 @@ function CreateNotePage(id) {
         addButton.style.height = '30px';
         addButton.style.width = '30px';
 
-        divNoteConteiner.appendChild(divneasted);
+        Note.appendChild(divneasted);
         divneasted.appendChild(closeButton);
         divneasted.appendChild(addButton);
         closeButton.addEventListener('click', () => {
             divneasted.style.display = 'none';
-         });
+        });
+        addButton.addEventListener('click', () => {
+            blurNoteModalPage.style.display = 'flex';
+            ModalAddNote.style.display = 'flex';
+        });
     }
 };
 function createNoteLiElement() {
@@ -106,7 +110,7 @@ function createNoteLiElement() {
     M.forEach((li) => {
         FileStorage.appendChild(li);
         li.addEventListener('click', () => {
-            Note.style.display = 'inline-block';
+            Note.style.display = 'flex';
             h1Conteiner.style.display = 'none';
             li.style.opacity = '1';
             CreateNotePage(noteId);
@@ -115,8 +119,12 @@ function createNoteLiElement() {
 } 
 
 SubmitButton.addEventListener('click', () => {
-    createNoteLiElement();
-    closeModalWindow();
+    if (modalInput.value == '') {
+        alert('Please imagine a Note Page Name');
+    } else {
+        createNoteLiElement();
+        closeModalWindow();
+    }
 });
 
 document.addEventListener('keydown', (event) => {
@@ -127,7 +135,13 @@ document.addEventListener('keydown', (event) => {
 });
 WindowConteiner.addEventListener('keydown', event => {
     if (event.key === 'Enter') {
-        createNoteLiElement();
-        closeModalWindow();
+        if (modalInput.value == '') {
+            alert('Please imagine a Note Page Name');
+        } else {
+            createNoteLiElement();
+            closeModalWindow();
+        }
     }
 });
+
+console.log(LocalTime().nowDate);

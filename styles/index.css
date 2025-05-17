@@ -1219,10 +1219,34 @@
 
 #divNotedivNote {
     display: none;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     max-height: 900px;
     min-width: 50%;
     margin-left: 10%;
-    //background: white;
     z-index: 1;
+}
+#blurNoteModalPage {
+    display: none;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    height: 815px;
+    width: 102%;
+    background: white;
+    filter: blur(4px);
+    margin-top: 2%;
+    border-radius: 20px;
+}
+
+#ModalAddNote {
+    display: none;
+    position: absolute;
+    width: 60%;
+    height: 50%;
+    background: red;
+}
+#ModalAddNoteInput{
+    height:20px;
 }
