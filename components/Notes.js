@@ -1,4 +1,5 @@
 import { LocalTime } from './Time.js';
+//import $ from 'jquery';
 const AddNote = document.getElementById('add_note_button');
 const FileStorage = document.getElementById('FileList');
 const WindowConteiner = document.getElementById('asideModalWindow');
@@ -9,7 +10,11 @@ const modalProgressWindow = document.getElementById('modal_overlay');
 const h1Conteiner = document.getElementById('contener_h1_statistics');
 const blurNoteModalPage = document.getElementById('blurNoteModalPage');
 const ModalAddNote = document.getElementById('ModalAddNote');
-
+const ModalSpanId = document.getElementById('ModalSpanId');
+const ModalAddNoteUl = document.getElementById('ModalAddNoteUl');
+const ModalAddNoteCloseButton = document.getElementById('ModalAddNoteCloseButton');
+const ModalAddNoteSubmitButton = document.getElementById('ModalAddNoteSubmitButton');
+const ModalAddNoteTextarea = document.getElementById('ModalAddNoteTextarea');
 
 let num = 1
 let numNotes = 0;
@@ -41,7 +46,7 @@ function CreateNotePage(id) {
         divneasted.classList.add(`note-page`);
         divneasted.style.height = '800px';
         divneasted.style.width = '100%';
-        divneasted.style.background = 'snow';
+        //divneasted.style.background = 'snow';
         divneasted.style.marginTop = '2%';
         divneasted.style.borderTopRightRadius = '20px';
         divneasted.style.borderTopLeftRadius = '20px'; 
@@ -88,6 +93,7 @@ function CreateNotePage(id) {
         addButton.addEventListener('click', () => {
             blurNoteModalPage.style.display = 'flex';
             ModalAddNote.style.display = 'flex';
+            ModalAddNoteTextarea.value = '';
         });
     }
 };
@@ -126,7 +132,6 @@ SubmitButton.addEventListener('click', () => {
         closeModalWindow();
     }
 });
-
 document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') {
         WindowConteiner.style.display = 'none';
@@ -145,3 +150,11 @@ WindowConteiner.addEventListener('keydown', event => {
 });
 
 console.log(LocalTime().nowDate);
+$("#ModalSpanId").on("click", function () {
+    $("#ModalAddNoteUl").slideToggle("fast");
+});
+
+ModalAddNoteCloseButton.addEventListener('click', () => {
+    blurNoteModalPage.style.display = 'none';
+    ModalAddNote.style.display = 'none';
+});

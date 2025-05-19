@@ -231,20 +231,26 @@
 .dark-theme #modalWindowButton {
   background: black;
 }
-
+.dark-theme #blurNoteModalPage{
+    background:#9d9d9d;
+}
+.dark-theme #ModalAddNoteTextarea{
+    background:aliceblue;
+    color:black;
+}
+.dark-theme .note-page{
+    background:#9d9d9d;
+}
 .dark-theme {
-  background: radial-gradient(
-    circle at 100%,
-    aliceblue 50%,
-    #feff00 50%,
-    #ff5100 74%,
-    #f6f6f6 75%
-  );
-  background-repeat: no-repeat;
-  background-position: center;
+    background: radial-gradient( circle at 100%, aliceblue 50%, #feff00 50%, #ff5100 74%, #f6f6f6 75% );
+    background-repeat: no-repeat;
+    background-position: center;
 }
 .dark-theme #NoteMainPage {
     background:#9d9d9d;
+}
+.dark-theme #ModalAddNote{
+    background:rgba(0, 0, 0, 0.3);
 }
     /* ----------------------------------AsideModalWindow----------------------------------- */
     #asideModalWindow {
@@ -1242,10 +1248,11 @@
 
 #ModalAddNote {
     display: none;
+    flex-direction:column;
     position: absolute;
-    width: 60%;
+    width: 55%;
     height: 70%;
-    background: radial-gradient(circle at 100%, #ff5100 40%, black 50%);
+    background: #9d9d9d;
     border-radius:10px;
     border:0;
 }
@@ -1253,22 +1260,100 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 30px;
     height: 40%;
-    width: 60%;
     border: 0;
-    background: #9d9d9d;
-    color: darkblue;
+    max-width: 92%;
+    background: #313131;
+    color: white;
     border-top-left-radius: 10px;
+    margin-left: 5px;
 }
 #ModalAddNoteCloseButton{
+    position:absolute;
     font-size:20px;
     height: 30px;
     width:  30px;
-    margin-left:auto;
+    margin-left:93%;
     border:0;
     background:none;
     cursor:pointer;
 }
 #ModalAddNoteCloseButton:before{
     content:'x';
-    color: aliceblue;
+    color: black;
+}
+#ModalAddNoteSubmitButton{
+    margin-top:auto;
+    margin-left:auto;
+}
+#DropdownList{
+    width:200px;
+    margin-left:5px;
+}
+
+#ModalAddNoteUl {
+    display:none;
+    font-size: 23.7px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+    #ModalAddNoteUl li {
+        width: 100%;
+        cursor: pointer;
+        background: white;
+        list-style-type: none;
+        opacity: 0.7;
+    }
+    #ModalAddNoteUl li:hover{
+        opacity:1;
+    }
+
+.ModalSpan {
+    display: inherit;
+    //width: 100%;
+    font-size: 35px;
+    font-weight: 600;
+    background: white;
+    cursor: pointer;
+    opacity: 0.7;
+    //border: 0.5px ridge #9d9d9d;
+    border-bottom:none;
+    border-right:none;
+}
+    .ModalSpan:hover {
+        opacity: 1;
+        box-shadow: 0px 5px 20px 1px #313131;
+        transition: ease-in-out 0.2s;
+    }
+    .ModalSpan::after {
+        font-size: 112.3px;
+        content: "";
+        display: inline-block;
+        margin-left: 0.5em;
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 10px solid black;
+        margin-bottom: 5px;
+    }
+
+#ModalAddNoteSubmitButton{
+    font-family:Montserrat;
+    font-size:30px;
+    font-weight:600;
+    height:50px;
+    width:100px;
+    border:0;
+    border-radius:10px;
+    color:whitesmoke;
+    cursor:pointer;
+    background: linear-gradient(130deg, #d800ff, #0089a2);
+    transition: ease-in 0.1s;
+}
+    #ModalAddNoteSubmitButton:active {
+        transform: scale(0.9);
+    }
+.note-page{
+    background:snow;
 }
