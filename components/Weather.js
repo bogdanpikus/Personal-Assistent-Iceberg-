@@ -22,7 +22,6 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&ap
     .then(data => {
         let Towm = data.name;
         let tempCelsius = (data.main.temp - 273.15).toFixed(1);
-        let description = data.weather[0].description;
         let fells_like = (data.main.feels_like - 273.15).toFixed(1);
         let mainWeather = data.weather[0].main;
         let humidity = data.main.humidity;
@@ -42,27 +41,37 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&ap
     `;
 
         const changeWeatherButton = document.getElementById('button_ChangeWeatherTown');
-        const cityBlock = document.getElementById('weather_block');
+        const cityChangeBlock = document.getElementById('cityChangeBlock');
         changeWeatherButton.addEventListener('click', () => {
-
-
-            const ul = document.createElement('ul');
-            ul.className = 'cityList'; // для стилей и проверки
-
-            cities.forEach(city => {
-                const li = document.createElement('li');
-                const cityBtn = document.createElement('button');
-                cityBtn.textContent = city.name;
-                cityBtn.addEventListener('click', () => {
-                    feachWeather(city.lat, city.long);
-                    ul.style.display = 'none';
-                });
-                li.appendChild(cityBtn);
-                ul.appendChild(li);
+            document.querySelectorAll('.cityList').forEach(div => {
+                div.style.display = 'none';
             });
+            let existul = document.getElementById('cityListId');
+            if (existul) {
+                existul.style.display = 'flex';
+                cityChangeBlock.style.display = 'flex';
+            } else {
+                const ul = document.createElement('ul');
+                ul.className = 'cityList'; // для стилей и проверки
+                ul.id = 'cityListId';
 
-            cityBlock.appendChild(ul);
-            ul.style.display = 'flex';
+                cities.forEach(city => {
+                    const li = document.createElement('li');
+                    const cityBtn = document.createElement('button');
+                    cityBtn.textContent = city.name;
+                    cityBtn.addEventListener('click', () => {
+                        feachWeather(city.lat, city.long);
+                        ul.style.display = 'none';
+                        cityChangeBlock.style.display = 'none';
+                    });
+                    li.appendChild(cityBtn);
+                    ul.appendChild(li);
+                });
+
+                cityChangeBlock.appendChild(ul);
+                ul.style.display = 'flex';
+                cityChangeBlock.style.display = 'flex';
+            }
         });
     });
 

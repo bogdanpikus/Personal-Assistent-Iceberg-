@@ -531,27 +531,38 @@
   color: #0b033c;
 }
 
+#cityChangeBlock {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px);
+}
 .cityList {
-  display: none;
-  flex-wrap: wrap;
-  position: relative;
-  width: 50%;
-  place-items: center;
-  list-style-type: none;
-  left: 75%;
-  bottom: 440.2%;
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
 }
 .cityList li {
-  width: 60px;
+  width: 83px;
 }
 
-.cityList li button {
-  width: 60px;
-  height: 40px;
-  border: 0;
-  padding: 0;
-  margin: 0;
-}
+    .cityList li button {
+        font-size: 20px;
+        width: 88px;
+        height: 40px;
+        border: 0;
+        padding: 0;
+        margin: 0;
+    }
 /* ----------------------------------CALENDAR----------------------------------- */
 .calendar_block {
   display: flex;
@@ -1356,4 +1367,18 @@
     }
 .note-page{
     background:snow;
+}
+
+#liClose{
+    font-size:20px;
+    height:inherit;
+    width:20px;
+    background:none;
+    color:darkred;
+    border:0;
+    margin-left:auto;
+    cursor:pointer;
+}
+#liClose::before{
+    content: 'x';
 }

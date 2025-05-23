@@ -14,7 +14,6 @@
   </head>
   <body id="body">
       <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-      <script type="module" src="index.js"></script>
       <script type="module" src="components/Weather.js"></script>
       <script type="module" src="components/Time.js"></script>
       <script type="module" src="components/Date.js"></script>
@@ -23,6 +22,7 @@
       <script type="module" src="components/Statistics.js"></script>
       <script type="module" src="components/SwitchTheme.js"></script>
       <script type="module" src="components/Notes.js"></script>
+      <script type="module" src="index.js"></script>
 
       <div id="background" class="header" style="opacity: 0;"></div>
       <header class="header">
@@ -97,10 +97,9 @@
                       <button id="weather_id_button" class="weather_button"><span>Weather</span></button>
                   </div>
                   <div class="weather_block_div" id="weather_block_div">
-
                   </div>
               </article>
-
+              <div id="cityChangeBlock"></div>
               <article class="calendar_block">
                   <div class="calendar_button_div">
                       <button id="calendar_id_button" class="calendar_button"><span>Calendar</span></button>

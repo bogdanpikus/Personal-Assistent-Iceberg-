@@ -187,10 +187,15 @@ function CanvasAnimaion() {
 progress_submit_button.addEventListener('click', () => {
     addTasksInStorageDB();
     fillStatistics();
-    CanvasAnimaion();
-
+    const ExistHTMLCanvas = document.getElementById('ProgressCanvas');
+    if (ExistHTMLCanvas) {
+        ExistHTMLCanvas.remove();
+        CanvasAnimaion();
+    } else {
+        CanvasAnimaion();
+    }
 });
 
 addHeatAndBody();
 fillHeatmap();
-console.log(dateCellMap);
+//console.log(dateCellMap);

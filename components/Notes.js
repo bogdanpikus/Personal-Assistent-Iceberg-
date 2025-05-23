@@ -10,11 +10,9 @@ const modalProgressWindow = document.getElementById('modal_overlay');
 const h1Conteiner = document.getElementById('contener_h1_statistics');
 const blurNoteModalPage = document.getElementById('blurNoteModalPage');
 const ModalAddNote = document.getElementById('ModalAddNote');
-const ModalSpanId = document.getElementById('ModalSpanId');
-const ModalAddNoteUl = document.getElementById('ModalAddNoteUl');
 const ModalAddNoteCloseButton = document.getElementById('ModalAddNoteCloseButton');
-const ModalAddNoteSubmitButton = document.getElementById('ModalAddNoteSubmitButton');
 const ModalAddNoteTextarea = document.getElementById('ModalAddNoteTextarea');
+const cityChangeBlock = document.getElementById('cityChangeBlock');
 
 let num = 1
 let numNotes = 0;
@@ -39,7 +37,7 @@ function CreateNotePage(id) {
     });
     let existDiv = document.getElementById(`NoteMainPage${id}`)
     if (existDiv) {
-        existDiv.style.display = 'flex';
+        existDiv.style.display = 'inline-block';
     } else {
         let divneasted = document.createElement(`div`);
         divneasted.id = `NoteMainPage${id}`;
@@ -103,8 +101,9 @@ function createNoteLiElement() {
     li.id = `liTasks${num++}`;
     let value = modalInput.value.trim();
     let noteId = num++;
-
     li.innerHTML = `${value}`;
+    let liClose = document.createElement('button');
+    liClose.id = `liClose`;
     //let r = Math.floor(Math.random() * 256);
     //let g = Math.floor(Math.random() * 256);
     //let b = Math.floor(Math.random() * 256);
@@ -114,16 +113,27 @@ function createNoteLiElement() {
     let M = new Map();
     M.set(`li${num}`, li);
     M.forEach((li) => {
+        li.appendChild(liClose);
         FileStorage.appendChild(li);
+        //FileStorage.appendChild(liClose);
         li.addEventListener('click', () => {
             Note.style.display = 'flex';
             h1Conteiner.style.display = 'none';
             li.style.opacity = '1';
             CreateNotePage(noteId);
         });
+        liClose.addEventListener('click', (event) => {
+            event.stopPropagation();
+            FileStorage.removeChild(li);
+            /////////удаление страницы заметок я пытался сделать здесь
+            let div = document.getElementById(`NoteMainPage${noteId}`);
+            console.log(div);
+            if (div) {
+                div.remove()
+            }
+        });
     });
 } 
-
 SubmitButton.addEventListener('click', () => {
     if (modalInput.value == '') {
         alert('Please imagine a Note Page Name');
@@ -136,6 +146,7 @@ document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') {
         WindowConteiner.style.display = 'none';
         modalProgressWindow.style.display = 'none';
+        cityChangeBlock.style.display = 'none';
     }
 });
 WindowConteiner.addEventListener('keydown', event => {
