@@ -71,9 +71,14 @@
                   <div id="DropdownList">
                       <span class="ModalSpan" id="ModalSpanId">Options</span>
                       <ul id="ModalAddNoteUl">
-                          <li class="ModalLi">Deadline Time</li>
-                          <li class="ModalLi">Deadline Date</li>
+                          <li id="LiDeadLineTime" class="ModalLi">Deadline Time</li>
+                          <li id="LiDeadLineDate" class="ModalLi">Deadline Date</li>
                       </ul>
+                  </div>
+                  <div id="optionsConteiner"></div>
+                  <div id="remind">
+                      <p id="Reminder" title="Напоминание выскочит в то время, которое вы указали">Reminder on/of</p>
+                      <input type="checkbox" />
                   </div>
                   <button type="button" id="ModalAddNoteSubmitButton">Submit</button>
               </div>
@@ -160,9 +165,7 @@
                       <button class="date_button" id="date_id_button"><span>Date</span></button>
                   </div>
                   <div class="Img_SeasonChange" id="date_block_div">
-                      <div class="dateBlock" id="dateBlock">
-
-                      </div>
+                      <div class="dateBlock" id="dateBlock"></div>
                   </div>
               </article>
           </div>

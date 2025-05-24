@@ -13,6 +13,8 @@ const ModalAddNote = document.getElementById('ModalAddNote');
 const ModalAddNoteCloseButton = document.getElementById('ModalAddNoteCloseButton');
 const ModalAddNoteTextarea = document.getElementById('ModalAddNoteTextarea');
 const cityChangeBlock = document.getElementById('cityChangeBlock');
+const LiDeadLineTime = document.getElementById('LiDeadLineTime');
+const LiDeadLineDate = document.getElementById('LiDeadLineDate');
 
 let num = 1
 let numNotes = 0;
@@ -130,6 +132,8 @@ function createNoteLiElement() {
             console.log(div);
             if (div) {
                 div.remove()
+                blurNoteModalPage.style.display = 'none';
+                ModalAddNote.style.display = 'none';
             }
         });
     });
@@ -168,4 +172,59 @@ $("#ModalSpanId").on("click", function () {
 ModalAddNoteCloseButton.addEventListener('click', () => {
     blurNoteModalPage.style.display = 'none';
     ModalAddNote.style.display = 'none';
+});
+
+LiDeadLineDate.addEventListener('click', () => {
+    const optionsConteiner = document.getElementById('optionsConteiner');
+    const option = document.getElementById('DeadDateLine');
+    if (option) {
+        alert('You already have DeadLine Date');
+    } else {
+        let div = document.createElement('div');
+        div.id = 'DeadDateLine';
+        let p = document.createElement('p');
+        p.innerHTML = 'End Date:';
+        p.style.margin = '0';
+        let input = document.createElement('input');
+        input.style.width = '140px';
+        input.style.height = '20px';
+        input.style.background = 'snow';
+        input.type = 'date';
+        input.style.border = '0';
+        let button = document.createElement('button');
+        button.style.width = '25px';
+        button.style.height = '25px';
+        button.innerHTML = 'x';
+        optionsConteiner.appendChild(div);
+        div.appendChild(p);
+        div.appendChild(input);
+        div.appendChild(button);
+    }
+});
+LiDeadLineTime.addEventListener('click', () => {
+    const optionsConteiner = document.getElementById('optionsConteiner');
+    const option = document.getElementById('DeadTimeLine');
+    if (option) {
+        alert('You already have DeadLine Time');
+    } else {
+        let div = document.createElement('div');
+        div.id = 'DeadTimeLine';
+        let p = document.createElement('p');
+        p.innerHTML = 'End Time:';
+        p.style.margin = '0';
+        let input = document.createElement('input');
+        input.style.width = '140px';
+        input.style.height = '20px';
+        input.style.background = 'snow';
+        input.type = 'time';
+        input.style.border = '0';
+        let button = document.createElement('button');
+        button.style.width = '25px';
+        button.style.height = '25px';
+        button.innerHTML = 'x';
+        optionsConteiner.appendChild(div);
+        div.appendChild(p);
+        div.appendChild(input);
+        div.appendChild(button);
+    }
 });
