@@ -7,7 +7,7 @@ let number = 0;
 let indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
 let IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction;
 /////////////////////////////////////////////Создается база данных
-let openRequest = indexedDB.open("Tasks", 2); //Щоб почати працювати з IndexedDB, нам спочатку потрібно відкрити (підключитися до) бази даних.
+let openRequest = indexedDB.open("Tasks", 3); //Щоб почати працювати з IndexedDB, нам спочатку потрібно відкрити (підключитися до) бази даних.
 let db;    
 let td;
 function renderTasks() {
@@ -84,6 +84,9 @@ openRequest.onupgradeneeded = function () {
     };
     if (!db.objectStoreNames.contains('StoreTD')) {
         db.createObjectStore("StoreTD", { keyPath: "id" });
+    };
+    if (!db.objectStoreNames.contains('NoteDB')) {
+        db.createObjectStore("NoteDB", { keyPath: "id" });
     };
 };
 openRequest.onerror = function () { //ловим ошибки

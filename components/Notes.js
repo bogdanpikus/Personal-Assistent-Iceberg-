@@ -15,11 +15,13 @@ const ModalAddNoteTextarea = document.getElementById('ModalAddNoteTextarea');
 const cityChangeBlock = document.getElementById('cityChangeBlock');
 const LiDeadLineTime = document.getElementById('LiDeadLineTime');
 const LiDeadLineDate = document.getElementById('LiDeadLineDate');
+const ModalAddNoteSubmitButton = document.getElementById('ModalAddNoteSubmitButton');
 
 let num = 1
 let numNotes = 0;
 let numNoteCloseB = 0;
 let numNoteAddB = 0;
+
 AddNote.addEventListener('click', () => {
     WindowConteiner.style.display = (WindowConteiner.style.display == 'none' || WindowConteiner.style.display == '') ? 'flex' : 'none';
     modalInput.value = '';
@@ -186,6 +188,7 @@ LiDeadLineDate.addEventListener('click', () => {
         p.innerHTML = 'End Date:';
         p.style.margin = '0';
         let input = document.createElement('input');
+        input.id = 'inputDate_id'
         input.style.width = '140px';
         input.style.height = '20px';
         input.style.background = 'snow';
@@ -213,6 +216,7 @@ LiDeadLineTime.addEventListener('click', () => {
         p.innerHTML = 'End Time:';
         p.style.margin = '0';
         let input = document.createElement('input');
+        input.id = 'inputTime_id';
         input.style.width = '140px';
         input.style.height = '20px';
         input.style.background = 'snow';
@@ -226,5 +230,62 @@ LiDeadLineTime.addEventListener('click', () => {
         div.appendChild(p);
         div.appendChild(input);
         div.appendChild(button);
+    }
+});
+function setupReminder(note) {
+    if (!note.reminder || !note.endDate || !note.endTime) return;
+    const endDateTime = new Date(`${note.endDate}T${note.endTime}`);
+    const now = new Date();
+    const timeToReminder = endDateTime.getTime() - now.getTime();
+    if (timeToReminder > 0) {
+        setTimeout(() => {
+            alert(`Напоминание: ${note.title}`);
+        }, timeToReminder);
+    }
+}
+//// Написать алгоритм отображения заметок на стене
+ModalAddNoteSubmitButton.addEventListener('click', () => {
+    let openRequest = indexedDB.open("Tasks");
+    openRequest.onsuccess = function () {
+        alert("Open IndexedDb Success");
+        let db = openRequest.result;
+        let transation = db.transaction('NoteDB', 'readwrite');
+        let NoteDB = transation.objectStore('NoteDB');
+
+        const inputDate = document.getElementById('inputDate_id');
+        const inputTime = document.getElementById('inputTime_id');
+        const textarea = document.getElementById('ModalAddNoteTextarea');
+        const checkbox = document.querySelector('#remind input[type="checkbox"]');
+
+        const title = textarea.value.trim(); 
+        const endDate = inputDate?.value || null;
+        const endTime = inputTime?.value || null;
+        const reminder = checkbox.checked || false;
+
+        if (!title) {
+            alert("Write text");
+            return;
+        }
+        let NoteObject = {
+            id: `${LocalTime().nowDate}}`,
+            title,
+            endDate,
+            endTime,
+            reminder,
+            createdAt: new Date(),
+        };
+
+        let NotePush = NoteDB.add(NoteObject);
+        NotePush.onsuccess = function () {
+            blurNoteModalPage.style.display = 'none';
+            ModalAddNote.style.display = 'none';
+            alert("NotePush Success");
+        }
+        NotePush.onerror = function () {
+            alert('Fatal Error', NotePush.result);
+        }
+    }
+    openRequest.onerror = function () {
+        console.log('Fatal Error', openRequest.result);
     }
 });
