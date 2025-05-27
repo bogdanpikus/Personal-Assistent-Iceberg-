@@ -1239,10 +1239,9 @@
     justify-content: center;
     align-items: center;
     position: absolute;
-    max-height: 900px;
-    min-width: 50%;
+    width: 52.2%;
     margin-left: 10%;
-    z-index: 1;
+    //z-index: 1;
 }
 #blurNoteModalPage {
     display: none;
@@ -1266,6 +1265,7 @@
     background: #9d9d9d;
     border-radius:10px;
     border:0;
+    z-index:1000;
 }
 #ModalAddNoteTextarea {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -1420,4 +1420,22 @@
 }
 #Reminder:hover{
     color: crimson;
+}
+#NoteContainer {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    top: 5px;
+    z-index: 1;
+    width: 100%;
+}
+.note {
+    position: inherit;
+    margin: 10px;
+    height: fit-content;
+    min-height:171px;
+    width: 200px;
+    background: url('https://thumbs.dreamstime.com/b/%D0%B7%D0%B0%D0%BC%D0%B5%D1%82%D0%BA%D0%B0-%D0%B8%D0%B7%D0%BE%D0%BB%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%B0%D1%8F-%D0%BD%D0%B0-%D0%BF%D1%80%D0%BE%D0%B7%D1%80%D0%B0%D1%87%D0%BD%D0%BE%D0%BC-%D1%84%D0%BE%D0%BD%D0%B5-%D0%BB%D0%B8%D1%81%D1%82-office-%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD-%D0%B4%D0%BB%D1%8F-%D0%B2%D0%B0%D1%88%D0%B8%D1%85-158722602.jpg');
+    background-position:center;
+    user-select:none;
 }

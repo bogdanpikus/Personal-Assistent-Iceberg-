@@ -49,6 +49,9 @@ function CreateNotePage(id) {
         divneasted.style.height = '800px';
         divneasted.style.width = '100%';
         //divneasted.style.background = 'snow';
+        let NoteContainer = document.createElement('div');
+        NoteContainer.id = 'NoteContainer';
+        NoteContainer.classList.add('NoteClassContainer');
         divneasted.style.marginTop = '2%';
         divneasted.style.borderTopRightRadius = '20px';
         divneasted.style.borderTopLeftRadius = '20px'; 
@@ -89,6 +92,7 @@ function CreateNotePage(id) {
         Note.appendChild(divneasted);
         divneasted.appendChild(closeButton);
         divneasted.appendChild(addButton);
+        divneasted.appendChild(NoteContainer);
         closeButton.addEventListener('click', () => {
             divneasted.style.display = 'none';
         });
@@ -235,7 +239,7 @@ LiDeadLineTime.addEventListener('click', () => {
 function setupReminder(note) {
     if (!note.reminder || !note.endDate || !note.endTime) return;
     const endDateTime = new Date(`${note.endDate}T${note.endTime}`);
-    const now = new Date();
+    const now = new Date(); 
     const timeToReminder = endDateTime.getTime() - now.getTime();
     if (timeToReminder > 0) {
         setTimeout(() => {
@@ -243,11 +247,53 @@ function setupReminder(note) {
         }, timeToReminder);
     }
 }
-//// Написать алгоритм отображения заметок на стене
+function renderNoteToWall(note) {
+    const noteKey = `${note.title}_${note.endDate}_${note.endTime}_${note.reminder}`;
+
+    // Проверка: если уже есть элемент с таким data-note-key, не добавлять снова
+    if (document.querySelector(`[data-note-key="${noteKey}"]`)) {
+        return;
+    }
+
+    const walls = document.querySelectorAll('[id^="NoteMainPage"]');
+    let activeWall = null;
+
+    for (const wall of walls) {
+        if (getComputedStyle(wall).display !== 'none') {
+            activeWall = wall;
+            break;
+        }
+    }
+
+    if (activeWall) {
+        const NoteContainer = activeWall.querySelector('#NoteContainer');
+        const noteDiv = document.createElement('div');
+        noteDiv.classList.add(`note`);
+        noteDiv.setAttribute('data-note-key', noteKey);
+
+        const title = document.createElement('h3');
+        title.innerText = note.title;
+
+        const date = document.createElement('p');
+        const time = document.createElement('p');
+        date.innerText = `${note.endDate || ''}`;
+        time.innerText = `${note.endTime || ''}`;
+
+        const reminder = document.createElement('p');
+        reminder.innerText = note.reminder ? 'Reminder on' : 'Remainder off';
+
+        activeWall.appendChild(NoteContainer);
+        NoteContainer.appendChild(noteDiv); 
+        noteDiv.appendChild(title);
+        noteDiv.appendChild(date);
+        noteDiv.appendChild(time);
+        noteDiv.appendChild(reminder);
+    }
+};
+
 ModalAddNoteSubmitButton.addEventListener('click', () => {
     let openRequest = indexedDB.open("Tasks");
     openRequest.onsuccess = function () {
-        alert("Open IndexedDb Success");
         let db = openRequest.result;
         let transation = db.transaction('NoteDB', 'readwrite');
         let NoteDB = transation.objectStore('NoteDB');
@@ -257,7 +303,7 @@ ModalAddNoteSubmitButton.addEventListener('click', () => {
         const textarea = document.getElementById('ModalAddNoteTextarea');
         const checkbox = document.querySelector('#remind input[type="checkbox"]');
 
-        const title = textarea.value.trim(); 
+        const title = textarea.value.trim();
         const endDate = inputDate?.value || null;
         const endTime = inputTime?.value || null;
         const reminder = checkbox.checked || false;
@@ -266,8 +312,9 @@ ModalAddNoteSubmitButton.addEventListener('click', () => {
             alert("Write text");
             return;
         }
+
         let NoteObject = {
-            id: `${LocalTime().nowDate}}`,
+            id: `${LocalTime().nowDate}`,
             title,
             endDate,
             endTime,
@@ -279,7 +326,16 @@ ModalAddNoteSubmitButton.addEventListener('click', () => {
         NotePush.onsuccess = function () {
             blurNoteModalPage.style.display = 'none';
             ModalAddNote.style.display = 'none';
-            alert("NotePush Success");
+            const AllNotes = NoteDB.getAll();
+            AllNotes.onsuccess = function () {
+                let result = AllNotes.result;
+                result.forEach(note => {
+                    renderNoteToWall(note);
+                });
+            }
+            AllNotes.onerror = function () {
+                alert("Fatal Notes Pull Requerst Error",AllNotes.error);
+            }
         }
         NotePush.onerror = function () {
             alert('Fatal Error', NotePush.result);
