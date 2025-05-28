@@ -45,12 +45,12 @@ function generateCalendar(month) { // функци€ по заполнению календар€ на каждый 
     }
 
     for (let day = 1; day <= totalDays; day++){ 
-        let td = document.createElement("td");
-           td.innerText = day;
-           tr.appendChild(td);
-           if (tr.children.length === 7) {
-               calendar_body.appendChild(tr);
-               tr = document.createElement("tr");
+            let td = document.createElement("td");
+            td.innerText = day;
+            tr.appendChild(td);
+        if (tr.children.length === 7) {
+            calendar_body.appendChild(tr);
+            tr = document.createElement("tr");
         }
 
         if (
@@ -65,12 +65,7 @@ function generateCalendar(month) { // функци€ по заполнению календар€ на каждый 
     document.getElementById("thead_id_month").innerHTML = `${nameOfMonth[month]}`;
     document.getElementById("current_year").innerHTML = `${year}`;
     calendar_body.appendChild(tr);
-    //console.log(totalDays);
-    //console.log(tr);
-    //console.log(firstDay);
-    //console.log(year);
-}// конец функции
-
+}
 
 
 document.getElementById("button_forward_calendar").addEventListener('click', () => {
@@ -113,3 +108,35 @@ document.getElementById("button_back_calendar").addEventListener('click', () => 
 //}, 60000);
 calendar_head.appendChild(tr_head); //вывод шапки календар€
 generateCalendar(currentMonth); //вывод таблицы текущего мес€ца
+
+function NoteAcivity() {
+    const openRequest = indexedDB.open("Tasks");
+    openRequest.onsuccess = function () {
+        let db = openRequest.result;
+        let transaction = db.transaction('NoteDB', 'readwrite');
+        let NoteDB = transaction.objectStore('NoteDB').getAll();
+        NoteDB.onsuccess = function () {
+            let result = NoteDB.result;
+            const td = document.querySelectorAll("#calendar-body > tr > td");
+            console.log(td);
+            result.forEach(note => {
+                if (note.endDate !== null) {
+                    let day = note.endDate.split("-")[2]; //выводит день (30) ,числом, конечной даты
+                    let month = note.endDate.split("-")[1]; //выводит мес€ц конечной даты
+                    let year = note.endDate.split("-")[0]; //выводит год конечной даты
+                    //console.log(day, month, year); 
+                }
+            });
+
+        }
+    }
+    openRequest.onerror = function () {
+        alert('Calendar open Database Fatal Error', openRequest.error);
+    }
+};
+
+const calendar_block = document.getElementById('calendar_block_div');
+document.getElementById('calendar_id_button').addEventListener('click', function () {
+    calendar_block.style.display = (calendar_block.style.display === 'none' || calendar_block.style.display === '') ? 'inline-block' : 'none';
+    NoteAcivity();
+});
