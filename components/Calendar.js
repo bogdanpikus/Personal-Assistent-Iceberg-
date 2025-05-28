@@ -62,8 +62,9 @@ function generateCalendar(month) { // функция по заполнению календаря на каждый 
         }
 
     }
-    document.getElementById("thead_id_month").innerHTML = `${nameOfMonth[month]}`;
-    document.getElementById("current_year").innerHTML = `${year}`;
+
+    let month_year = `${nameOfMonth[month]} ${year}`;
+    document.getElementById("thead_id_month").innerHTML = `${month_year}`;
     calendar_body.appendChild(tr);
 }
 
@@ -109,7 +110,7 @@ document.getElementById("button_back_calendar").addEventListener('click', () => 
 calendar_head.appendChild(tr_head); //вывод шапки календаря
 generateCalendar(currentMonth); //вывод таблицы текущего месяца
 
-function NoteAcivity() {
+function NoteAcivity() {    
     const openRequest = indexedDB.open("Tasks");
     openRequest.onsuccess = function () {
         let db = openRequest.result;
@@ -117,14 +118,23 @@ function NoteAcivity() {
         let NoteDB = transaction.objectStore('NoteDB').getAll();
         NoteDB.onsuccess = function () {
             let result = NoteDB.result;
-            const td = document.querySelectorAll("#calendar-body > tr > td");
-            console.log(td);
             result.forEach(note => {
                 if (note.endDate !== null) {
                     let day = note.endDate.split("-")[2]; //выводит день (30) ,числом, конечной даты
                     let month = note.endDate.split("-")[1]; //выводит месяц конечной даты
                     let year = note.endDate.split("-")[0]; //выводит год конечной даты
-                    //console.log(day, month, year); 
+                    //Тут написать алгоритм по которуму на календаре ,по дате конечной даты заметки, будут отмечатся зеленым
+                    if (year == CurrentYear && month == `0${currentMonth + 1}`) { //проверка только на текущий месяц
+                        const td = document.querySelectorAll("#calendar-body > tr > td");
+                        td.forEach(td => {
+                            if (td.innerText === String(day)) {
+                                let noteButon = document.createElement('button');
+                                noteButon.style.background = 'green';
+                                noteButon.style.border = '1';
+                                td.appendChild(noteButon);
+                            }
+                        })
+                    }
                 }
             });
 
@@ -138,5 +148,6 @@ function NoteAcivity() {
 const calendar_block = document.getElementById('calendar_block_div');
 document.getElementById('calendar_id_button').addEventListener('click', function () {
     calendar_block.style.display = (calendar_block.style.display === 'none' || calendar_block.style.display === '') ? 'inline-block' : 'none';
-    NoteAcivity();
 });
+
+NoteAcivity();

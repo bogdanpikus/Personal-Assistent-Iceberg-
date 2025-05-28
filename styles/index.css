@@ -24,11 +24,13 @@
 
 .html {
   //height: 100%;
+  //position:fixed;
   margin: 0px;
   padding: 0px;
   margin: auto;
   scrollbar-width: none;
   background: #ff5100;
+  overflow-y:scroll;
 }
 #body {
   //height: 100%;
@@ -410,7 +412,7 @@
   flex-direction: row;
   position: relative;
   margin-left: auto;
-  margin-bottom: 122px;
+  //margin-bottom: 122px;
   z-index:2;
 }
 
@@ -621,9 +623,12 @@
 }
 
 #calendar_table {
-  table-layout: fixed;
-  width: max-content;
-  height: max-content;
+    table-layout: fixed;
+    width: 371px;
+    height: 351px;
+    font-size: 20px;
+    position: absolute;
+    right: 10px;
 }
 
 #thead_id_button_back button {
@@ -759,14 +764,17 @@
 }
 
 .time_block_div {
-  display: none;
-  margin-top: 20px;
-  margin: 2rem auto;
-  background: radial-gradient(#d800ff, #0089a2);
-  max-width: 280px;
-  border-radius: 20px;
-  padding: 2rem;
-  z-index:100;
+    display: none;
+    position: absolute;
+    top: 70%;
+    right:25%;
+    margin-top: 20px;
+    margin: 2rem auto;
+    background: radial-gradient(#d800ff, #0089a2);
+    max-width: 280px;
+    border-radius: 20px;
+    padding: 2rem;
+    z-index: 100;
 }
 
 .time_block_div p {
@@ -833,14 +841,17 @@
 }
 
 .Img_SeasonChange {
-  display: none;
-  max-height: 90px;
-  max-width: 400px;
-  margin: 2rem auto;
-  margin-top: 1.5rem;
-  padding: 0.5rem;
-  border-radius: 10px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    display: none;
+    position: absolute;
+    top: 70%;
+    right: 1%;
+    max-height: 90px;
+    max-width: 400px;
+    margin: 2rem auto;
+    margin-top: 1.5rem;
+    padding: 0.5rem;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
 .dateBlock {
@@ -866,6 +877,7 @@
   margin-top: auto;
   width: 100vw;
   margin-left: 150px;
+  z-index:0;
 }
 
 .statistics_block {
