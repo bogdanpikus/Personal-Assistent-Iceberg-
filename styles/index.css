@@ -13,7 +13,7 @@
 }
 @media screen and (min-height: 1080px) {
   #main {
-    height: 100%;
+    height: 100vw;
   }
 }
 @media screen and (max-width: 1465px) {
@@ -412,7 +412,7 @@
   flex-direction: row;
   position: relative;
   margin-left: auto;
-  //margin-bottom: 122px;
+  margin-bottom: 100px;
   z-index:2;
 }
 
@@ -1161,7 +1161,7 @@
 }*/
 .h1_lets_start {
   position: relative;
-  height: 800px;
+  //height: 800px;
   color: seashell;
 }
 .welcome_p {
