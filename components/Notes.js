@@ -46,7 +46,7 @@ function CreateNotePage(id) {
         let divneasted = document.createElement(`div`);
         divneasted.id = `NoteMainPage${id}`;
         divneasted.classList.add(`note-page`);
-        divneasted.style.height = '700px';
+        divneasted.style.height = '800px';
         divneasted.style.width = '100%';
         //divneasted.style.background = 'snow';
         let NoteContainer = document.createElement('div');

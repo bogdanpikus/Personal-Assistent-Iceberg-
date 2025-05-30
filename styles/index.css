@@ -23,14 +23,14 @@
 }
 
 .html {
-  //height: 100%;
-  //position:fixed;
-  margin: 0px;
-  padding: 0px;
-  margin: auto;
-  scrollbar-width: none;
-  background: #ff5100;
-  overflow-y:scroll;
+    //height: 100%;
+    //position:fixed;
+    margin: 0px;
+    padding: 0px;
+    margin: auto;
+    scrollbar-width: none;
+    background: #ff5100;
+    overflow-y: scroll;
 }
 #body {
   //height: 100%;
@@ -703,7 +703,7 @@
 
 .weekDays {
   font-family: Montserrat;
-  font-size: 11px;
+  font-size: 14px;
   color: snow;
   gap: 1px;
 }
@@ -883,7 +883,7 @@
 .statistics_block {
   position: relative;
   margin-left: 0;
-  width: 69.2%;
+  width: 75%;
   max-height: 500px;
   min-height: 300px;
   background: #313131;
@@ -931,7 +931,7 @@
 }
 
 .progress_block {
-  width: 35%;
+  width: 25%;
   height: 100%;
   //background-image: repeating-radial-gradient(
     black 50%,
@@ -1003,7 +1003,7 @@
 }
 #progress_adding_button span {
   font-family: Montserrat;
-  font-size: 50px;
+  font-size: 30px;
   font-weight: 600;
   color: white;
 }
@@ -1027,7 +1027,7 @@
 }
 #progress_done_button span {
   font-family: Montserrat;
-  font-size: 50px;
+  font-size: 30px;
   font-weight: 600;
   color: white;
 }
@@ -1450,4 +1450,8 @@
     background: url('https://thumbs.dreamstime.com/b/%D0%B7%D0%B0%D0%BC%D0%B5%D1%82%D0%BA%D0%B0-%D0%B8%D0%B7%D0%BE%D0%BB%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%B0%D1%8F-%D0%BD%D0%B0-%D0%BF%D1%80%D0%BE%D0%B7%D1%80%D0%B0%D1%87%D0%BD%D0%BE%D0%BC-%D1%84%D0%BE%D0%BD%D0%B5-%D0%BB%D0%B8%D1%81%D1%82-office-%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD-%D0%B4%D0%BB%D1%8F-%D0%B2%D0%B0%D1%88%D0%B8%D1%85-158722602.jpg');
     background-position:center;
     user-select:none;
+}
+
+#calendar_thead_tr {
+    height: 41.1333px;
 }

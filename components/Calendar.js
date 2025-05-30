@@ -1,44 +1,43 @@
+const calendar_block = document.getElementById('calendar_block_div');
+const calendar_body = document.getElementById("calendar-body");
+const calendar_head = document.getElementById("calendar_thead");
 
-let endTime = Date.now();
-let currentDate = new Date(endTime);
-////////////////////////////////////////////////////////////////////////////////////////// ≈сли не работает код, то из-за этого
-let CurrentYear = currentDate.getFullYear();
-let daysInMonth = []; /////[31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+const nameOfMonth = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+const endTime = Date.now();
+const currentDate = new Date(endTime);
+let currentMonth = `${Number(currentDate.getMonth())}`;
+const localMonth = nameOfMonth[currentMonth];
+const CurrentYear = currentDate.getFullYear();
+let daysInMonth = []; //generateCalendar
+
 for (let Mon = 0; Mon < 12; Mon++) {
     let LastDayIn_Month = new Date(CurrentYear, Mon + 1, 0);
     daysInMonth.push(LastDayIn_Month.getDate());
 };
-/////////////////////////////////////////////////////////////////////////////////////////
-let nameOfMonth = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-//let daysInMonth = ['31', '28', '31', '30', '31', '30', '31', '31', '30', '31', '30', '31']; //колл дней в каждом мес€це
-let weekDays = ['Mon','Tue','Wed','Thu','Fri','Sat','San'];
-let currentMonth = `${Number(currentDate.getMonth())}`; // = ` number of month = 3`
-let localMonth = nameOfMonth[currentMonth];  // `3` = `April`
 
-
-let currentDay = `${currentDate.getDate()}`; //today day number
-document.getElementById("thead_id_month").innerHTML = `
-        <p>${localMonth}</p>`; // показывает текущий мес€ц по канону выт€нутый из функции Date()
-
-let calendar_body = document.getElementById("calendar-body"); // добавл€ю шапку календар€, там где обозначение дней недели
-let calendar_head = document.getElementById("calendar_thead");
-let tr_head = document.createElement("tr");
-for (let weekDay = 0; weekDay <= 7; weekDay++) {
-    let th_head = document.createElement("th");
-    th_head.innerHTML = weekDays[weekDay];
-    th_head.className = 'weekDays';
-    tr_head.appendChild(th_head);
-    if (tr_head.children.length === 7) {
-        break;
+function HeadCalendar() {
+    const weekDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'San'];
+    const tr_head = document.createElement("tr");
+    for (let weekDay = 0; weekDay <= 7; weekDay++) {
+        let th_head = document.createElement("th");
+        th_head.innerHTML = weekDays[weekDay];
+        th_head.className = 'weekDays';
+        tr_head.appendChild(th_head);
+        if (tr_head.children.length === 7) {
+            break;
+        }
     }
-}//конец шапки
-
+    document.getElementById("thead_id_month").innerHTML = `<p>${localMonth}</p>`;
+    calendar_head.appendChild(tr_head); //вывод шапки календар€
+}
 function generateCalendar(month) { // функци€ по заполнению календар€ на каждый мес€ц
     calendar_body.innerHTML = "";  //очищаем основное тело таблицы
     let totalDays = daysInMonth[month]; //при переключении мес€ца считает сколько дней он имеет, работает исправно
     let tr = document.createElement("tr"); // создаем елемент tr в котором будет Їлемент td
     let year = currentDate.getFullYear();
     let firstDay = new Date(currentDate.getFullYear(), month, 1).getUTCDay(); //пустые €чейки перед первым числом
+ 
+
     for (let i = 0; i < firstDay; i++) {
         let td_empty = document.createElement("td");
         tr.appendChild(td_empty);
@@ -67,49 +66,14 @@ function generateCalendar(month) { // функци€ по заполнению календар€ на каждый 
     document.getElementById("thead_id_month").innerHTML = `${month_year}`;
     calendar_body.appendChild(tr);
 }
-
-
-document.getElementById("button_forward_calendar").addEventListener('click', () => {
-    let numbers = 1;
-    let numbersMouns = Number(currentMonth++) + numbers;
-    if (numbersMouns > 11) {
-        numbersMouns = 0;
-        currentMonth = 0;
-    }
-
-    generateCalendar(numbersMouns);
-   // let nextMonthNumber = localMonth = nameOfMonth[numbersMouns];
-    //  document.getElementById("thead_id_month").innerHTML = `<p>${nextMonthNumber}</p>`;
-  
-   // console.log(numbersMouns);
-});
-
-document.getElementById("button_back_calendar").addEventListener('click', () => {
-    let numbers = 1;
-    let numbersMouns = Number(currentMonth--) - numbers;
-    if (numbersMouns < 0) {
-        numbersMouns = 11;
-        currentMonth = 11;
-    }
-
-    generateCalendar(numbersMouns);
-   // let previousMonthNumber = localMonth = nameOfMonth[numbersMouns];
-   // document.getElementById("thead_id_month").innerHTML = `<p>${previousMonthNumber}</p>`;
-
-   // console.log(numbersMouns);
-}); 
-
-//setInterval(() => {//проверка поминутно правильности отображени€ мес€ца
+function CheckMonth() {
     let newDate = new Date();
     let newMonth = newDate.getMonth();
     if (newMonth !== currentMonth) { // ≈сли сменилс€ мес€ц
         currentMonth = newMonth;
         generateCalendar(currentMonth);
     }
-//}, 60000);
-calendar_head.appendChild(tr_head); //вывод шапки календар€
-generateCalendar(currentMonth); //вывод таблицы текущего мес€ца
-
+}
 function NoteAcivity() {    
     const openRequest = indexedDB.open("Tasks");
     openRequest.onsuccess = function () {
@@ -123,17 +87,17 @@ function NoteAcivity() {
                     let day = note.endDate.split("-")[2]; //выводит день (30) ,числом, конечной даты
                     let month = note.endDate.split("-")[1]; //выводит мес€ц конечной даты
                     let year = note.endDate.split("-")[0]; //выводит год конечной даты
-                    //“ут написать алгоритм по которуму на календаре ,по дате конечной даты заметки, будут отмечатс€ зеленым
                     if (year == CurrentYear && month == `0${currentMonth + 1}`) { //проверка только на текущий мес€ц
                         const td = document.querySelectorAll("#calendar-body > tr > td");
                         td.forEach(td => {
                             if (td.innerText === String(day)) {
                                 let noteButon = document.createElement('button');
+                                noteButon.id = 'NoteRemindButton';
                                 noteButon.style.background = 'green';
                                 noteButon.style.border = '1';
                                 td.appendChild(noteButon);
                             }
-                        })
+                        });
                     }
                 }
             });
@@ -144,10 +108,43 @@ function NoteAcivity() {
         alert('Calendar open Database Fatal Error', openRequest.error);
     }
 };
-
-const calendar_block = document.getElementById('calendar_block_div');
 document.getElementById('calendar_id_button').addEventListener('click', function () {
     calendar_block.style.display = (calendar_block.style.display === 'none' || calendar_block.style.display === '') ? 'inline-block' : 'none';
 });
+document.getElementById("button_forward_calendar").addEventListener('click', () => {
+    let numbers = 1;
+    let numbersMouns = Number(currentMonth++) + numbers;
+    if (numbersMouns > 11) {
+        numbersMouns = 0;
+        currentMonth = 0;
+    }
 
+    generateCalendar(numbersMouns);
+});
+document.getElementById("button_back_calendar").addEventListener('click', () => {
+    let numbers = 1;
+    let numbersMouns = Number(currentMonth--) - numbers;
+    if (numbersMouns < 0) {
+        numbersMouns = 11;
+        currentMonth = 11;
+    }
+
+    generateCalendar(numbersMouns);
+});
+
+generateCalendar(currentMonth); //вывод таблицы текущего мес€ца
+CheckMonth()
+HeadCalendar();
 NoteAcivity();
+
+
+//////// ”лучшить это место
+const td = document.querySelectorAll("#calendar-body > tr > td");
+td.forEach(td => {
+    td.addEventListener('click', () => {
+        if (td.querySelector("button")) {
+            alert(`${td} has button`);
+        }
+    })
+})
+
