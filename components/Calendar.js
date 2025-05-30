@@ -5,18 +5,15 @@ const calendar_head = document.getElementById("calendar_thead");
 const nameOfMonth = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 const endTime = Date.now();
 const currentDate = new Date(endTime);
-let currentMonth = `${Number(currentDate.getMonth())}`;
+let currentMonth = currentDate.getMonth();
 const localMonth = nameOfMonth[currentMonth];
 const CurrentYear = currentDate.getFullYear();
-let daysInMonth = []; //generateCalendar
-
-for (let Mon = 0; Mon < 12; Mon++) {
-    let LastDayIn_Month = new Date(CurrentYear, Mon + 1, 0);
-    daysInMonth.push(LastDayIn_Month.getDate());
-};
+const daysInMonth = Array.from({ length: 12 }, (_, Mon) =>
+    new Date(CurrentYear, Mon + 1, 0).getDate()
+);
 
 function HeadCalendar() {
-    const weekDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'San'];
+    const weekDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
     const tr_head = document.createElement("tr");
     for (let weekDay = 0; weekDay <= 7; weekDay++) {
         let th_head = document.createElement("th");
@@ -27,7 +24,6 @@ function HeadCalendar() {
             break;
         }
     }
-    document.getElementById("thead_id_month").innerHTML = `<p>${localMonth}</p>`;
     calendar_head.appendChild(tr_head); //вывод шапки календар€
 }
 function generateCalendar(month) { // функци€ по заполнению календар€ на каждый мес€ц
@@ -35,7 +31,8 @@ function generateCalendar(month) { // функци€ по заполнению календар€ на каждый 
     let totalDays = daysInMonth[month]; //при переключении мес€ца считает сколько дней он имеет, работает исправно
     let tr = document.createElement("tr"); // создаем елемент tr в котором будет Їлемент td
     let year = currentDate.getFullYear();
-    let firstDay = new Date(currentDate.getFullYear(), month, 1).getUTCDay(); //пустые €чейки перед первым числом
+    let firstDay = new Date(year, month, 1).getDay();
+    firstDay = (firstDay === 0) ? 6 : firstDay - 1;
  
 
     for (let i = 0; i < firstDay; i++) {
@@ -91,11 +88,7 @@ function NoteAcivity() {
                         const td = document.querySelectorAll("#calendar-body > tr > td");
                         td.forEach(td => {
                             if (td.innerText === String(day)) {
-                                let noteButon = document.createElement('button');
-                                noteButon.id = 'NoteRemindButton';
-                                noteButon.style.background = 'green';
-                                noteButon.style.border = '1';
-                                td.appendChild(noteButon);
+                                td.style.color = 'green';
                             }
                         });
                     }
@@ -111,6 +104,19 @@ function NoteAcivity() {
 document.getElementById('calendar_id_button').addEventListener('click', function () {
     calendar_block.style.display = (calendar_block.style.display === 'none' || calendar_block.style.display === '') ? 'inline-block' : 'none';
 });
+function ShowNotesOnCalendar() {
+    const td = document.querySelectorAll("#calendar-body > tr > td");
+    td.forEach(td => {
+        td.addEventListener('click', (event) => {
+            const element = event.currentTarget;
+        const color = getComputedStyle(element).color;
+            if (color === 'rgb(0, 128, 0)') { 
+            //отображени€ заметок по нажатию
+            alert(`This date has Note`);
+        }
+        });
+    });
+};
 document.getElementById("button_forward_calendar").addEventListener('click', () => {
     let numbers = 1;
     let numbersMouns = Number(currentMonth++) + numbers;
@@ -119,7 +125,10 @@ document.getElementById("button_forward_calendar").addEventListener('click', () 
         currentMonth = 0;
     }
 
+    calendar_body.innerHTML = "";
     generateCalendar(numbersMouns);
+    NoteAcivity();
+    ShowNotesOnCalendar();
 });
 document.getElementById("button_back_calendar").addEventListener('click', () => {
     let numbers = 1;
@@ -129,22 +138,14 @@ document.getElementById("button_back_calendar").addEventListener('click', () => 
         currentMonth = 11;
     }
 
+    calendar_body.innerHTML = "";
     generateCalendar(numbersMouns);
+    NoteAcivity();
+    ShowNotesOnCalendar();
 });
 
-generateCalendar(currentMonth); //вывод таблицы текущего мес€ца
+generateCalendar(currentMonth);
 CheckMonth()
 HeadCalendar();
 NoteAcivity();
-
-
-//////// ”лучшить это место
-const td = document.querySelectorAll("#calendar-body > tr > td");
-td.forEach(td => {
-    td.addEventListener('click', () => {
-        if (td.querySelector("button")) {
-            alert(`${td} has button`);
-        }
-    })
-})
-
+ShowNotesOnCalendar();
