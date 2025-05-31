@@ -112,10 +112,6 @@ function createNoteLiElement() {
     li.innerHTML = `${value}`;
     let liClose = document.createElement('button');
     liClose.id = `liClose`;
-    //let r = Math.floor(Math.random() * 256);
-    //let g = Math.floor(Math.random() * 256);
-    //let b = Math.floor(Math.random() * 256);
-    //li.style.background = `rgb(${r},${g},${b},0.4)`;
     li.style.opacity = '0.7';
 
     let M = new Map();
@@ -169,8 +165,6 @@ WindowConteiner.addEventListener('keydown', event => {
         }
     }
 });
-
-console.log(LocalTime().nowDate);
 $("#ModalSpanId").on("click", function () {
     $("#ModalAddNoteUl").slideToggle("fast");
 });
@@ -267,6 +261,11 @@ function renderNoteToWall(note) {
 
     if (activeWall) {
         const NoteContainer = activeWall.querySelector('#NoteContainer');
+        if (NoteContainer.children.length == 12) {
+            alert("The limit of 12 notes has been reached.No new notes have been added.");
+            return;
+        }
+
         const noteDiv = document.createElement('div');
         noteDiv.classList.add(`note`);
         noteDiv.setAttribute('data-note-key', noteKey);
