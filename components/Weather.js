@@ -7,8 +7,6 @@ const cities = [
     { name: 'Poltava', lat: 49.5937, long: 34.5407 },
     { name: 'Kaniv', lat: 49.7518, long: 31.46 }];
 
-//const lat = 48.45;
-//const long = 34.9833;
 const apiKey = '25de84a881d9a19a308d080d5ef5ccfb';
 
 function feachWeather(lat, long) {
@@ -43,38 +41,70 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&ap
         const changeWeatherButton = document.getElementById('button_ChangeWeatherTown');
         const cityChangeBlock = document.getElementById('cityChangeBlock');
         changeWeatherButton.addEventListener('click', () => {
-            document.querySelectorAll('.cityList').forEach(div => {
-                div.style.display = 'none';
-            });
-            let existul = document.getElementById('cityListId');
-            if (existul) {
-                existul.style.display = 'flex';
-                cityChangeBlock.style.display = 'flex';
-            } else {
-                const ul = document.createElement('ul');
-                ul.className = 'cityList'; // для стилей и проверки
-                ul.id = 'cityListId';
-
-                cities.forEach(city => {
-                    const li = document.createElement('li');
-                    const cityBtn = document.createElement('button');
-                    cityBtn.textContent = city.name;
-                    cityBtn.addEventListener('click', () => {
-                        feachWeather(city.lat, city.long);
-                        ul.style.display = 'none';
-                        cityChangeBlock.style.display = 'none';
-                    });
-                    li.appendChild(cityBtn);
-                    ul.appendChild(li);
-                });
-
-                cityChangeBlock.appendChild(ul);
-                ul.style.display = 'flex';
-                cityChangeBlock.style.display = 'flex';
+            cityChangeBlock.style.display = 'flex';
+            const Contry = document.getElementById('choseContry');
+            if (Contry) {
+                Contry.remove();
             }
+            const choseContry = document.createElement('div');
+            choseContry.classList.add('choseContry');
+            choseContry.id = 'choseContry';
+            const ul = document.createElement('ul');
+            ul.classList.add('choseContry_ul');
+            ul.id = 'choseContry_ul';
+            ul.innerText = 'Chose your contry...';
+            const li = document.createElement('li');
+            li.innerText = 'Ukraine';
+            li.classList.add('choseContry_li');
+            li.id = 'choseContry_li';
+            cityChangeBlock.appendChild(choseContry);
+            choseContry.appendChild(ul);
+            choseContry.appendChild(li);
+            li.addEventListener('click', () => {
+                choseContry.remove();
+                document.querySelectorAll('.cityList').forEach(div => {
+                    div.style.display = 'none';
+                });
+                let existul = document.getElementById('cityListId');
+                if (existul) {
+                    existul.style.display = 'flex';
+                    cityChangeBlock.style.display = 'flex';
+                } else {
+                    const ul = document.createElement('ul');
+                    ul.className = 'cityList';
+                    ul.id = 'cityListId';
+                    const div = document.createElement('div');
+                    div.classList.add('cityList_div');
+
+                    cities.forEach(city => {
+                        const li = document.createElement('li');
+                        li.classList.add('cityList_li');
+                        const cityBtn = document.createElement('button');
+                        const h = document.createElement('h3');
+                        h.textContent = city.name;
+                        const span = document.createElement('span');
+                        cityBtn.addEventListener('click', () => {
+                            feachWeather(city.lat, city.long);
+                            ul.style.display = 'none';
+                            cityChangeBlock.style.display = 'none';
+                            div.remove();
+                        });
+                        ul.appendChild(li);
+                        li.appendChild(cityBtn);
+                        cityBtn.appendChild(h);
+                        cityBtn.appendChild(span);
+                    });
+                    cityChangeBlock.appendChild(div);
+                    div.appendChild(ul);
+                    ul.style.display = 'flex';
+                    cityChangeBlock.style.display = 'flex';
+                }
+            });
         });
     });
 
 }
-
+$(document).on("click", "#choseContry_ul", function () {
+    $("#choseContry_li").slideToggle("fast");
+});
 feachWeather(cities[0].lat, cities[0].long);
