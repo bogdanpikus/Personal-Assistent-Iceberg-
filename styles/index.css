@@ -1455,3 +1455,19 @@
 #calendar_thead_tr {
     height: 41.1333px;
 }
+
+.title {
+    display: flex;
+    flex-direction:column;
+    position:absolute;
+    justify-content:center;
+    align-items:center;
+    z-index:1000;
+    width:fit-content;
+    height:fit-content;
+    border:10px;
+    border-radius:10px;
+    background:whitesmoke;
+    left:35%;
+    top:20%;
+}

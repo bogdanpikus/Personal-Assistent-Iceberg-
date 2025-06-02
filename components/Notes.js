@@ -16,6 +16,7 @@ const cityChangeBlock = document.getElementById('cityChangeBlock');
 const LiDeadLineTime = document.getElementById('LiDeadLineTime');
 const LiDeadLineDate = document.getElementById('LiDeadLineDate');
 const ModalAddNoteSubmitButton = document.getElementById('ModalAddNoteSubmitButton');
+const TextValue = document.getElementById('ModalAddNoteText');
 
 let num = 1
 let numNotes = 0;
@@ -100,6 +101,7 @@ function CreateNotePage(id) {
             blurNoteModalPage.style.display = 'flex';
             ModalAddNote.style.display = 'flex';
             ModalAddNoteTextarea.value = '';
+            TextValue.value = '';
         });
     }
 };
@@ -243,7 +245,6 @@ function setupReminder(note) {
 }
 function renderNoteToWall(note) {
     const noteKey = `${note.title}_${note.endDate}_${note.endTime}_${note.reminder}`;
-
     // Проверка: если уже есть элемент с таким data-note-key, не добавлять снова
     if (document.querySelector(`[data-note-key="${noteKey}"]`)) {
         return;
@@ -270,9 +271,32 @@ function renderNoteToWall(note) {
         noteDiv.classList.add(`note`);
         noteDiv.setAttribute('data-note-key', noteKey);
 
-        const title = document.createElement('h3');
-        title.innerText = note.title;
-
+        const text = document.createElement('h3');
+        text.innerText = note.text;
+        noteDiv.style.cursor = 'pointer';
+        noteDiv.addEventListener('click', () => {
+            const existDiv = document.getElementById(`title:${note.text}`);
+            if (existDiv) {
+                return;
+            } else {
+                const div = document.createElement('div');
+                div.id = `title:${note.text}`;
+                div.classList.add('title');
+                const p = document.createElement('p');
+                p.innerText = note.title;
+                const button = document.createElement('button');
+                button.style.position = 'reletive';
+                button.style.marginLeft = 'auto';
+                button.innerText = 'x';
+                NoteContainer.appendChild(div);
+                div.appendChild(button);
+                div.appendChild(p);
+                button.addEventListener('click', () => {
+                    div.remove();
+                });
+            }
+        });
+        
         const date = document.createElement('p');
         const time = document.createElement('p');
         date.innerText = `${note.endDate || ''}`;
@@ -283,7 +307,7 @@ function renderNoteToWall(note) {
 
         activeWall.appendChild(NoteContainer);
         NoteContainer.appendChild(noteDiv); 
-        noteDiv.appendChild(title);
+        noteDiv.appendChild(text);
         noteDiv.appendChild(date);
         noteDiv.appendChild(time);
         noteDiv.appendChild(reminder);
@@ -301,19 +325,22 @@ ModalAddNoteSubmitButton.addEventListener('click', () => {
         const inputTime = document.getElementById('inputTime_id');
         const textarea = document.getElementById('ModalAddNoteTextarea');
         const checkbox = document.querySelector('#remind input[type="checkbox"]');
+        const TextValue = document.getElementById('ModalAddNoteText');
 
+        const text = TextValue.value.trim();
         const title = textarea.value.trim();
         const endDate = inputDate?.value || null;
         const endTime = inputTime?.value || null;
         const reminder = checkbox.checked || false;
 
-        if (!title) {
-            alert("Write text");
+        if (!title && !text) {
+            alert("Please, complete Note Addind Values");
             return;
         }
 
         let NoteObject = {
             id: `${LocalTime().nowDate}`,
+            text,
             title,
             endDate,
             endTime,
