@@ -10,8 +10,6 @@ const CurrentYear = currentDate.getFullYear();
 const daysInMonth = Array.from({ length: 12 }, (_, Mon) =>
     new Date(CurrentYear, Mon + 1, 0).getDate()
 );
-
-
 function HeadCalendar() {
     const weekDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
     const tr_head = document.createElement("tr");
@@ -150,16 +148,15 @@ function ShowNotesOnCalendar() {
                                 div.style.background = `rgb(${r},${g},${b})`;
                                 div.style.filter = 'hue(10px)';
                                 const close = document.createElement('button');
-                                close.id = 'NoteButton';
-                                close.style.width = '20px';
-                                close.style.height = '20px';
-                                close.style.marginLeft = 'auto';
+                                close.id = 'NoteButton';    
                                 close.innerText = 'x';
                                 const h = document.createElement('h1');
-                                h.textContent = note.title;
+                                h.textContent = note.text;
                                 h.style.fontSize = '50px';
                                 h.style.fontWeight = '600';
-                                h.style.textShadow = ' 1px 1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, -1px -1px 0 #ffffff, 1px 0px 0 #ffffff, 0px 1px 0 #ffffff, -1px 0px 0 #ffffff, 0px -1px 0 #ffffff';
+                                h.style.textShadow = '0px 0px 12px black';
+                                h.style.color = 'white';
+                                h.style.marginTop = '0';
                                 div.appendChild(close);
                                 div.appendChild(h);
                                 Main.appendChild(div);

@@ -1,4 +1,5 @@
 import { LocalTime } from './Time.js';
+
 //import $ from 'jquery';
 const AddNote = document.getElementById('add_note_button');
 const FileStorage = document.getElementById('FileList');
@@ -232,6 +233,32 @@ LiDeadLineTime.addEventListener('click', () => {
         div.appendChild(button);
     }
 });
+function deleteNoteFromWall(noteKey) {
+    const noteElement = document.querySelector(`[data-note-key="${noteKey}"]`);
+    if (!noteElement) {
+        alert('Note not found on the wall.');
+    }
+    noteElement.remove();
+    //открываем базу данных и удаляем оттуда запись
+    let openRequest = indexedDB.open("Tasks");
+    openRequest.onsuccess = function () {
+        let db = openRequest.result;
+        let transaction = db.transaction("NoteDB", "readwrite");
+        let Store = transaction.objectStore("NoteDB");
+        let NoteStoreAll = Store.getAll();
+        NoteStoreAll.onsuccess = function () {
+            let result = NoteStoreAll.result;
+            //alert("NoteStore Succsess");
+            result.forEach((note) => {
+                let key = `${note.text}_${note.endDate}_${note.endTime}_${note.reminder}`;
+                if (key === noteKey) {
+                    Store.delete(note.id);
+                }
+            });
+        };
+    };
+}
+
 function setupReminder(note) {
     if (!note.reminder || !note.endDate || !note.endTime) return;
     const endDateTime = new Date(`${note.endDate}T${note.endTime}`);
@@ -244,7 +271,7 @@ function setupReminder(note) {
     }
 }
 function renderNoteToWall(note) {
-    const noteKey = `${note.title}_${note.endDate}_${note.endTime}_${note.reminder}`;
+    const noteKey = `${note.text}_${note.endDate}_${note.endTime}_${note.reminder}`;
     // Проверка: если уже есть элемент с таким data-note-key, не добавлять снова
     if (document.querySelector(`[data-note-key="${noteKey}"]`)) {
         return;
@@ -269,9 +296,17 @@ function renderNoteToWall(note) {
 
         const noteDiv = document.createElement('div');
         noteDiv.classList.add(`note`);
+        noteDiv.id = 'noteOnTheWall';
         noteDiv.setAttribute('data-note-key', noteKey);
-
+        const closeNoteDivButton = document.createElement('button');
+        closeNoteDivButton.id = 'closeNoteDivButton';
+        closeNoteDivButton.addEventListener('click', (event) => {
+            deleteNoteFromWall(noteKey);
+            event.stopPropagation();
+        });
         const text = document.createElement('h3');
+        text.style.marginTop = '45px';
+        text.style.marginLeft = '2px';
         text.innerText = note.text;
         noteDiv.style.cursor = 'pointer';
         noteDiv.addEventListener('click', () => {
@@ -284,9 +319,12 @@ function renderNoteToWall(note) {
                 div.classList.add('title');
                 const p = document.createElement('p');
                 p.innerText = note.title;
+                p.style.margin = '0';
+                p.style.marginLeft = '2px';
                 const button = document.createElement('button');
-                button.style.position = 'reletive';
-                button.style.marginLeft = 'auto';
+                button.style.position = 'absolute';
+                button.style.bottom = '90%';
+                button.style.left = '90%';
                 button.innerText = 'x';
                 NoteContainer.appendChild(div);
                 div.appendChild(button);
@@ -298,15 +336,21 @@ function renderNoteToWall(note) {
         });
         
         const date = document.createElement('p');
+        date.style.margin = '0';
+        date.style.marginLeft = '2px';
         const time = document.createElement('p');
+        time.style.margin = '0';
         date.innerText = `${note.endDate || ''}`;
         time.innerText = `${note.endTime || ''}`;
 
         const reminder = document.createElement('p');
+        reminder.style.marginLeft = '2px';
+        reminder.style.margin = '0';
         reminder.innerText = note.reminder ? 'Reminder on' : 'Remainder off';
 
         activeWall.appendChild(NoteContainer);
-        NoteContainer.appendChild(noteDiv); 
+        NoteContainer.appendChild(noteDiv);
+        noteDiv.appendChild(closeNoteDivButton);
         noteDiv.appendChild(text);
         noteDiv.appendChild(date);
         noteDiv.appendChild(time);
