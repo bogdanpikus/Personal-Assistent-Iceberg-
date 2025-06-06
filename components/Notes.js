@@ -270,6 +270,16 @@ function setupReminder(note) {
         }, timeToReminder);
     }
 }
+function getActiveWall() {
+    const walls = document.querySelectorAll('[id^="NoteMainPage"]');
+
+    for (const wall of walls) {
+        if (getComputedStyle(wall).display !== 'none') {
+            return wall;
+        }
+    }
+    return null;
+}
 function renderNoteToWall(note) {
     const noteKey = `${note.text}_${note.endDate}_${note.endTime}_${note.reminder}`;
     // Проверка: если уже есть элемент с таким data-note-key, не добавлять снова
@@ -277,15 +287,8 @@ function renderNoteToWall(note) {
         return;
     }
 
-    const walls = document.querySelectorAll('[id^="NoteMainPage"]');
-    let activeWall = null;
-
-    for (const wall of walls) {
-        if (getComputedStyle(wall).display !== 'none') {
-            activeWall = wall;
-            break;
-        }
-    }
+    const activeWall = getActiveWall();
+    if (!activeWall) return;
 
     if (activeWall) {
         const NoteContainer = activeWall.querySelector('#NoteContainer');
@@ -304,8 +307,10 @@ function renderNoteToWall(note) {
             deleteNoteFromWall(noteKey);
             event.stopPropagation();
         });
+
         const text = document.createElement('h3');
-        text.style.marginTop = '45px';
+        text.style.marginTop = '43px';
+        text.style.marginBottom = '4px';
         text.style.marginLeft = '2px';
         text.innerText = note.text;
         noteDiv.style.cursor = 'pointer';
@@ -319,16 +324,31 @@ function renderNoteToWall(note) {
                 div.classList.add('title');
                 const p = document.createElement('p');
                 p.innerText = note.title;
-                p.style.margin = '0';
-                p.style.marginLeft = '2px';
+                p.style.margin = '40px';
+                const date = document.createElement('p');
+                date.innerText = `${note.endDate || ''}`;
+                date.style.margin = '0';
+                date.style.marginLeft = '10px';
+                date.style.marginRight = 'auto';    
+                const time = document.createElement('p');
+                time.innerText = `${note.endTime || ''}`;
+                time.style.margin = '0';
+                time.style.marginLeft = '10px';
+                time.style.marginRight = 'auto';
                 const button = document.createElement('button');
                 button.style.position = 'absolute';
-                button.style.bottom = '90%';
-                button.style.left = '90%';
+                button.style.bottom = '100%';
+                button.style.left = '100%';
                 button.innerText = 'x';
+                button.style.background = 'none';
+                button.style.border = '0';
+                button.style.fontSize = '20px';
+                button.style.cursor = 'pointer';
                 NoteContainer.appendChild(div);
                 div.appendChild(button);
                 div.appendChild(p);
+                div.appendChild(date);
+                div.appendChild(time);
                 button.addEventListener('click', () => {
                     div.remove();
                 });
@@ -338,14 +358,19 @@ function renderNoteToWall(note) {
         const date = document.createElement('p');
         date.style.margin = '0';
         date.style.marginLeft = '2px';
+        date.style.color = 'red';
         const time = document.createElement('p');
         time.style.margin = '0';
+        time.style.color = 'darkgreen';
+        time.style.marginLeft = '2px';
+        time.style.marginTop = '5px';
         date.innerText = `${note.endDate || ''}`;
         time.innerText = `${note.endTime || ''}`;
 
         const reminder = document.createElement('p');
-        reminder.style.marginLeft = '2px';
         reminder.style.margin = '0';
+        reminder.style.marginLeft = '2px';
+        reminder.style.color = 'darkblue';
         reminder.innerText = note.reminder ? 'Reminder on' : 'Remainder off';
 
         activeWall.appendChild(NoteContainer);
@@ -404,7 +429,7 @@ ModalAddNoteSubmitButton.addEventListener('click', () => {
                 });
             }
             AllNotes.onerror = function () {
-                alert("Fatal Notes Pull Requerst Error",AllNotes.error);
+                alert("Fatal Notes Pull Requerst Error", AllNotes.error);
             }
         }
         NotePush.onerror = function () {

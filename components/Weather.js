@@ -57,9 +57,16 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&ap
             li.innerText = 'Ukraine';
             li.classList.add('choseContry_li');
             li.id = 'choseContry_li';
+            const img = document.createElement('img');
+            img.src = 'https://flagcdn.com/w320/ua.png';
+            img.style.height = '30px';
+            img.style.width = '30px';
+            img.style.float = 'right';
+            img.style.margin = '2%';
             cityChangeBlock.appendChild(choseContry);
             choseContry.appendChild(ul);
             choseContry.appendChild(li);
+            li.appendChild(img);
             li.addEventListener('click', () => {
                 choseContry.remove();
                 document.querySelectorAll('.cityList').forEach(div => {

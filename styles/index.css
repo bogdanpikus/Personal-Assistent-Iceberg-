@@ -31,6 +31,7 @@
     scrollbar-width: none;
     background: #ff5100;
     overflow-y: scroll;
+    user-select:none;
 }
 #body {
   //height: 100%;
@@ -133,8 +134,7 @@
   width: 60%;
   overflow-x: hidden;
   border: 0px;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+  border-radius:10px;
   background-image: url(data:image/svg+xml,%3Csvg%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M10%202C5.58172%202%202%205.58172%202%2010C2%2014.4183%205.58172%2018%2010%2018C11.8487%2018%2013.551%2017.3729%2014.9056%2016.3199L20.2929%2021.7071C20.6834%2022.0976%2021.3166%2022.0976%2021.7071%2021.7071C22.0976%2021.3166%2022.0976%2020.6834%2021.7071%2020.2929L16.3199%2014.9056C17.3729%2013.551%2018%2011.8487%2018%2010C18%205.58172%2014.4183%202%2010%202ZM4%2010C4%206.68629%206.68629%204%2010%204C13.3137%204%2016%206.68629%2016%2010C16%2013.3137%2013.3137%2016%2010%2016C6.68629%2016%204%2013.3137%204%2010Z%22%20fill%3D%22%23797878%22/%3E%3C/svg%3E);
   background-repeat: no-repeat;
   background-position: 2px left;
@@ -1355,6 +1355,7 @@
     margin-top: 20px;
     max-width: 92%;
     border-top-right-radius: 10px;
+    outline:none;
 }
 
 #ModalAddNoteTextarea {
@@ -1367,6 +1368,7 @@
     color: white;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+    outline: none;
 }
 #ModalAddNoteCloseButton{
     position:absolute;
@@ -1539,23 +1541,18 @@
 .title {
     display: flex;
     flex-direction: column;
-    position: absolute;
-    justify-content: center;
+    max-width: 345px;
+    width: fit-content;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    white-space: normal;
+    box-sizing: border-box;
     align-items: center;
-    z-index: 1000;
-    width: 25%;
-    border: 10px;
-    border-radius: 10px;
-    background: url('https://e7.pngegg.com/pngimages/582/555/png-clipart-white-sticky-note-illustration-post-it-note-paper-drawing-pin-post-it-note-angle-white.png');
-    background-position: center;
-    background-size: 100%;
-    background-repeat: no-repeat;
     left: 35%;
-    top: 25%;
-    color: black;
-    font-size: 28px;
-    max-height: 400px;
-    min-height: 256px;
+    position: absolute;
+    top: 30%;
+    background: whitesmoke;
+    border: 2px solid black;
 }
 
 #NoteButton {
@@ -1581,4 +1578,26 @@
 }
 #closeNoteDivButton::before{
     content: 'x';
+}
+
+#searchNotes {
+    position: absolute;
+    background: #e7e7e7;
+    list-style: none;
+    top: 42px;
+    width: 46%;
+    border-radius: 10px;
+    cursor: pointer;
+    height: 25px;
+    align-items: center;
+    display: none;
+}
+
+.SearchNote {
+    display: flex;
+    position: absolute;
+    left: 40%;
+    top: 30%;
+    background: white;
+    z-index: 1000000;
 }
