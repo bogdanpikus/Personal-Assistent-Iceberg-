@@ -12,17 +12,17 @@
   }
 }
 @media screen and (min-height: 1080px) {
-  #main {
+  main {
     height: 100vw;
   }
 }
 @media screen and (max-width: 1465px) {
-  #main {
+  main {
     height: 100%;
   }
 }
 
-.html {
+html {
     //height: 100%;
     //position:fixed;
     margin: 0px;
@@ -33,7 +33,7 @@
     overflow-y: scroll;
     user-select:none;
 }
-#body {
+body {
   //height: 100%;
   overflow-x: hidden;
   margin: 0px;
@@ -83,8 +83,10 @@
 }
 
 .theme-toggle {
-  margin: auto;
-  height: contain;
+    margin: auto;
+    height: contain;
+    bottom: 6px;
+    position: relative;
 }
 
 .toggle {
@@ -168,7 +170,6 @@
 
 .user_info {
   display: flex;
-  flex-direction: row-reverse;
   align-items: center;
   margin-right: 20px;
   width: 220px;
@@ -185,7 +186,7 @@
   margin: auto;
 }
 
-#main {
+main {
   display: flex;
   width: 100vw;
   //background: #cbcbcb;
@@ -200,15 +201,10 @@
   margin-right: auto;
 }
 .light-theme {
-  background: radial-gradient(
-    circle at 100%,
-    #000000 50%,
-    #333 50%,
-    #ff5100 74%,
-    rgba(0, 0, 0, 1) 75%
-  );
-  background-repeat: no-repeat;
-  background-position: center;
+    background: radial-gradient( circle at 100%, #000000 50%, #333 50%, #ff5100 74%, rgba(0, 0, 0, 1) 75% );
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100vh;
 }
 .light-theme #title_main_page {
   color: whitesmoke;
@@ -482,7 +478,7 @@
   border-radius: 20px;
   padding: 1.5rem;
   padding-top: 0.5rem;
-  max-width: 320px;
+  max-width: 255px;
   margin: 20px auto;
   color: #fff;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
@@ -551,7 +547,7 @@
     backdrop-filter: blur(10px);
 }
 .cityList {
-    display: none;
+    display: flex;
     flex-direction: column;
     list-style-type: none;
     padding: 0;
@@ -615,12 +611,12 @@
     font-size: 40px;
     border: 2px solid black;
 }
-    .choseContry_ul:hover {
+    .choseContry_ul span:hover {
         background: #d4d4d4;
     }
 
 .choseContry_li {
-    display: none;
+    display: list-item;
     font-size: 35px;
     list-style-type: none;
     margin-right: auto;
@@ -628,6 +624,12 @@
     width: 100%;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+    max-height: 100px;
+    transition: max-height 0.3s ease;
+}
+.image_UKRAINE{
+    float:right;
+    margin:2%;
 }
 
 .choseContry_li:hover {
@@ -677,7 +679,7 @@
 }
 
 .calendar_block_div {
-  display: none;
+  display: flex;
   position: relative;
   z-index:100;
 }
@@ -697,50 +699,42 @@
     font-size: 20px;
     position: absolute;
     right: 10px;
+    background: slategray;
+    color: unset;
 }
 
-#thead_id_button_back button {
-  appearance: none;
-  height: 5px;
-  width: 10px;
-  border: 0;
-  margin: 0;
-  margin-bottom: 5px;
-  background: #313131;
-  cursor: pointer;
-  transition: all 0.1s;
+#button_back_calendar {
+    appearance: none;
+    height: 5px;
+    width: 10px;
+    border: 0;
+    margin: 0;
+    margin-bottom: 5px;
+    cursor: pointer;
+    transition: all 0.1s;
+    background: none;
 }
 
-#thead_id_button_back button:active {
-  transform: scale(0.9);
-  opacity: 0.7;
-}
-#thead_id_button_back button::after {
-  content: "<";
-  color: snow;
-  opacity: 0.6;
+    #button_back_calendar:active {
+        transform: scale(0.9);
+        opacity: 0.7;
+    }
+
+#button_forward_calendar {
+    appearance: none;
+    height: 5px;
+    width: 10px;
+    border: 0;
+    margin: 0;
+    margin-bottom: 5px;
+    cursor: pointer;
+    transition: all 0.1s;
+    background: none;
 }
 
-#thead_id_button_forward button {
-  appearance: none;
-  height: 5px;
-  width: 10px;
-  border: 0;
-  margin: 0;
-  margin-bottom: 5px;
-  background-color: #313131;
-  cursor: pointer;
-  transition: all 0.1s;
-}
-
-#thead_id_button_forward button:active {
-  transform: scale(0.9);
-  opacity: 0.7;
-}
-#thead_id_button_forward button::before {
-  content: ">";
-  color: snow;
-  opacity: 0.6;
+#button_forward_calendar:active {
+    transform: scale(0.9);
+    opacity: 0.7;
 }
 
 #calendar_thead {
@@ -1056,8 +1050,11 @@
 }
 
 #progress_adding_button {
+  display:flex;
+  align-items:center;
+  justify-content:center;
   padding: 0;
-  width: 49%;
+  width: 99%;
   height: 104px;
   transition: all 0.1s;
   margin-right: auto;
@@ -1069,20 +1066,26 @@
   //border-top-left-radius: 40px;
   //border-top-right-radius: 40px;
 }
-#progress_adding_button span {
-  font-family: Montserrat;
-  font-size: 30px;
-  font-weight: 600;
-  color: white;
-}
-#progress_adding_button span:hover {
-  opacity: 0.7;
-}
+    #progress_adding_button span {
+      font-family: Montserrat;
+      font-size: 50px;
+      font-weight: 600;
+      color: white;
+    }
+    #progress_adding_button:hover span {
+        opacity: 0.7;
+    }
+    #progress_adding_button span:hover {
+        opacity: 0.7;
+    }
 
 #progress_done_button {
+  display:flex;
+  align-items:center;
+  justify-content:center;
   float: inline-end;
   padding: 0;
-  width: 49%;
+  width: 99%;
   margin-left: auto;
   height: 104px;
   transition: all 0.1s;
@@ -1093,16 +1096,20 @@
   border: solid;
   border-color: #ff5100;
 }
-#progress_done_button span {
-  font-family: Montserrat;
-  font-size: 30px;
-  font-weight: 600;
-  color: white;
-}
+    #progress_done_button:hover span {
+        opacity: 0.7;
+    }
+    #progress_done_button span {
+        font-family: Montserrat;
+        font-size: 50px;
+        font-weight: 600;
+        color: white;
+    }
 
-#progress_done_button span:hover {
-  opacity: 0.7;
-}
+    #progress_done_button span:hover {
+        opacity: 0.7;
+    }
+
 .task-item {
   font-family: Montserrat;
   font-size: 35px;
@@ -1154,7 +1161,7 @@
 /*конец растановки создаваемых задач в progress*/
 
 .modal_overlay {
-  display: none;
+  display:  none;
   align-items: center;
   justify-content: center;
   position: fixed;
@@ -1213,14 +1220,16 @@
   border: 0;
   background: #00ff088d;
   color: aliceblue;
+  cursor:pointer;
 }
 #cancel_note_button {
-  font-weight: 600;
-  width: 90px;
-  height: 50px;
-  border: 0;
-  background: #ff0000a6;
-  color: aliceblue;
+    font-weight: 600;
+    width: 90px;
+    height: 50px;
+    border: 0;
+    background: #ff0000a6;
+    color: aliceblue;
+    cursor: pointer;
 }
 /* ----------------------------------STATISTICS - H1----------------------------------- */
 /* .statictics {
