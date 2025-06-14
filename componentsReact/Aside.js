@@ -6,32 +6,33 @@ export default function Aside() {
     const [notePages, setNotePages] = useState([]); // массив страниц заметок
     const inputRef = useRef(null);
     const liRefs = useRef({});
+    const asideRef = useRef(null);
 
     function openModalWindow() {
+        asideRef.current.style.position = 'absolute';
         setShowModal(current => !current);
     }
-    let num = 0;
+
     function addNotePage() {
         // заносни страницу в setNotePages
         let value = inputRef.current.value.trim();
         if (value) {
             const newNotePage = {
-                id: `Task${num}`,
+                id: Date.now().toString() + Math.random().toString(36).slice(2),
                 value,
             }
             setNotePages(current => [...current, newNotePage]);
         }
-
+        asideRef.current.style.position = 'fixed';
         setShowModal(current => !current);
     }
 
     function deleteNotePage(value) {
-        if (!value) return;
-        //удаление заметки
+        setNotePages(current => current.filter(note => note.value !== value));
     }
 
     return (
-        <aside className="aside_panel">
+        <aside className="aside_panel" ref={asideRef}>
             <div className="logo">
                 <Image
                     className="iceberg_logo"
