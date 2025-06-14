@@ -252,7 +252,7 @@ main {
 }
     /* ----------------------------------AsideModalWindow----------------------------------- */
     #asideModalWindow {
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
   position: fixed;
@@ -299,7 +299,7 @@ main {
 }
 /* ----------------------------------------------------------------------------- */
 .aside_panel {
-    position: fixed;
+    position: absolute;
     max-width: 165px;
     height: 100%;
     //background: #ff5100;
