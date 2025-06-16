@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Head from 'next/head';
 import Header from '../componentsReact/Header';
 import Aside from '../componentsReact/Aside';
@@ -9,8 +9,27 @@ import TimeBlock from '../componentsReact/TimeBlock';
 import DateBlock from '../componentsReact/DateBlock';
 import StatisticsBlock from '../componentsReact/StatisticsBlock';
 import ProgressBlock from '../componentsReact/ProgressBlock';
+import NotePage from '../componentsReact/NotePage';
 
 export default function Home() {
+    const [notePages, setNotePage] = useState([]);
+    const [activeNote, setActiveNote] = useState(null);
+
+    const addNodePage = (notePage) => {
+        const id = notePage.id;
+        const alreadyExists = notePages.some(page => page.id === id);
+        if (alreadyExists) return;
+        const newPage = { id };
+        setNotePage(current => [...current, newPage]);
+        setActiveNote(id);
+    };
+
+    const deleteNotePage = (value) => {
+        const id = `${value}`;
+        setNotePage(current => current.filter(page => page.id !== id));
+        setActiveNote(currentId => currentId === id ? null : currentId);
+    };
+
     return (
         <>
         <Head>
@@ -19,18 +38,23 @@ export default function Home() {
         </Head>
         <div>
             <Header />
-            <main>
-                <Aside />
-                <WelcomeArticle />
+                <main>
+                 <Aside addNodePage={addNodePage} deleteNotePage={deleteNotePage} />
+                    {notePages.length === 0 && <WelcomeArticle />}
+                    <div id="divNotedivNote">
+                        {notePages.filter(note => note.id === activeNote).map(note => (
+                            <NotePage key={note.id} id={note.id} deleteNotePage={deleteNotePage} />
+                        ))}
+                    </div>
                 <div className="button_contener">
-                    <WeatherBlock />
-                    <CalendarBlock />
-                    <TimeBlock />
-                    <DateBlock />
+                  <WeatherBlock />
+                  <CalendarBlock />
+                  <TimeBlock />
+                  <DateBlock />
                 </div>
                 <div className="statistics-progress">
-                    <StatisticsBlock />
-                    <ProgressBlock />
+                  <StatisticsBlock />
+                  <ProgressBlock />
                 </div>
             </main>
         </div>

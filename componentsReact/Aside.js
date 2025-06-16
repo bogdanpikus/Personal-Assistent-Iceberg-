@@ -1,35 +1,55 @@
 import Image from 'next/image';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-export default function Aside() {
+export default function Aside({ addNodePage, deleteNotePage }) {
     const [showModal, setShowModal] = useState(false);
-    const [notePages, setNotePages] = useState([]); // массив страниц заметок
+    const [noteLiPages, setNoteLiPages] = useState([]); // массив li страниц заметок
     const inputRef = useRef(null);
     const liRefs = useRef({});
     const asideRef = useRef(null);
+    const liCounter = useRef(1);
 
     function openModalWindow() {
         asideRef.current.style.position = 'absolute';
         setShowModal(current => !current);
+        setTimeout(() => {
+            inputRef.current?.focus();
+        }, 0);
     }
 
-    function addNotePage() {
+    function addNoteLiPage() {
         // заносни страницу в setNotePages
         let value = inputRef.current.value.trim();
+        if (!value) alert("Введите текст");
+        const id = `NoteMainPage${liCounter.current}`;
+        liCounter.current += 1;
         if (value) {
             const newNotePage = {
-                id: Date.now().toString() + Math.random().toString(36).slice(2),
+                id,
                 value,
+        }
+            const alreadyExists = noteLiPages.some(page => page.value === value);
+            if (alreadyExists) {
+                alert("Страница с таким названием уже существует.");
+                return;
             }
-            setNotePages(current => [...current, newNotePage]);
+
+        setNoteLiPages(current => [...current, newNotePage]);
         }
         asideRef.current.style.position = 'fixed';
         setShowModal(current => !current);
     }
 
-    function deleteNotePage(value) {
-        setNotePages(current => current.filter(note => note.value !== value));
+    function deleteNotePages(id) {
+        setNoteLiPages(current => current.filter(note => note.id !== id));
+        deleteNotePage(id);
     }
+
+    function addNotepage(notePage) {
+        //тут надо писать что вызовает addNodePage()?
+        addNodePage(notePage); // передаём в Home
+    }
+
 
     return (
         <aside className="aside_panel" ref={asideRef}>
@@ -51,9 +71,9 @@ export default function Aside() {
                     </li>
                 </ul>
                 <ul className="FileList" id="FileList">
-                    {notePages.map((notePage) => (
-                        <li key={notePage.id} ref={current => (liRefs.current[notePage.value] = current)}>{notePage.value}
-                            <button id="liClose" onClick={() => deleteNotePage(notePage.value)}></button>
+                    {noteLiPages.map((noteLiPage) => (
+                        <li key={noteLiPage.id} ref={current => (liRefs.current[noteLiPage.value] = current)} onClick={() => addNotepage(noteLiPage)}>{noteLiPage.value}
+                            <button id="liClose" onClick={(e) => { e.stopPropagation(); deleteNotePages(noteLiPage.id); }}></button>
                         </li>
                     ))}
                 </ul>
@@ -61,8 +81,8 @@ export default function Aside() {
             {showModal && (
                 <div id="asideModalWindow" tabIndex="-1">
                     <div id="ModalWindow">
-                        <input className="modalWindowInput" id="modalWindowInput" type="text" placeholder=" Enter new note page name..." ref={inputRef}></input>
-                        <button id="modalWindowButton" onClick={addNotePage}>Submit</button>
+                        <input className="modalWindowInput" id="modalWindowInput" type="text" placeholder=" Enter new note page name..." ref={inputRef} onKeyDown={(event) => { if (event.key == 'Enter') { addNoteLiPage() } if (event.key == 'Escape') { setShowModal(current => !current) } }}></input>
+                        <button id="modalWindowButton" onClick={addNoteLiPage}>Submit</button>
                     </div>
                 </div>
             )}

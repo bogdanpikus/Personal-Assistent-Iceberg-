@@ -232,13 +232,14 @@ main {
 .dark-theme #blurNoteModalPage{
     background:#9d9d9d;
 }
-.dark-theme #ModalAddNoteTextarea{
-    background:aliceblue;
-    color:black;
+.dark-theme #ModalAddNoteTextarea {
+    background: #313131;
+    color: snow;
 }
 .dark-theme .note-page{
     background:#9d9d9d;
 }
+
 .dark-theme {
     background: radial-gradient( circle at 100%, aliceblue 50%, #feff00 50%, #ff5100 74%, #f6f6f6 75% );
     background-repeat: no-repeat;
@@ -247,9 +248,10 @@ main {
 .dark-theme #NoteMainPage {
     background:#9d9d9d;
 }
-.dark-theme #ModalAddNote{
-    background:rgba(0, 0, 0, 0.3);
-}
+    .dark-theme #ModalAddNote {
+        border: 10px solid snow;
+        background: snow;
+    }
     /* ----------------------------------AsideModalWindow----------------------------------- */
     #asideModalWindow {
   display: flex;
@@ -1324,16 +1326,16 @@ main {
 /*-----------------------------------------NOTES------------------------------------------------------*/
 
 #divNotedivNote {
-    display: none;
+    display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
     width: 52.2%;
-    margin-left: 10%;
+    margin-left: 11%;
     //z-index: 1;
 }
 #blurNoteModalPage {
-    display: none;
+    display: flex;
     position: absolute;
     justify-content: center;
     align-items: center;
@@ -1346,15 +1348,16 @@ main {
 }
 
 #ModalAddNote {
-    display: none;
-    flex-direction:column;
+    display: flex;
+    flex-direction: column;
     position: absolute;
-    width: 55%;
+    width: 47%;
     height: 70%;
     background: #9d9d9d;
-    border-radius:10px;
-    border:0;
-    z-index:1000;
+    border-radius: 10px;
+    border: 0;
+    z-index: 1000;
+    border: 10px solid #9d9d9d;
 }
 #ModalAddNoteText {
     font-family: Montserrat;
@@ -1403,7 +1406,7 @@ main {
 }
 
 #ModalAddNoteUl {
-    display:none;
+    display:block;
     font-size: 23.7px;
     width: 100%;
     margin: 0;
@@ -1609,4 +1612,42 @@ main {
     top: 30%;
     background: white;
     z-index: 1000000;
+}
+
+.note-page {
+    display: inline-block;
+    height: 800px;
+    width: 100%;
+    margin-top: 2%;
+    border-radius: 20px;
+}
+
+.closebutton{
+    font-size: 13px;
+    font-weight:600;
+    float:right;
+    background:#ff5100;
+    border: 0;
+    border-top-left-radius:20px;
+    border-top-right-radius:20px;
+    border-bottom-left-radius:20px;
+    border-bottom-right-radius:0px;
+    color:snow;
+    cursor:pointer;
+    margin-top:2px;
+    margin-right:2px;
+    height:40px;
+    width:40px;
+}
+
+.addButton {
+   font-size:40px;
+   font-weight:400;
+   float:inline-start;
+   background:none;
+   border: 0;
+   color: #ff5100;
+   cursor:pointer;
+   height:30px;
+   width:30px;
 }
