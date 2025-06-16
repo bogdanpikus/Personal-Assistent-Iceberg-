@@ -258,18 +258,6 @@ function deleteNoteFromWall(noteKey) {
         };
     };
 }
-
-function setupReminder(note) {
-    if (!note.reminder || !note.endDate || !note.endTime) return;
-    const endDateTime = new Date(`${note.endDate}T${note.endTime}`);
-    const now = new Date(); 
-    const timeToReminder = endDateTime.getTime() - now.getTime();
-    if (timeToReminder > 0) {
-        setTimeout(() => {
-            alert(`Напоминание: ${note.title}`);
-        }, timeToReminder);
-    }
-}
 function getActiveWall() {
     const walls = document.querySelectorAll('[id^="NoteMainPage"]');
 
