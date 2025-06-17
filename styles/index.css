@@ -447,7 +447,7 @@ main {
   border: 0;
   margin: 0;
   height: 80px;
-  width: 150px;
+  width: 110px;
   transition: all 0.1s;
   cursor: pointer;
   border-bottom-right-radius: 30px;
@@ -651,14 +651,14 @@ main {
 }
 
 .calendar_button {
-  height: 80px;
-  width: 150px;
-  border: 0;
-  cursor: pointer;
-  background: #ff5100;
-  transition: all 0.1s;
-  border-bottom-right-radius: 30px;
-  border-bottom-left-radius: 30px;
+    height: 80px;
+    width: 110px;
+    border: 0;
+    cursor: pointer;
+    background: #ff5100;
+    transition: all 0.1s;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
 }
 .calendar_button:hover {
   transform: scale(1.05);
@@ -798,14 +798,14 @@ main {
 }
 
 .time_button {
-  height: 80px;
-  width: 150px;
-  border: 0;
-  cursor: pointer;
-  background: #ff5100;
-  transition: all 0.1s;
-  border-bottom-right-radius: 30px;
-  border-bottom-left-radius: 30px;
+    height: 80px;
+    width: 110px;
+    border: 0;
+    cursor: pointer;
+    background: #ff5100;
+    transition: all 0.1s;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
 }
 .time_button:hover {
   transform: scale(1.05);
@@ -871,14 +871,14 @@ main {
 }
 
 .date_button {
-  height: 80px;
-  width: 150px;
-  border: 0;
-  cursor: pointer;
-  background: #ff5100;
-  transition: all 0.1s;
-  border-bottom-right-radius: 30px;
-  border-bottom-left-radius: 30px;
+    height: 80px;
+    width: 110px;
+    border: 0;
+    cursor: pointer;
+    background: #ff5100;
+    transition: all 0.1s;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
 }
 .date_button:hover {
   transform: scale(1.05);
@@ -1650,4 +1650,43 @@ main {
    cursor:pointer;
    height:30px;
    width:30px;
+}
+
+.noteH3{
+    cursor:pointer;
+    margin-top:43px;
+    margin-bottom:4px;
+    margin-left:2px;
+}
+
+.noteP{
+    margin: 0px 0px 0px 2px;
+    color:red;
+}
+.noteP2 {
+    margin: 0px 0px 0px 2px;
+    color: darkgreen;
+}
+.noteP3 {
+    margin: 0px 0px 0px 2px;
+    color: darkblue;
+}
+
+#inputDate_id {
+    width: 140px;
+    height: 20px;
+    background: snow;
+    border: 0px;
+}
+
+#inputDate_Button {
+    width: 23px;
+    height: 24px;
+    margin-left:2px;
+}
+
+#remindCheckbox {
+    margin: 0;
+    position: relative;
+    top: 1.8px;
 }
