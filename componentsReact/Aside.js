@@ -1,7 +1,7 @@
 import Image from 'next/image';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 
-export default function Aside({ addNodePage, deleteNotePage }) {
+export default function Aside({ addNodePage, deleteNotePage, setActiveNote, notePages }) {
     const [showModal, setShowModal] = useState(false);
     const [noteLiPages, setNoteLiPages] = useState([]); // массив li страниц заметок
     const inputRef = useRef(null);
@@ -81,7 +81,7 @@ export default function Aside({ addNodePage, deleteNotePage }) {
             {showModal && (
                 <div id="asideModalWindow" tabIndex="-1">
                     <div id="ModalWindow">
-                        <input className="modalWindowInput" id="modalWindowInput" type="text" placeholder=" Enter new note page name..." ref={inputRef} onKeyDown={(event) => { if (event.key == 'Enter') { addNoteLiPage() } if (event.key == 'Escape') { setShowModal(current => !current) } }}></input>
+                        <input className="modalWindowInput" id="modalWindowInput" type="text" placeholder=" Enter new note page name..." ref={inputRef} onKeyDown={(event) => { if (event.key == 'Enter') { addNoteLiPage() } if (event.key == 'Escape') { setShowModal(current => !current); asideRef.current.style.position = 'fixed';  } }}></input>
                         <button id="modalWindowButton" onClick={addNoteLiPage}>Submit</button>
                     </div>
                 </div>
