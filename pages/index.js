@@ -18,7 +18,10 @@ export default function Home() {
     const addNodePage = (notePage) => {
         const id = notePage.id;
         const alreadyExists = notePages.some(page => page.id === id);
-        if (alreadyExists) return;
+        if (alreadyExists) {
+            setActiveNote(id); // "разбудили" страницу
+            return;
+        }
         const newPage = { id };
         setNotePage(current => [...current, newPage]);
         setActiveNote(id);
@@ -39,11 +42,16 @@ export default function Home() {
         <div>
             <Header />
                 <main>
-                 <Aside addNodePage={addNodePage} deleteNotePage={deleteNotePage} />
+                    <Aside addNodePage={addNodePage} deleteNotePage={deleteNotePage} setActiveNote={setActiveNote} notePages={notePages} />
                     {notePages.length === 0 && <WelcomeArticle />}
                     <div id="divNotedivNote">
-                        {notePages.filter(note => note.id === activeNote).map(note => (
-                            <NotePage key={note.id} id={note.id} deleteNotePage={deleteNotePage} />
+                        {notePages.map(note => (
+                            <NotePage
+                                key={note.id}
+                                id={note.id}
+                                deleteNotePage={deleteNotePage}
+                                isActive={activeNote === note.id} // передаём флаг активности
+                            />
                         ))}
                     </div>
                 <div className="button_contener">

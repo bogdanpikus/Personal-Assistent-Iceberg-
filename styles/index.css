@@ -1544,6 +1544,7 @@ main {
     background-position: center;
     user-select: none;
     border-radius: 10px;
+    cursor:pointer;
 }
 
 #calendar_thead_tr {
@@ -1689,4 +1690,21 @@ main {
     margin: 0;
     position: relative;
     top: 1.8px;
+}
+
+#SelectedNoteTextBlock {
+    position: absolute;
+    background: gray;
+    border: 10px solid gray;
+    border-radius: 10px;
+}
+
+.note-page.inactive {
+    display: none;
+}
+
+.marked {
+    background-color: green;
+    border-radius:100%;
+    cursor:pointer;
 }
