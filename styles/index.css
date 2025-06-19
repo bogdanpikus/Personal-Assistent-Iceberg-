@@ -1708,3 +1708,8 @@ main {
     border-radius:100%;
     cursor:pointer;
 }
+
+.highlighted-today {
+    background-color: green;
+    border-radius: 4px;
+}
