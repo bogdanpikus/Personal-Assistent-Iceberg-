@@ -176,7 +176,7 @@ export default function NotePage({ id, deleteNotePage, isActive }) {
                 <div className="note-text-view" id="SelectedNoteTextBlock">
                     <h4>Текст заметки:</h4>
                     <p>{selectedText}</p>
-                    <button onClick={() => setSelectedText(null)}>Закрыть</button>
+                    <button id="SelectedNoteTextBlock_button" onClick={() => setSelectedText(null) }>Закрыть</button>
                 </div>
             )}
         </>
