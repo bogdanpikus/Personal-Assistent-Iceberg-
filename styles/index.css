@@ -1713,3 +1713,11 @@ main {
     background-color: green;
     border-radius: 4px;
 }
+
+#SelectedNoteTextBlock_button {
+    cursor: pointer;
+}
+
+#SelectedNoteTextBlock {
+    z-index: 1;
+}

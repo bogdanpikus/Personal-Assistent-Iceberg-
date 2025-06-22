@@ -46,12 +46,7 @@ export default function Home() {
                     {notePages.length === 0 && <WelcomeArticle />}
                     <div id="divNotedivNote">
                         {notePages.map(note => (
-                            <NotePage
-                                key={note.id}
-                                id={note.id}
-                                deleteNotePage={deleteNotePage}
-                                isActive={activeNote === note.id} // передаём флаг активности
-                            />
+                            <NotePage key={note.id} id={note.id} deleteNotePage={deleteNotePage} isActive={activeNote === note.id}/>
                         ))}
                     </div>
                 <div className="button_contener">
