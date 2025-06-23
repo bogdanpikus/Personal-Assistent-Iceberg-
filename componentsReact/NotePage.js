@@ -91,9 +91,9 @@ export default function NotePage({ id, deleteNotePage, isActive }) {
             inputTextRef.current.value = "";
         };
 
-    request.onerror = () => {
-        console.error("Ошибка при сохранении заметки в IndexedDB", request.error);
-    };
+        request.onerror = () => {
+            console.error("Ошибка при сохранении заметки в IndexedDB", request.error);
+        };
     }
 
     function deleteNoteFromTheWall(id) {
