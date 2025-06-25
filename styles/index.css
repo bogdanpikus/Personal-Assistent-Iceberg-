@@ -23,8 +23,6 @@
 }
 
 html {
-  //height: 100%;
-  //position: fixed;
   margin: 0px;
   padding: 0px;
   margin: auto;
@@ -34,7 +32,6 @@ html {
   user-select: none;
 }
 body {
-  //height: 100%;
   overflow-x: hidden;
   margin: 0px;
   padding: 0px;
@@ -52,7 +49,6 @@ body {
   margin: 0px;
   border: 0px;
   padding: 0px;
-  //background: rgba(21, 21, 21, 1);
   background: #ff5100;
 }
 
@@ -189,7 +185,6 @@ body {
 main {
   display: flex;
   width: 100vw;
-  //background: #cbcbcb;
   border-top: 5px;
   border-left: 0px;
   border-right: 0px;
@@ -316,7 +311,6 @@ main {
   position: fixed;
   max-width: 165px;
   height: 100%;
-  //background: #ff5100;
   background-color: rgba(21, 21, 21, 1);
   padding: 0px;
   margin: 0px;
@@ -597,7 +591,6 @@ main {
   overflow-y: scroll;
   scrollbar-width: thin;
   scrollbar-color: darkslateblue;
-  //background: linear-gradient(145deg, #38cdd2, #87b9f6);
   z-index: 1000;
 }
 
@@ -877,7 +870,6 @@ main {
 .date_block {
   display: flex;
   flex-direction: column;
-  //margin-right: 17px;
   width: auto;
   height: 100px;
 }
@@ -1009,12 +1001,6 @@ main {
 .progress_block {
   width: 25%;
   height: 100%;
-  //background-image: repeating-radial-gradient(
-    black 50%,
-    rgba(207, 0, 255, 0.2) 60%,
-    darkslateblue 70%,
-    black 100%
-  );
   background: linear-gradient(145deg, #e4e4e4 50%, black 51%);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -1034,7 +1020,6 @@ main {
   font-weight: 600;
   position: relative;
   color: black;
-  //text-shadow: 1px 2px 1px black;
 }
 
 .progress {
@@ -1045,14 +1030,12 @@ main {
   left: 165px;
   bottom: 10px;
 }
-/*начало растановки создаваемых задач в progress*/
 
 .div_progress_main {
   position: relative;
   right: 150px;
   bottom: 15px;
   width: 289px;
-  //transform: translateX(-100%);
 }
 
 .input_progress_storage {
@@ -1077,8 +1060,6 @@ main {
   background: none;
   border: solid;
   border-color: #ff5100;
-  //border-top-left-radius: 40px;
-  //border-top-right-radius: 40px;
 }
 #progress_adding_button span {
   font-family: Montserrat;
@@ -1129,7 +1110,6 @@ main {
   font-size: 35px;
   width: 100%;
   color: black;
-  //color: whitesmoke;
   margin: 25px;
 }
 .task-item input {
@@ -1185,7 +1165,6 @@ main {
   width: 100%;
   height: 100%;
   backdrop-filter: blur(10px);
-  //background-color: rgba(0, 0, 0, 0.6);
 }
 
 .modal_window {
@@ -1252,7 +1231,6 @@ main {
 }*/
 .h1_lets_start {
   position: relative;
-  //height: 800px;
   color: seashell;
 }
 .welcome_p {
@@ -1344,7 +1322,6 @@ main {
   position: absolute;
   width: 52.2%;
   margin-left: 11%;
-  //z-index: 1;
 }
 #blurNoteModalPage {
   display: flex;
@@ -1439,13 +1416,11 @@ main {
 
 .ModalSpan {
   display: inherit;
-  //width: 100%;
   font-size: 35px;
   font-weight: 600;
   background: white;
   cursor: pointer;
   opacity: 0.7;
-  //border: 0.5px ridge #9d9d9d;
   border-bottom: none;
   border-right: none;
 }
@@ -1514,7 +1489,6 @@ main {
   align-items: center;
   width: fit-content;
   height: fit-content;
-  //background: white;
   margin: 10px;
 }
 #DeadTimeLine {
@@ -1523,7 +1497,6 @@ main {
   align-items: center;
   width: fit-content;
   height: fit-content;
-  //background: white;
   margin: 10px;
 }
 #remind {
