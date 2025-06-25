@@ -1,5 +1,5 @@
-<!Doctype html>
-<html  class="html" lang="ru">
+<!doctype html>
+<html class="html" lang="ru">
   <head>
     <!-- В теге <head>...</head> находятся метаинформационные данные страницы, которые помогают браузеру и поисковым системам понять, как ее обрабатывать и отображать. -->
     <meta charset="UTF-8" />
@@ -13,168 +13,236 @@
     <link href="styles/index.css" rel="stylesheet" />
   </head>
   <body id="body">
-      <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-      <script type="module" src="components/Weather.js"></script>
-      <script type="module" src="components/Time.js"></script>
-      <script type="module" src="components/Date.js"></script>
-      <script type="module" src="components/Calendar.js"></script>
-      <script type="module" src="components/Progress.js"></script>
-      <script type="module" src="components/Statistics.js"></script>
-      <script type="module" src="components/SwitchTheme.js"></script>
-      <script type="module" src="components/Notes.js"></script>
-      <script type="module" src="components/SearchNotes.js"></script>
-      <script type="module" src="index.js"></script>
- 
-      <div id="background" class="header" style="opacity: 0;"></div>
-      <header class="header">
-          <div class="search">
-              <input type="search" id="main_search" class="search-main" placeholder="Search..." />
-             <!--  <button class="search_button"></button> -->
-              <div id="searchNotes"></div>
-          </div>
-          <div class="theme-toggle">
-              <input type="checkbox" id="theme-switch" class="toggle" />
-          </div>
-          <div class="user_info">
-              <span class="avatar_user_name">Bogdan</span>
-              <button style="position:absolute;" class="avatar_button" aria-label="Clear recent searches"><img class="avatar" src="public/user.png" alt="" /></button>
-          </div>
-      </header>
-      <main id="main">
-          <aside class="aside_panel">
-              <div class="logo">
-                  <img src="public/logoColumn.png" class="iceberg_logo" alt="" />
-              </div>
-              <div class="add_note_div">
-                  <ul class="ul_add_note">
-                      <li class="add_note_li"><span class="add_note_span">Add Note<button class="add_note_button" id="add_note_button">+</button></span></li>
-                  </ul>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script type="module" src="components/Weather.js"></script>
+    <script type="module" src="components/Time.js"></script>
+    <script type="module" src="components/Date.js"></script>
+    <script type="module" src="components/Calendar.js"></script>
+    <script type="module" src="components/Progress.js"></script>
+    <script type="module" src="components/Statistics.js"></script>
+    <script type="module" src="components/SwitchTheme.js"></script>
+    <script type="module" src="components/Notes.js"></script>
+    <script type="module" src="components/SearchNotes.js"></script>
+    <script type="module" src="index.js"></script>
 
-                  <ul class="FileList" id="FileList">
-                      <!--Здесь будут отображатся файлы-->
-                  </ul>
+    <div id="background" class="header" style="opacity: 0"></div>
+    <header class="header">
+      <div class="search">
+        <input
+          type="search"
+          id="main_search"
+          class="search-main"
+          placeholder="Search..."
+        />
+        <!--  <button class="search_button"></button> -->
+        <div id="searchNotes"></div>
+      </div>
+      <div class="theme-toggle">
+        <input type="checkbox" id="theme-switch" class="toggle" />
+      </div>
+      <div class="user_info">
+        <span class="avatar_user_name">Bogdan</span>
+        <button
+          style="position: absolute"
+          class="avatar_button"
+          aria-label="Clear recent searches"
+        >
+          <img class="avatar" src="public/user.png" alt="" />
+        </button>
+      </div>
+    </header>
+    <main id="main">
+      <aside class="aside_panel">
+        <div class="logo">
+          <img src="public/logoColumn.png" class="iceberg_logo" alt="" />
+        </div>
+        <div class="add_note_div">
+          <ul class="ul_add_note">
+            <li class="add_note_li">
+              <span class="add_note_span"
+                >Add Note<button class="add_note_button" id="add_note_button">
+                  +
+                </button></span
+              >
+            </li>
+          </ul>
 
-                  <!-- <div class="settings">
+          <ul class="FileList" id="FileList">
+            <!--Здесь будут отображатся файлы-->
+          </ul>
+
+          <!-- <div class="settings">
                       <button class="settings_button" id="settings_id" style="padding:0px;"><span class="settings_button_span">Settings</span></button>
                   </div>-->
-              </div>
-          </aside>
-          <div id="asideModalWindow">
-              <div id="ModalWindow">
-                  <input type="text" class="modalWindowInput" id="modalWindowInput" placeholder=" Enter new note page name..." /><button id="modalWindowButton">Submit</button>
-              </div>
+        </div>
+      </aside>
+      <div id="asideModalWindow">
+        <div id="ModalWindow">
+          <input
+            type="text"
+            class="modalWindowInput"
+            id="modalWindowInput"
+            placeholder=" Enter new note page name..."
+          /><button id="modalWindowButton">Submit</button>
+        </div>
+      </div>
+      <!--здесь был  <aside class="aside_panel">-->
+      <div id="divNotedivNote">
+        <div id="blurNoteModalPage"></div>
+        <div id="ModalAddNote">
+          <input
+            type="text"
+            id="ModalAddNoteText"
+            placeholder="Enter a title..."
+          />
+          <textarea
+            id="ModalAddNoteTextarea"
+            placeholder="Whire some text..."
+          ></textarea
+          ><button id="ModalAddNoteCloseButton" type="button"></button>
+          <div id="DropdownList">
+            <span class="ModalSpan" id="ModalSpanId">Options</span>
+            <ul id="ModalAddNoteUl">
+              <li id="LiDeadLineTime" class="ModalLi">Deadline Time</li>
+              <li id="LiDeadLineDate" class="ModalLi">Deadline Date</li>
+            </ul>
           </div>
-          <!--здесь был  <aside class="aside_panel">-->
-          <div id="divNotedivNote">
-              <div id="blurNoteModalPage"></div>
-              <div id="ModalAddNote">
-                  <input type="text" id="ModalAddNoteText" placeholder="Enter a title..."/>
-                  <textarea id="ModalAddNoteTextarea" placeholder="Whire some text..."></textarea><button id="ModalAddNoteCloseButton" type="button"></button>
-                  <div id="DropdownList">
-                      <span class="ModalSpan" id="ModalSpanId">Options</span>
-                      <ul id="ModalAddNoteUl">
-                          <li id="LiDeadLineTime" class="ModalLi">Deadline Time</li>
-                          <li id="LiDeadLineDate" class="ModalLi">Deadline Date</li>
-                      </ul>
-                  </div>
-                  <div id="optionsConteiner"></div>
-                  <div id="remind">
-                      <p id="Reminder" title="Напоминание выскочит в то время, которое вы указали">Reminder on/of</p>
-                      <input type="checkbox" />
-                  </div>
-                  <button type="button" id="ModalAddNoteSubmitButton">Continue</button>
-              </div>
+          <div id="optionsConteiner"></div>
+          <div id="remind">
+            <p
+              id="Reminder"
+              title="Напоминание выскочит в то время, которое вы указали"
+            >
+              Reminder on/of
+            </p>
+            <input type="checkbox" />
           </div>
-          <div class="contener_h1_statistics" id="contener_h1_statistics">
-              <article class="h1_lets_start" id="title_main_page">
-                  <h1 id="title_main_page">Let's start<button id="close_conteiner_h1"></button></h1>
-                  <p class="welcome_p">Welcome to Iceberg!</p>
-                  <p class="basics_p">Here are the basics:</p>
-                  <p class="note_p"> <input type="checkbox" class="checkbox_p" />Click <b>+</b> to create a Note page</p>
-                  <p class="note_p"> <input type="checkbox" class="checkbox_p" />Click to buttons in right conner to open <b>Weather, Caledat, Time or Date</b></p>
-                  <p class="note_p"> <input type="checkbox" class="checkbox_p" />Scroll to bottom you can see your Statistics and Progress block; Click <b>Add Task</b> to add daily tasks</p>
-                  <p class="note_p"> <input type="checkbox" class="checkbox_p" />In search input you can find your Notes by the name</p>
-                  <p class="note_p"><ins>Other useful functions you would find during your sesions:) Good luck!</ins></p>
-              </article>
-          </div>
+          <button type="button" id="ModalAddNoteSubmitButton">Continue</button>
+        </div>
+      </div>
+      <div class="contener_h1_statistics" id="contener_h1_statistics">
+        <article class="h1_lets_start" id="title_main_page">
+          <h1 id="title_main_page">
+            Let's start<button id="close_conteiner_h1"></button>
+          </h1>
+          <p class="welcome_p">Welcome to Iceberg!</p>
+          <p class="basics_p">Here are the basics:</p>
+          <p class="note_p">
+            <input type="checkbox" class="checkbox_p" />Click <b>+</b> to create
+            a Note page
+          </p>
+          <p class="note_p">
+            <input type="checkbox" class="checkbox_p" />Click to buttons in
+            right conner to open <b>Weather, Caledat, Time or Date</b>
+          </p>
+          <p class="note_p">
+            <input type="checkbox" class="checkbox_p" />Scroll to bottom you can
+            see your Statistics and Progress block; Click <b>Add Task</b> to add
+            daily tasks
+          </p>
+          <p class="note_p">
+            <input type="checkbox" class="checkbox_p" />In search input you can
+            find your Notes by the name
+          </p>
+          <p class="note_p">
+            <ins
+              >Other useful functions you would find during your sesions:) Good
+              luck!</ins
+            >
+          </p>
+        </article>
+      </div>
 
-          <div class="button_contener">
-              <article class="weather_block" id="weather_block">
-                  <div class="weather_button_div">
-                      <button id="weather_id_button" class="weather_button"><span>Weather</span></button>
-                  </div>
-                  <div class="weather_block_div" id="weather_block_div">
-                  </div>
-              </article>
-              <div id="cityChangeBlock"></div>
-              <article class="calendar_block">
-                  <div class="calendar_button_div">
-                      <button id="calendar_id_button" class="calendar_button"><span>Calendar</span></button>
-                  </div>
-                  <div class="calendar_block_div" id="calendar_block_div">
-                      <table class="table" id="calendar_table">
-                          <thead id="calendar_thead">
-                              <tr id="calendar_thead_tr">
-                                  <th id="thead_id_button_back"><button id="button_back_calendar"></button>
-                                  <th id="thead_id_month" colspan="5"></th>
-                                  <th id="thead_id_button_forward"><button id="button_forward_calendar"></button></th>
-                              </tr>
-                          <tbody id="calendar-body">
-                          </tbody>
-                      </table>
-                  </div>
-              </article>
-              <article class="time_block">
-                  <div class="time_button_div">
-                      <button class="time_button" id="time_id_button"><span>Time</span></button>
-                  </div>
-                  <div class="time_block_div" id="time_block_div">
-                  </div>
-              </article>
-
-              <article class="date_block">
-                  <div class="date_button_div">
-                      <button class="date_button" id="date_id_button"><span>Date</span></button>
-                  </div>
-                  <div class="Img_SeasonChange" id="date_block_div">
-                      <div class="dateBlock" id="dateBlock"></div>
-                  </div>
-              </article>
+      <div class="button_contener">
+        <article class="weather_block" id="weather_block">
+          <div class="weather_button_div">
+            <button id="weather_id_button" class="weather_button">
+              <span>Weather</span>
+            </button>
           </div>
-          <div class="statistics-progress">
-              <article class="statistics_block">
-                  <div class="statistics_block_div">
-                      <table class="table_statictics" id="statistics_table">
-                          <thead id="statistics_thead">
-                          </thead>
-                          <tbody id="statistics_tbody">
-                          </tbody>
-                      </table>
-                  </div>
-              </article>
-
-              <article class="progress_block" id="progress_block">
-                  <div class="span_progress"></div>
-                  <div class="your_progress_span_div">
-                      <span class="your_progress_span">Tasks</span>
-                  </div>
-                  <div id="modal_overlay" class="modal_overlay">
-                      <div class="modal_window" id="modal_window_Div">
-                          <h2>Новая задача</h2>
-                          <input type="text" id="note_input" placeholder="Введите задачу..." />
-                          <div class="modal_buttons">
-                              <button id="save_note_button">Save</button>
-                              <button id="cancel_note_button">Cancel</button>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="input_progress_storage" id="input_progress_storage">
-                  </div>
-                  <div class="button_add_task">
-                      <button id="progress_adding_button"><span>Add Task</span></button><button id="progress_done_button"><span>Submit</span></button>
-                  </div>
-              </article>
+          <div class="weather_block_div" id="weather_block_div"></div>
+        </article>
+        <div id="cityChangeBlock"></div>
+        <article class="calendar_block">
+          <div class="calendar_button_div">
+            <button id="calendar_id_button" class="calendar_button">
+              <span>Calendar</span>
+            </button>
           </div>
-      </main>
-  </body>   
+          <div class="calendar_block_div" id="calendar_block_div">
+            <table class="table" id="calendar_table">
+              <thead id="calendar_thead">
+                <tr id="calendar_thead_tr">
+                  <th id="thead_id_button_back">
+                    <button id="button_back_calendar"></button>
+                  </th>
+                  <th id="thead_id_month" colspan="5"></th>
+                  <th id="thead_id_button_forward">
+                    <button id="button_forward_calendar"></button>
+                  </th>
+                </tr>
+              </thead>
+
+              <tbody id="calendar-body"></tbody>
+            </table>
+          </div>
+        </article>
+        <article class="time_block">
+          <div class="time_button_div">
+            <button class="time_button" id="time_id_button">
+              <span>Time</span>
+            </button>
+          </div>
+          <div class="time_block_div" id="time_block_div"></div>
+        </article>
+
+        <article class="date_block">
+          <div class="date_button_div">
+            <button class="date_button" id="date_id_button">
+              <span>Date</span>
+            </button>
+          </div>
+          <div class="Img_SeasonChange" id="date_block_div">
+            <div class="dateBlock" id="dateBlock"></div>
+          </div>
+        </article>
+      </div>
+      <div class="statistics-progress">
+        <article class="statistics_block">
+          <div class="statistics_block_div">
+            <table class="table_statictics" id="statistics_table">
+              <thead id="statistics_thead"></thead>
+              <tbody id="statistics_tbody"></tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="progress_block" id="progress_block">
+          <div class="span_progress"></div>
+          <div class="your_progress_span_div">
+            <span class="your_progress_span">Tasks</span>
+          </div>
+          <div id="modal_overlay" class="modal_overlay">
+            <div class="modal_window" id="modal_window_Div">
+              <h2>Новая задача</h2>
+              <input
+                type="text"
+                id="note_input"
+                placeholder="Введите задачу..."
+              />
+              <div class="modal_buttons">
+                <button id="save_note_button">Save</button>
+                <button id="cancel_note_button">Cancel</button>
+              </div>
+            </div>
+          </div>
+          <div class="input_progress_storage" id="input_progress_storage"></div>
+          <div class="button_add_task">
+            <button id="progress_adding_button"><span>Add Task</span></button
+            ><button id="progress_done_button"><span>Submit</span></button>
+          </div>
+        </article>
+      </div>
+    </main>
+  </body>
 </html>

@@ -1,12 +1,12 @@
 module.exports = {
-    images: {
-        remotePatterns: [
-            {
-                protocol: 'https',
-                hostname: 'flagcdn.com',
-                port: '', // пусто, если порт не используется явно (обычно 443 для https)
-                pathname: '/**', // все пути
-            },
-        ],
-    },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "flagcdn.com",
+        port: "", // пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅ 443 пїЅпїЅпїЅ https)
+        pathname: "/**", // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+      },
+    ],
+  },
 };

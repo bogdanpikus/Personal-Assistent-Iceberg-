@@ -1,1 +1,72 @@
-﻿import { useEffect, useState } from "react";     import Image from 'next/image';   export default function Header() {     const [theme, setTheme] = useState('dark-theme');      useEffect(() => {        const savedTheme = localStorage.getItem('theme') || 'dark-theme';     setTheme(savedTheme);     document.querySelector('main')?.classList.add(savedTheme);   }, []);    // Функция переключения темы   const switchTheme = () => {     const newTheme = theme === 'dark-theme' ? 'light-theme' : 'dark-theme';     setTheme(newTheme);     localStorage.setItem('theme', newTheme);      const main = document.querySelector('main');     if (main) {       main.classList.remove(theme);       main.classList.add(newTheme);     }   };    return (     <header className="header">       <div className="search">         <input           type="search"           id="main_search"           className="search-main"           placeholder="Search..."         />         {/* <button className="search_button"></button> */}         <div id="searchNotes"></div>       </div>        <div className="theme-toggle">             <input           type="checkbox"           id="theme-switch"           className="toggle"           checked={theme === 'dark-theme'}           onChange={switchTheme}         />       </div>        <div className="user_info">         <span className="avatar_user_name">Bogdan</span>         <button           className="avatar_button"           aria-label="Clear recent searches"         >           <Image             className="avatar"             src="/user.png"             alt="User avatar"             width={32}             height={32}           />         </button>       </div>     </header>   ); }
+﻿import { useEffect, useState } from "react";
+import Image from "next/image";
+
+export default function Header() {
+  const [theme, setTheme] = useState("dark-theme");
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme") || "dark-theme";
+    setTheme(savedTheme);
+    document.querySelector("main")?.classList.add(savedTheme);
+  }, []);
+
+  // Функция переключения темы
+  const switchTheme = () => {
+    const newTheme = theme === "dark-theme" ? "light-theme" : "dark-theme";
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
+
+    const main = document.querySelector("main");
+    if (main) {
+      main.classList.remove(theme);
+      main.classList.add(newTheme);
+    }
+  };
+
+  return (
+    <header className="header">
+       {" "}
+      <div className="search">
+         {" "}
+        <input
+          type="search"
+          id="main_search"
+          className="search-main"
+          placeholder="Search..."
+        />
+          {/* <button className="search_button"></button> */} {" "}
+        <div id="searchNotes"></div> {" "}
+      </div>
+        {" "}
+      <div className="theme-toggle">
+        {" "}
+         {" "}
+        <input
+          type="checkbox"
+          id="theme-switch"
+          className="toggle"
+          checked={theme === "dark-theme"}
+          onChange={switchTheme}
+        />
+         {" "}
+      </div>
+        {" "}
+      <div className="user_info">
+          <span className="avatar_user_name">Bogdan</span> {" "}
+        <button className="avatar_button" aria-label="Clear recent searches">
+           {" "}
+          <Image
+            className="avatar"
+            src="/user.png"
+            alt="User avatar"
+            width={32}
+            height={32}
+          />
+           {" "}
+        </button>
+         {" "}
+      </div>
+       {" "}
+    </header>
+  );
+}
