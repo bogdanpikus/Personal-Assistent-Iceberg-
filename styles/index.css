@@ -23,15 +23,15 @@
 }
 
 html {
-    //height: 100%;
-    //position:fixed;
-    margin: 0px;
-    padding: 0px;
-    margin: auto;
-    scrollbar-width: none;
-    background: #ff5100;
-    overflow-y: scroll;
-    user-select:none;
+  //height: 100%;
+  //position: fixed;
+  margin: 0px;
+  padding: 0px;
+  margin: auto;
+  scrollbar-width: none;
+  background: #ff5100;
+  overflow-y: scroll;
+  user-select: none;
 }
 body {
   //height: 100%;
@@ -83,10 +83,10 @@ body {
 }
 
 .theme-toggle {
-    margin: auto;
-    height: contain;
-    bottom: 6px;
-    position: relative;
+  margin: auto;
+  height: contain;
+  bottom: 6px;
+  position: relative;
 }
 
 .toggle {
@@ -136,7 +136,7 @@ body {
   width: 60%;
   overflow-x: hidden;
   border: 0px;
-  border-radius:10px;
+  border-radius: 10px;
   background-image: url(data:image/svg+xml,%3Csvg%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M10%202C5.58172%202%202%205.58172%202%2010C2%2014.4183%205.58172%2018%2010%2018C11.8487%2018%2013.551%2017.3729%2014.9056%2016.3199L20.2929%2021.7071C20.6834%2022.0976%2021.3166%2022.0976%2021.7071%2021.7071C22.0976%2021.3166%2022.0976%2020.6834%2021.7071%2020.2929L16.3199%2014.9056C17.3729%2013.551%2018%2011.8487%2018%2010C18%205.58172%2014.4183%202%2010%202ZM4%2010C4%206.68629%206.68629%204%2010%204C13.3137%204%2016%206.68629%2016%2010C16%2013.3137%2013.3137%2016%2010%2016C6.68629%2016%204%2013.3137%204%2010Z%22%20fill%3D%22%23797878%22/%3E%3C/svg%3E);
   background-repeat: no-repeat;
   background-position: 2px left;
@@ -201,10 +201,16 @@ main {
   margin-right: auto;
 }
 .light-theme {
-    background: radial-gradient( circle at 100%, #000000 50%, #333 50%, #ff5100 74%, rgba(0, 0, 0, 1) 75% );
-    background-repeat: no-repeat;
-    background-position: center;
-    min-height: 100vh;
+  background: radial-gradient(
+    circle at 100%,
+    #000000 50%,
+    #333 50%,
+    #ff5100 74%,
+    rgba(0, 0, 0, 1) 75%
+  );
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 100vh;
 }
 .light-theme #title_main_page {
   color: whitesmoke;
@@ -229,31 +235,37 @@ main {
 .dark-theme #modalWindowButton {
   background: black;
 }
-.dark-theme #blurNoteModalPage{
-    background:#9d9d9d;
+.dark-theme #blurNoteModalPage {
+  background: #9d9d9d;
 }
 .dark-theme #ModalAddNoteTextarea {
-    background: #313131;
-    color: snow;
+  background: #313131;
+  color: snow;
 }
-.dark-theme .note-page{
-    background:#9d9d9d;
+.dark-theme .note-page {
+  background: #9d9d9d;
 }
 
 .dark-theme {
-    background: radial-gradient( circle at 100%, aliceblue 50%, #feff00 50%, #ff5100 74%, #f6f6f6 75% );
-    background-repeat: no-repeat;
-    background-position: center;
+  background: radial-gradient(
+    circle at 100%,
+    aliceblue 50%,
+    #feff00 50%,
+    #ff5100 74%,
+    #f6f6f6 75%
+  );
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .dark-theme #NoteMainPage {
-    background:#9d9d9d;
+  background: #9d9d9d;
 }
-    .dark-theme #ModalAddNote {
-        border: 10px solid snow;
-        background: snow;
-    }
-    /* ----------------------------------AsideModalWindow----------------------------------- */
-    #asideModalWindow {
+.dark-theme #ModalAddNote {
+  border: 10px solid snow;
+  background: snow;
+}
+/* ----------------------------------AsideModalWindow----------------------------------- */
+#asideModalWindow {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -274,42 +286,42 @@ main {
 }
 
 .modalWindowInput {
-    font-family: Montserrat;
-    font-size: 25px;
-    width: 500px;
-    height: 50px;
-    border: 0;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-    outline: none;
-    padding: 0;
+  font-family: Montserrat;
+  font-size: 25px;
+  width: 500px;
+  height: 50px;
+  border: 0;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  outline: none;
+  padding: 0;
 }
 
 #modalWindowButton {
-    position: relative;
-    height: 50px;
-    border: 0;
-    margin: 0;
-    bottom: 3px;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-    cursor: pointer;
-    padding: 0;
+  position: relative;
+  height: 50px;
+  border: 0;
+  margin: 0;
+  bottom: 3px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  cursor: pointer;
+  padding: 0;
 }
-#modalWindowButton:focus{
-    border:0;
+#modalWindowButton:focus {
+  border: 0;
 }
 /* ----------------------------------------------------------------------------- */
 .aside_panel {
-    position: fixed;
-    max-width: 165px;
-    height: 100%;
-    //background: #ff5100;
-    background-color: rgba(21, 21, 21, 1);
-    padding: 0px;
-    margin: 0px;
-    border: 0px;
-    top: 0;
+  position: fixed;
+  max-width: 165px;
+  height: 100%;
+  //background: #ff5100;
+  background-color: rgba(21, 21, 21, 1);
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
+  top: 0;
 }
 
 .ul_add_note {
@@ -416,7 +428,7 @@ main {
   position: relative;
   margin-left: auto;
   margin-bottom: 100px;
-  z-index:2;
+  z-index: 2;
 }
 
 @media screen and (max-width: 1066px) {
@@ -537,113 +549,113 @@ main {
 }
 
 #cityChangeBlock {
-    display: none;
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-    z-index: 1000;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    backdrop-filter: blur(10px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(10px);
 }
 .cityList {
-    display: flex;
-    flex-direction: column;
-    list-style-type: none;
-    padding: 0;
-    border: 0;
-    margin: 0;
-    margin-right: auto;
-    margin-bottom: 6%;
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  padding: 0;
+  border: 0;
+  margin: 0;
+  margin-right: auto;
+  margin-bottom: 6%;
 }
 
-    .cityList li button {
-        font-size: 30px;
-        width: 353%;
-        height: 110px;
-        border: 0;
-        padding: 0;
-    }
+.cityList li button {
+  font-size: 30px;
+  width: 353%;
+  height: 110px;
+  border: 0;
+  padding: 0;
+}
 
-.cityList_li{
-    margin:10px;
-    border-radius:10px;
+.cityList_li {
+  margin: 10px;
+  border-radius: 10px;
 }
 
 .cityList_div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    list-style-type: none;
-    height: 90%;
-    width: 500px;
-    border-radius: 10px;
-    overflow-y:scroll;
-    scrollbar-width:thin;
-    scrollbar-color:darkslateblue;
-    //background: linear-gradient(145deg, #38cdd2, #87b9f6);
-    z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  list-style-type: none;
+  height: 90%;
+  width: 500px;
+  border-radius: 10px;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: darkslateblue;
+  //background: linear-gradient(145deg, #38cdd2, #87b9f6);
+  z-index: 1000;
 }
 
 .cityList_CloseButton::before {
-    content: 'x';
+  content: "x";
 }
 
 .choseContry {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 10000;
-    background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  background: white;
 }
 
 .choseContry_ul {
-    font-weight: 600;
-    position: relative;
-    padding: 0;
-    margin: 0;
-    cursor: pointer;
-    width: 100%;
-    height: 50%;
-    font-size: 40px;
-    border: 2px solid black;
+  font-weight: 600;
+  position: relative;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 50%;
+  font-size: 40px;
+  border: 2px solid black;
 }
-    .choseContry_ul span:hover {
-        background: #d4d4d4;
-    }
+.choseContry_ul span:hover {
+  background: #d4d4d4;
+}
 
 .choseContry_li {
-    display: list-item;
-    font-size: 35px;
-    list-style-type: none;
-    margin-right: auto;
-    cursor: pointer;
-    width: 100%;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    max-height: 100px;
-    transition: max-height 0.3s ease;
+  display: list-item;
+  font-size: 35px;
+  list-style-type: none;
+  margin-right: auto;
+  cursor: pointer;
+  width: 100%;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  max-height: 100px;
+  transition: max-height 0.3s ease;
 }
-.image_UKRAINE{
-    float:right;
-    margin:2%;
+.image_UKRAINE {
+  float: right;
+  margin: 2%;
 }
 
 .choseContry_li:hover {
-    background: #d4d4d4;
+  background: #d4d4d4;
 }
-    /* ----------------------------------CALENDAR----------------------------------- */
-    .calendar_block {
-    display: flex;
-    flex-direction: column;
-    margin-right: 5px;
-    width: auto;
-    height: 100px;
+/* ----------------------------------CALENDAR----------------------------------- */
+.calendar_block {
+  display: flex;
+  flex-direction: column;
+  margin-right: 5px;
+  width: auto;
+  height: 100px;
 }
 
 .calendar_button_div {
@@ -651,14 +663,14 @@ main {
 }
 
 .calendar_button {
-    height: 80px;
-    width: 110px;
-    border: 0;
-    cursor: pointer;
-    background: #ff5100;
-    transition: all 0.1s;
-    border-bottom-right-radius: 30px;
-    border-bottom-left-radius: 30px;
+  height: 80px;
+  width: 110px;
+  border: 0;
+  cursor: pointer;
+  background: #ff5100;
+  transition: all 0.1s;
+  border-bottom-right-radius: 30px;
+  border-bottom-left-radius: 30px;
 }
 .calendar_button:hover {
   transform: scale(1.05);
@@ -683,7 +695,7 @@ main {
 .calendar_block_div {
   display: flex;
   position: relative;
-  z-index:100;
+  z-index: 100;
 }
 .table {
   table-layout: fixed;
@@ -695,48 +707,48 @@ main {
 }
 
 #calendar_table {
-    table-layout: fixed;
-    width: 371px;
-    height: 351px;
-    font-size: 20px;
-    position: absolute;
-    right: 10px;
-    background: slategray;
-    color: unset;
+  table-layout: fixed;
+  width: 371px;
+  height: 351px;
+  font-size: 20px;
+  position: absolute;
+  right: 10px;
+  background: slategray;
+  color: unset;
 }
 
 #button_back_calendar {
-    appearance: none;
-    height: 5px;
-    width: 10px;
-    border: 0;
-    margin: 0;
-    margin-bottom: 5px;
-    cursor: pointer;
-    transition: all 0.1s;
-    background: none;
+  appearance: none;
+  height: 5px;
+  width: 10px;
+  border: 0;
+  margin: 0;
+  margin-bottom: 5px;
+  cursor: pointer;
+  transition: all 0.1s;
+  background: none;
 }
 
-    #button_back_calendar:active {
-        transform: scale(0.9);
-        opacity: 0.7;
-    }
+#button_back_calendar:active {
+  transform: scale(0.9);
+  opacity: 0.7;
+}
 
 #button_forward_calendar {
-    appearance: none;
-    height: 5px;
-    width: 10px;
-    border: 0;
-    margin: 0;
-    margin-bottom: 5px;
-    cursor: pointer;
-    transition: all 0.1s;
-    background: none;
+  appearance: none;
+  height: 5px;
+  width: 10px;
+  border: 0;
+  margin: 0;
+  margin-bottom: 5px;
+  cursor: pointer;
+  transition: all 0.1s;
+  background: none;
 }
 
 #button_forward_calendar:active {
-    transform: scale(0.9);
-    opacity: 0.7;
+  transform: scale(0.9);
+  opacity: 0.7;
 }
 
 #calendar_thead {
@@ -798,14 +810,14 @@ main {
 }
 
 .time_button {
-    height: 80px;
-    width: 110px;
-    border: 0;
-    cursor: pointer;
-    background: #ff5100;
-    transition: all 0.1s;
-    border-bottom-right-radius: 30px;
-    border-bottom-left-radius: 30px;
+  height: 80px;
+  width: 110px;
+  border: 0;
+  cursor: pointer;
+  background: #ff5100;
+  transition: all 0.1s;
+  border-bottom-right-radius: 30px;
+  border-bottom-left-radius: 30px;
 }
 .time_button:hover {
   transform: scale(1.05);
@@ -828,17 +840,17 @@ main {
 }
 
 .time_block_div {
-    display: none;
-    position: absolute;
-    top: 60px;
-    right: 25%;
-    margin-top: 20px;
-    margin: 2rem auto;
-    background: radial-gradient(#d800ff, #0089a2);
-    max-width: 280px;
-    border-radius: 20px;
-    padding: 2rem;
-    z-index: 100;
+  display: none;
+  position: absolute;
+  top: 60px;
+  right: 25%;
+  margin-top: 20px;
+  margin: 2rem auto;
+  background: radial-gradient(#d800ff, #0089a2);
+  max-width: 280px;
+  border-radius: 20px;
+  padding: 2rem;
+  z-index: 100;
 }
 
 .time_block_div p {
@@ -871,14 +883,14 @@ main {
 }
 
 .date_button {
-    height: 80px;
-    width: 110px;
-    border: 0;
-    cursor: pointer;
-    background: #ff5100;
-    transition: all 0.1s;
-    border-bottom-right-radius: 30px;
-    border-bottom-left-radius: 30px;
+  height: 80px;
+  width: 110px;
+  border: 0;
+  cursor: pointer;
+  background: #ff5100;
+  transition: all 0.1s;
+  border-bottom-right-radius: 30px;
+  border-bottom-left-radius: 30px;
 }
 .date_button:hover {
   transform: scale(1.05);
@@ -905,17 +917,17 @@ main {
 }
 
 .Img_SeasonChange {
-    display: none;
-    position: absolute;
-    top: 60px;
-    right: 1%;
-    max-height: 90px;
-    max-width: 400px;
-    margin: 2rem auto;
-    margin-top: 1.5rem;
-    padding: 0.5rem;
-    border-radius: 10px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  display: none;
+  position: absolute;
+  top: 60px;
+  right: 1%;
+  max-height: 90px;
+  max-width: 400px;
+  margin: 2rem auto;
+  margin-top: 1.5rem;
+  padding: 0.5rem;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
 .dateBlock {
@@ -941,7 +953,7 @@ main {
   margin-top: auto;
   width: 100vw;
   margin-left: 150px;
-  z-index:0;
+  z-index: 0;
 }
 
 .statistics_block {
@@ -1052,9 +1064,9 @@ main {
 }
 
 #progress_adding_button {
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 0;
   width: 99%;
   height: 104px;
@@ -1068,23 +1080,23 @@ main {
   //border-top-left-radius: 40px;
   //border-top-right-radius: 40px;
 }
-    #progress_adding_button span {
-      font-family: Montserrat;
-      font-size: 50px;
-      font-weight: 600;
-      color: white;
-    }
-    #progress_adding_button:hover span {
-        opacity: 0.7;
-    }
-    #progress_adding_button span:hover {
-        opacity: 0.7;
-    }
+#progress_adding_button span {
+  font-family: Montserrat;
+  font-size: 50px;
+  font-weight: 600;
+  color: white;
+}
+#progress_adding_button:hover span {
+  opacity: 0.7;
+}
+#progress_adding_button span:hover {
+  opacity: 0.7;
+}
 
 #progress_done_button {
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   float: inline-end;
   padding: 0;
   width: 99%;
@@ -1098,19 +1110,19 @@ main {
   border: solid;
   border-color: #ff5100;
 }
-    #progress_done_button:hover span {
-        opacity: 0.7;
-    }
-    #progress_done_button span {
-        font-family: Montserrat;
-        font-size: 50px;
-        font-weight: 600;
-        color: white;
-    }
+#progress_done_button:hover span {
+  opacity: 0.7;
+}
+#progress_done_button span {
+  font-family: Montserrat;
+  font-size: 50px;
+  font-weight: 600;
+  color: white;
+}
 
-    #progress_done_button span:hover {
-        opacity: 0.7;
-    }
+#progress_done_button span:hover {
+  opacity: 0.7;
+}
 
 .task-item {
   font-family: Montserrat;
@@ -1163,7 +1175,7 @@ main {
 /*конец растановки создаваемых задач в progress*/
 
 .modal_overlay {
-  display:  none;
+  display: none;
   align-items: center;
   justify-content: center;
   position: fixed;
@@ -1222,16 +1234,16 @@ main {
   border: 0;
   background: #00ff088d;
   color: aliceblue;
-  cursor:pointer;
+  cursor: pointer;
 }
 #cancel_note_button {
-    font-weight: 600;
-    width: 90px;
-    height: 50px;
-    border: 0;
-    background: #ff0000a6;
-    color: aliceblue;
-    cursor: pointer;
+  font-weight: 600;
+  width: 90px;
+  height: 50px;
+  border: 0;
+  background: #ff0000a6;
+  color: aliceblue;
+  cursor: pointer;
 }
 /* ----------------------------------STATISTICS - H1----------------------------------- */
 /* .statictics {
@@ -1326,398 +1338,400 @@ main {
 /*-----------------------------------------NOTES------------------------------------------------------*/
 
 #divNotedivNote {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    width: 52.2%;
-    margin-left: 11%;
-    //z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 52.2%;
+  margin-left: 11%;
+  //z-index: 1;
 }
 #blurNoteModalPage {
-    display: flex;
-    position: absolute;
-    justify-content: center;
-    align-items: center;
-    height: 815px;
-    width: 102%;
-    background: white;
-    filter: blur(4px);
-    margin-top: 2%;
-    border-radius: 20px;
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  height: 815px;
+  width: 102%;
+  background: white;
+  filter: blur(4px);
+  margin-top: 2%;
+  border-radius: 20px;
 }
 
 #ModalAddNote {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    width: 47%;
-    height: 70%;
-    background: #9d9d9d;
-    border-radius: 10px;
-    border: 0;
-    z-index: 1000;
-    border: 10px solid #9d9d9d;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: 47%;
+  height: 70%;
+  background: #9d9d9d;
+  border-radius: 10px;
+  border: 0;
+  z-index: 1000;
+  border: 10px solid #9d9d9d;
 }
 #ModalAddNoteText {
-    font-family: Montserrat;
-    font-size: 35px;
-    font-weight:600;
-    border: 0;
-    margin-top: 20px;
-    max-width: 92%;
-    border-top-right-radius: 10px;
-    outline:none;
+  font-family: Montserrat;
+  font-size: 35px;
+  font-weight: 600;
+  border: 0;
+  margin-top: 20px;
+  max-width: 92%;
+  border-top-right-radius: 10px;
+  outline: none;
 }
 
 #ModalAddNoteTextarea {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: 30px;
-    height: 40%;
-    border: 0;
-    max-width: 92%;
-    background: #313131;
-    color: white;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    outline: none;
+  font-family:
+    "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 30px;
+  height: 40%;
+  border: 0;
+  max-width: 92%;
+  background: #313131;
+  color: white;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  outline: none;
 }
-#ModalAddNoteCloseButton{
-    position:absolute;
-    font-size:20px;
-    height: 30px;
-    width:  30px;
-    margin-left:93%;
-    border:0;
-    background:none;
-    cursor:pointer;
+#ModalAddNoteCloseButton {
+  position: absolute;
+  font-size: 20px;
+  height: 30px;
+  width: 30px;
+  margin-left: 93%;
+  border: 0;
+  background: none;
+  cursor: pointer;
 }
-#ModalAddNoteCloseButton:before{
-    content:'x';
-    color: black;
+#ModalAddNoteCloseButton:before {
+  content: "x";
+  color: black;
 }
-#ModalAddNoteSubmitButton{
-    margin-top:auto;
-    margin-left:auto;
+#ModalAddNoteSubmitButton {
+  margin-top: auto;
+  margin-left: auto;
 }
-#DropdownList{
-    width:200px;
-    margin-left:5px;
+#DropdownList {
+  width: 200px;
+  margin-left: 5px;
 }
 
 #ModalAddNoteUl {
-    display:block;
-    font-size: 23.7px;
-    width: 100%;
-    margin: 0;
-    padding: 0;
+  display: block;
+  font-size: 23.7px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
-    #ModalAddNoteUl li {
-        width: 100%;
-        cursor: pointer;
-        background: white;
-        list-style-type: none;
-        opacity: 0.7;
-    }
-    #ModalAddNoteUl li:hover{
-        opacity:1;
-    }
+#ModalAddNoteUl li {
+  width: 100%;
+  cursor: pointer;
+  background: white;
+  list-style-type: none;
+  opacity: 0.7;
+}
+#ModalAddNoteUl li:hover {
+  opacity: 1;
+}
 
 .ModalSpan {
-    display: inherit;
-    //width: 100%;
-    font-size: 35px;
-    font-weight: 600;
-    background: white;
-    cursor: pointer;
-    opacity: 0.7;
-    //border: 0.5px ridge #9d9d9d;
-    border-bottom:none;
-    border-right:none;
+  display: inherit;
+  //width: 100%;
+  font-size: 35px;
+  font-weight: 600;
+  background: white;
+  cursor: pointer;
+  opacity: 0.7;
+  //border: 0.5px ridge #9d9d9d;
+  border-bottom: none;
+  border-right: none;
 }
-    .ModalSpan:hover {
-        opacity: 1;
-        box-shadow: 0px 5px 20px 1px #313131;
-        transition: ease-in-out 0.2s;
-    }
-    .ModalSpan::after {
-        font-size: 112.3px;
-        content: "";
-        display: inline-block;
-        margin-left: 0.5em;
-        width: 0;
-        height: 0;
-        border-left: 5px solid transparent;
-        border-right: 5px solid transparent;
-        border-top: 10px solid black;
-        margin-bottom: 5px;
-    }
+.ModalSpan:hover {
+  opacity: 1;
+  box-shadow: 0px 5px 20px 1px #313131;
+  transition: ease-in-out 0.2s;
+}
+.ModalSpan::after {
+  font-size: 112.3px;
+  content: "";
+  display: inline-block;
+  margin-left: 0.5em;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 10px solid black;
+  margin-bottom: 5px;
+}
 
 #ModalAddNoteSubmitButton {
-    font-family: Montserrat;
-    font-size: 30px;
-    font-weight: 600;
-    height: 50px;
-    width: 100%;
-    border: 0;
-    border-radius: 10px;
-    color: whitesmoke;
-    cursor: pointer;
-    background: black;
-    transition: ease-in 0.1s;
+  font-family: Montserrat;
+  font-size: 30px;
+  font-weight: 600;
+  height: 50px;
+  width: 100%;
+  border: 0;
+  border-radius: 10px;
+  color: whitesmoke;
+  cursor: pointer;
+  background: black;
+  transition: ease-in 0.1s;
 }
-    #ModalAddNoteSubmitButton:active {
-        transform: scale(0.9);
-    }
-.note-page{
-    background:snow;
+#ModalAddNoteSubmitButton:active {
+  transform: scale(0.9);
+}
+.note-page {
+  background: snow;
 }
 
-#liClose{
-    font-size:20px;
-    height:inherit;
-    width:20px;
-    background:none;
-    color:darkred;
-    border:0;
-    margin-left:auto;
-    cursor:pointer;
+#liClose {
+  font-size: 20px;
+  height: inherit;
+  width: 20px;
+  background: none;
+  color: darkred;
+  border: 0;
+  margin-left: auto;
+  cursor: pointer;
 }
-#liClose::before{
-    content: 'x';
+#liClose::before {
+  content: "x";
 }
 
 /*-------------------------------------------LiDeadLineTime & LiDeadLineDate------------------------*/
 #optionsConteiner {
-    position: relative;
-    height: fit-content;
-    width: fit-content;
-    user-select:none;
+  position: relative;
+  height: fit-content;
+  width: fit-content;
+  user-select: none;
 }
 #DeadDateLine {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: fit-content;
-    height: fit-content;
-    //background: white;
-    margin: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: fit-content;
+  height: fit-content;
+  //background: white;
+  margin: 10px;
 }
 #DeadTimeLine {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: fit-content;
-    height: fit-content;
-    //background: white;
-    margin: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: fit-content;
+  height: fit-content;
+  //background: white;
+  margin: 10px;
 }
-#remind{
-    display:flex;
-    flex-direction:row;
+#remind {
+  display: flex;
+  flex-direction: row;
 }
 
 #Reminder {
-    margin: 10px;
-    width: fit-content;
-    cursor: help;
+  margin: 10px;
+  width: fit-content;
+  cursor: help;
 }
-#Reminder:hover{
-    color: crimson;
+#Reminder:hover {
+  color: crimson;
 }
 #NoteContainer {
-    display: flex;
-    flex-wrap: wrap;
-    position: relative;
-    top: 5px;
-    z-index: 1;
-    width: 100%;
-    height:95%;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  top: 5px;
+  z-index: 1;
+  width: 100%;
+  height: 95%;
 }
 .note {
-    position: inherit;
-    margin: 10px;
-    height: fit-content;
-    min-height: 171px;
-    width: 200px;
-    background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKVoZGia20zVpzOk1UqhFvdZU3FtLpP5zRLg&s');
-    background-position: center;
-    user-select: none;
-    border-radius: 10px;
-    cursor:pointer;
+  position: inherit;
+  margin: 10px;
+  height: fit-content;
+  min-height: 171px;
+  width: 200px;
+  background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKVoZGia20zVpzOk1UqhFvdZU3FtLpP5zRLg&s");
+  background-position: center;
+  user-select: none;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
 #calendar_thead_tr {
-    height: 41.1333px;
+  height: 41.1333px;
 }
 
 .title {
-    display: flex;
-    flex-direction: column;
-    max-width: 345px;
-    width: fit-content;
-    overflow-wrap: break-word;
-    word-break: break-word;
-    white-space: normal;
-    box-sizing: border-box;
-    align-items: center;
-    left: 35%;
-    position: absolute;
-    top: 30%;
-    background: whitesmoke;
-    border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  max-width: 345px;
+  width: fit-content;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
+  box-sizing: border-box;
+  align-items: center;
+  left: 35%;
+  position: absolute;
+  top: 30%;
+  background: whitesmoke;
+  border: 2px solid black;
 }
 
 #NoteButton {
-    width: 40px;
-    height: 40px;
-    margin-left: auto;
-    font-size: 20px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: papayawhip;
+  width: 40px;
+  height: 40px;
+  margin-left: auto;
+  font-size: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: papayawhip;
 }
 
-#closeNoteDivButton{
-    position:absolute;
-    font-size:20px;
-    width:40px;
-    height:36px;
-    margin-left:80%;
-    padding:0;
-    z-index:10000;
-    border-top-right-radius:10px;
+#closeNoteDivButton {
+  position: absolute;
+  font-size: 20px;
+  width: 40px;
+  height: 36px;
+  margin-left: 80%;
+  padding: 0;
+  z-index: 10000;
+  border-top-right-radius: 10px;
 }
-#closeNoteDivButton::before{
-    content: 'x';
+#closeNoteDivButton::before {
+  content: "x";
 }
 
 #searchNotes {
-    position: absolute;
-    background: #e7e7e7;
-    list-style: none;
-    top: 42px;
-    width: 46%;
-    border-radius: 10px;
-    cursor: pointer;
-    height: 25px;
-    align-items: center;
-    display: none;
+  position: absolute;
+  background: #e7e7e7;
+  list-style: none;
+  top: 42px;
+  width: 46%;
+  border-radius: 10px;
+  cursor: pointer;
+  height: 25px;
+  align-items: center;
+  display: none;
 }
 
 .SearchNote {
-    display: flex;
-    position: absolute;
-    left: 40%;
-    top: 30%;
-    background: white;
-    z-index: 1000000;
+  display: flex;
+  position: absolute;
+  left: 40%;
+  top: 30%;
+  background: white;
+  z-index: 1000000;
 }
 
 .note-page {
-    display: inline-block;
-    height: 800px;
-    width: 100%;
-    margin-top: 2%;
-    border-radius: 20px;
+  display: inline-block;
+  height: 800px;
+  width: 100%;
+  margin-top: 2%;
+  border-radius: 20px;
 }
 
-.closebutton{
-    font-size: 13px;
-    font-weight:600;
-    float:right;
-    background:#ff5100;
-    border: 0;
-    border-top-left-radius:20px;
-    border-top-right-radius:20px;
-    border-bottom-left-radius:20px;
-    border-bottom-right-radius:0px;
-    color:snow;
-    cursor:pointer;
-    margin-top:2px;
-    margin-right:2px;
-    height:40px;
-    width:40px;
+.closebutton {
+  font-size: 13px;
+  font-weight: 600;
+  float: right;
+  background: #ff5100;
+  border: 0;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 0px;
+  color: snow;
+  cursor: pointer;
+  margin-top: 2px;
+  margin-right: 2px;
+  height: 40px;
+  width: 40px;
 }
 
 .addButton {
-   font-size:40px;
-   font-weight:400;
-   float:inline-start;
-   background:none;
-   border: 0;
-   color: #ff5100;
-   cursor:pointer;
-   height:30px;
-   width:30px;
+  font-size: 40px;
+  font-weight: 400;
+  float: inline-start;
+  background: none;
+  border: 0;
+  color: #ff5100;
+  cursor: pointer;
+  height: 30px;
+  width: 30px;
 }
 
-.noteH3{
-    cursor:pointer;
-    margin-top:43px;
-    margin-bottom:4px;
-    margin-left:2px;
+.noteH3 {
+  cursor: pointer;
+  margin-top: 43px;
+  margin-bottom: 4px;
+  margin-left: 2px;
 }
 
-.noteP{
-    margin: 0px 0px 0px 2px;
-    color:red;
+.noteP {
+  margin: 0px 0px 0px 2px;
+  color: red;
 }
 .noteP2 {
-    margin: 0px 0px 0px 2px;
-    color: darkgreen;
+  margin: 0px 0px 0px 2px;
+  color: darkgreen;
 }
 .noteP3 {
-    margin: 0px 0px 0px 2px;
-    color: darkblue;
+  margin: 0px 0px 0px 2px;
+  color: darkblue;
 }
 
 #inputDate_id {
-    width: 140px;
-    height: 20px;
-    background: snow;
-    border: 0px;
+  width: 140px;
+  height: 20px;
+  background: snow;
+  border: 0px;
 }
 
 #inputDate_Button {
-    width: 23px;
-    height: 24px;
-    margin-left:2px;
+  width: 23px;
+  height: 24px;
+  margin-left: 2px;
 }
 
 #remindCheckbox {
-    margin: 0;
-    position: relative;
-    top: 1.8px;
+  margin: 0;
+  position: relative;
+  top: 1.8px;
 }
 
 #SelectedNoteTextBlock {
-    position: absolute;
-    background: gray;
-    border: 10px solid gray;
-    border-radius: 10px;
+  position: absolute;
+  background: gray;
+  border: 10px solid gray;
+  border-radius: 10px;
 }
 
 .note-page.inactive {
-    display: none;
+  display: none;
 }
 
 .marked {
-    background-color: green;
-    border-radius:100%;
-    cursor:pointer;
+  background-color: green;
+  border-radius: 100%;
+  cursor: pointer;
 }
 
 .highlighted-today {
-    background-color: green;
-    border-radius: 4px;
+  background-color: green;
+  border-radius: 4px;
 }
 
 #SelectedNoteTextBlock_button {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 #SelectedNoteTextBlock {
-    z-index: 1;
+  z-index: 1;
 }
